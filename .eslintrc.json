@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "eslint:recommended"
+  ],
+  "rules": {
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "import/no-anonymous-default-export": "off"
+  },
+  "globals": {
+    "React": true,
+    "JSX": true
+  },
+  "overrides": []
+}
