@@ -1,5 +1,5 @@
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Navigate,
 } from 'react-router-dom';
@@ -9,14 +9,14 @@ import LandingRouter from '@/pages/landing/router';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Navigate replace to="home" />}/>
         {HomeRouter}
         {LandingRouter}
       </Routes>
       
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
