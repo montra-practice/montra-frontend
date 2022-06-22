@@ -93,10 +93,10 @@
     ]
   },
   "lint-staged": {
-    "**/*.scss": "stylelint --syntax scss",
+    "**/*.scss": "stylelint --syntax=scss",
     "**/*.{tsx,ts,js,scss}": [
       "git add"
     ],
-    "**/*.{tsx,ts,vue}": "eslint --ext .js,.ts,.tsx"
+    "**/*.{tsx,ts}": "eslint --ext .ts,.tsx"
   }
 }
