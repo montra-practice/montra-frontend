@@ -1,5 +1,5 @@
 module.exports = {
-  rootDir: '<rootDir>/src',
+  rootDir: __dirname,
   setupFiles: [
     'react-app-polyfill/jsdom'
   ],
