@@ -1,0 +1,33 @@
+name: Montra Frontend CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    name: Run Build & Deploy
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-versions: [14.x]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install Dependence & Test & Build
+        run: |
+          npm install yarn -g
+          yarn
+          yarn test
+          yarn build
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.3.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: build
