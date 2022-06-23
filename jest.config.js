@@ -44,4 +44,4 @@ module.exports = {
     'jest-watch-typeahead/testname'
   ],
   resetMocks: true
-}
+};

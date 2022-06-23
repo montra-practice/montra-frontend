@@ -3,8 +3,7 @@ module.exports = (api) => {
 
   return {
     presets: [
-      "react-app",
-      "@babel/preset-env",
+      ["react-app", false],
     ],
     env: {
       test: {
