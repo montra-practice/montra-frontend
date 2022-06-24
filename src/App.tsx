@@ -4,8 +4,8 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { Route } from 'react-router';
-import HomeRouter from '@/pages/home/router';
-import LandingRouter from '@/pages/landing/router';
+import HomeRouter from '@/pages/home1/router';
+import LandingRouter from '@/pages/landing1/router';
 
 function App() {
   return (
