@@ -1,0 +1,45 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:latest", "tslint-react"],
+  "jsRules": {},
+  "rules": {
+    "curly": false,
+    "jsx-no-lambda": false,
+    "semicolon": [true, "never"],
+    "ordered-imports": false,
+    "interface-name": [true],
+    "object-literal-sort-keys": false,
+    "no-object-literal-type-assertion": false,
+    "no-empty-interface": false,
+    "member-access": false,
+    "jsx-boolean-value": false,
+    "jsx-no-multiline-js": false,
+    "quotemark": [true, "single", "jsx-double", "avoid-escape"],
+    "object-literal-key-quotes": [true, "as-needed"],
+    "no-any": false,
+    "whitespace": [
+      true,
+      "check-module",
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type",
+      "check-typecast"
+    ],
+    "no-implicit-dependencies": false,
+    "no-submodule-imports": false,
+    "no-empty": false,
+    "ban-comma-operator": true,
+    "jsx-wrap-multiline": false,
+    "max-line-length": {
+      "options": [120]
+    },
+    "no-console": {
+      "severity": "warning",
+      "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
+    },
+    "no-namespace": [true, "allow-declarations"]
+  },
+  "rulesDirectory": []
+}

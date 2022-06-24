@@ -1,12 +1,8 @@
 {
   "root": true,
-  "extends": [
-    "react-app",
-    "react-app/jest",
-    "eslint:recommended"
-  ],
+  "extends": ["react-app", "react-app/jest", "eslint:recommended"],
   "rules": {
-    "semi": ["error", "always"],
+    "semi": ["error", "never"],
     "quotes": ["error", "single"],
     "import/no-anonymous-default-export": "off"
   },

@@ -5,23 +5,25 @@
   "private": true,
   "scripts": {
     "start": "node scripts/start.js",
+    "lint": "eslint --fix --ext .ts,.tsx",
     "build": "node scripts/build.js",
     "deploy": "node scripts/build.js && gh-pages -d build",
     "test": "node scripts/test.js --passWithNoTests",
     "postinstall": "husky install"
   },
   "dependencies": {
+    "antd-mobile": "^5.16.1",
     "camelcase": "^6.2.1",
     "react": "^18.2.0",
     "react-app-polyfill": "^3.0.0",
     "react-dev-utils": "^12.0.1",
     "react-dom": "^18.2.0",
     "react-refresh": "^0.11.0",
-    "react-router-dom": "^6.3.0",
-    "stylelint-config-prettier": "^9.0.3"
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.18.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.14.1",
@@ -61,6 +63,7 @@
     "postcss-loader": "^6.2.1",
     "postcss-normalize": "^10.0.1",
     "postcss-preset-env": "^7.0.1",
+    "prettier": "^2.7.1",
     "prompts": "^2.4.2",
     "resolve": "^1.20.0",
     "resolve-url-loader": "^4.0.0",
@@ -70,7 +73,10 @@
     "source-map-loader": "^3.0.0",
     "style-loader": "^3.3.1",
     "stylelint": "^14.9.1",
+    "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^26.0.0",
+    "stylelint-config-standard-scss": "^4.0.0",
+    "stylelint-prettier": "^2.0.0",
     "tailwindcss": "^3.0.2",
     "terser-webpack-plugin": "^5.2.5",
     "typescript": "^4.4.2",
@@ -93,10 +99,13 @@
     ]
   },
   "lint-staged": {
-    "**/*.scss": "stylelint --syntax=scss",
-    "**/*.{tsx,ts,js,scss}": [
-      "git add"
+    "**/*.scss": "stylelint '**/*.scss' --fix",
+    "**/*.{tsx,ts}": [
+      "eslint --fix --ext .ts,.tsx"
     ],
-    "**/*.{tsx,ts}": "eslint --ext .ts,.tsx"
+    "**/*.{html,md,css,scss,js,json,ts,tsx,yml,yaml}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
