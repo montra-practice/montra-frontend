@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { Space, Swiper, Button } from 'antd-mobile'
 import controlMoneyImg from '@/assets/images/control_money.png'
 import whereYourMoneyImg from '@/assets/images/where_your_money_goes.png'
@@ -23,7 +24,12 @@ function Landing() {
       description: 'Setup your budget for each category so you in control',
     },
   ]
-  console.log(styles['landing-item'])
+  const navigate = useNavigate()
+
+  const goToSignUp = () => {
+    navigate('/landing/sign-up')
+  }
+
   return (
     <div className={styles.wrapper}>
       <Space direction="vertical" block>
@@ -33,7 +39,7 @@ function Landing() {
             '--track-padding': ' 0 0 52px',
           }}
           indicatorProps={{
-            className: styles.indicator
+            className: styles.indicator,
           }}
           defaultIndex={0}
         >
@@ -49,7 +55,7 @@ function Landing() {
         </Swiper>
       </Space>
       <div className={styles.buttons}>
-        <Button block color="primary" size="large">
+        <Button block color="primary" size="large" onClick={goToSignUp}>
           Sign Up
         </Button>
         <Button block size="large">
