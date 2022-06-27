@@ -1,5 +1,66 @@
+@import "~@/style/variables.scss";
+
 :local {
-  .indicator {
-    color: #7f3dff;
+  .wrapper {
+    padding: 0 20px;
+    height: 100%;
+    .landing-item {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 12px;
+      text-align: center;
+
+      img {
+        display: inline-block;
+        width: 312px;
+        height: 312px;
+      }
+
+      h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: $color-dark;
+      }
+
+      p {
+        margin-top: 16px;
+        font-size: $font-size-sm;
+        color: $color-light-dark;
+      }
+    }
+
+    div.indicator {
+      align-items: center;
+      --dot-size: 8px;
+      --active-dot-size: 16px;
+      --dot-color: #{$color-light-primary};
+      --active-dot-color: #{$color-primary};
+      --dot-border-radius: 50%;
+      --active-dot-border-radius: var(--dot-border-radius);
+      --dot-spacing: 16px;
+
+      :global {
+        .adm-page-indicator-dot-active {
+          height: var(--active-dot-size);
+        }
+      }
+    }
+
+    .buttons {
+      margin-top: 32px;
+
+      :global {
+        .adm-button {
+          --adm-button-border-radius: 16px;
+          font-weight: 600;
+
+          & + .adm-button {
+            margin-top: 16px;
+          }
+        }
+      }
+    }
   }
+
 }

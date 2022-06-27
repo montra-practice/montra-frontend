@@ -23,35 +23,40 @@ function Landing() {
       description: 'Setup your budget for each category so you in control',
     },
   ]
+  console.log(styles['landing-item'])
   return (
-    <>
+    <div className={styles.wrapper}>
       <Space direction="vertical" block>
         <Swiper
-          indicator={(total, current) => (
-            <div className={styles.indicator}>
-              {`${current + 1} / ${total}`}
-            </div>
-          )}
+          className={styles.indicator}
+          style={{
+            '--track-padding': ' 0 0 52px',
+          }}
+          indicatorProps={{
+            className: styles.indicator
+          }}
           defaultIndex={0}
         >
           {swiperList.map((item, index) => (
             <Swiper.Item key={index}>
-              <div>
+              <div className={styles['landing-item']}>
                 <img src={item.image} alt={item.title} />
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
               </div>
-              <h2>{item.title}</h2>
-              <p>{item.description}</p>
             </Swiper.Item>
           ))}
         </Swiper>
       </Space>
-      <Button block color="primary" size="large">
-        Sign Up
-      </Button>
-      <Button block size="large">
-        Login
-      </Button>
-    </>
+      <div className={styles.buttons}>
+        <Button block color="primary" size="large">
+          Sign Up
+        </Button>
+        <Button block size="large">
+          Login
+        </Button>
+      </div>
+    </div>
   )
 }
 

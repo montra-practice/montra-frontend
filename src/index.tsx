@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import '@/style/reset.scss'
+import '@/style/overwrite.scss'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 

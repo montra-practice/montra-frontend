@@ -1,0 +1,14 @@
+@import "variables";
+// Button
+:global {
+  button.adm-button {
+    --background-color: #{$color-light-primary};
+    --text-color: #{$color-primary};
+
+    &.adm-button-primary {
+      --color: #{$color-primary};
+    }
+  }
+}
+
+
