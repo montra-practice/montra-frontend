@@ -30,6 +30,10 @@ function Landing() {
     navigate('/landing/sign-up')
   }
 
+  const goToLogin = () => {
+    navigate('/landing/login')
+  }
+
   return (
     <div className={styles.wrapper}>
       <Space direction="vertical" block>
@@ -58,7 +62,7 @@ function Landing() {
         <Button block color="primary" size="large" onClick={goToSignUp}>
           Sign Up
         </Button>
-        <Button block size="large">
+        <Button block size="large" onClick={goToLogin}>
           Login
         </Button>
       </div>

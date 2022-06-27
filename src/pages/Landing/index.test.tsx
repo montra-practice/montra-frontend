@@ -34,7 +34,6 @@ describe('test Landing page', () => {
   })
 
   test('go to sign up page when user click Sign Up button', () => {
-    // const history = createMemoryHistory()
     render(
       <Router location={history.location} navigator={history}>
         <Landing />
@@ -44,5 +43,17 @@ describe('test Landing page', () => {
     fireEvent.click(screen.getByText('Sign Up'))
 
     expect(screen.getByText(/Sign Up/i)).toBeInTheDocument()
+  })
+
+  test('go to login page when user click Login button', () => {
+    render(
+      <Router location={history.location} navigator={history}>
+        <Landing />
+      </Router>,
+    )
+
+    fireEvent.click(screen.getByText('Login'))
+
+    expect(screen.getByText(/Login/i)).toBeInTheDocument()
   })
 })
