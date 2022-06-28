@@ -1,12 +1,9 @@
 {
   "root": true,
-  "extends": ["react-app", "react-app/jest", "eslint:recommended"],
+  "extends": ["react-app"],
   "plugins": ["react-hooks"],
   "rules": {
-    "semi": ["error", "never"],
-    "quotes": ["error", "single"],
     "import/no-anonymous-default-export": "off",
-    "object-curly-spacing": ["error", "always"],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   },
