@@ -65,9 +65,8 @@ export default () => {
               message: 'please agree teams of service and privacy policy',
             },
           ]}
-          noStyle
         >
-          <Checkbox onChange={console.log} />
+          <Checkbox onChange={console.log} data-testid="agreePolicy" />
           By signing up, you agree to the
           <span>Terms of Service and Privacy Policy</span>
         </Form.Item>

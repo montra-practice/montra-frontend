@@ -108,7 +108,7 @@
     ],
     "**/*.{html,md,css,scss,js,json,ts,tsx,yml,yaml}": [
       "prettier --write",
-      "git add"
+      "git add ."
     ]
   }
 }
