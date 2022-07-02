@@ -1,20 +1,18 @@
 import { Form, Button, Input, Checkbox } from 'antd-mobile'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { signUpUser } from '@/store/user/api'
+import { useNavigate } from 'react-router-dom'
 
 export default () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    agreePolicy: false,
-  })
+  const navigate = useNavigate()
 
   useEffect(() => {
     document.title = 'Sign Up'
   }, [])
 
-  const onSubmit = (values: IRequestUserSignUp) => {
-    setFormData(() => values)
+  const onSubmit = async (values: IRequestUserSignUp) => {
+    await signUpUser(values)
+    navigate('/landing/verification')
   }
 
   return (
@@ -48,7 +46,7 @@ export default () => {
         </Form.Item>
         <Form.Item
           name="password"
-          rules={[{ required: true, message: 'password cannot empty' }]}
+          rules={[{ required: true, message: 'Password cannot empty' }]}
         >
           <Input
             type="password"
@@ -57,9 +55,11 @@ export default () => {
           />
         </Form.Item>
         <Form.Item name="agreePolicy">
-          <Checkbox data-testid="agreePolicy" />
-          By signing up, you agree to the
-          <span>Terms of Service and Privacy Policy</span>
+          <Checkbox data-testid="agreePolicy" >
+            By signing up, you agree to the
+            <span>Terms of Service and Privacy Policy</span>
+          </Checkbox>
+
         </Form.Item>
       </Form>
     </>

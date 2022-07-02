@@ -1,57 +1,76 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { createMemoryHistory, MemoryHistory } from 'history'
+import { Router } from 'react-router-dom'
+import { rest } from 'msw'
+import { setupServer } from 'msw/node'
 import SignUp from './index'
 import { act } from 'react-dom/test-utils'
 import React from 'react'
 
-describe('test Sign Up page', () => {
-  const setup = () => {
-    const mockValue = {
-      name: 'userName',
-      email: 'user@gmail.com',
-      password: '123456',
-    }
-    const ref = React.createRef()
-    const utils = render(<SignUp ref={ref} />)
-    const nameInput = utils
-      .getByTestId('name')
-      .querySelector('input') as Element
-    const emailInput = utils
-      .getByTestId('email')
-      .querySelector('input') as Element
-    const passwordInput = utils
-      .getByTestId('password')
-      .querySelector('input') as Element
-    const agreePolicyInput = utils
-      .getByTestId('agreePolicy')
-      .querySelector('input') as Element
-
-    return {
-      nameInput,
-      emailInput,
-      passwordInput,
-      agreePolicyInput,
-      mockValue,
-      ref,
-      ...utils,
-    }
+const setup = (history: MemoryHistory) => {
+  const mockValue = {
+    name: 'userName',
+    email: 'user@gmail.com',
+    password: '123456',
   }
+  const utils = render(
+    <Router location={history.location} navigator={history}>
+      <SignUp />
+    </Router>,
+  )
+  const nameInput = utils
+    .getByTestId('name')
+    .querySelector('input') as Element
+  const emailInput = utils
+    .getByTestId('email')
+    .querySelector('input') as Element
+  const passwordInput = utils
+    .getByTestId('password')
+    .querySelector('input') as Element
+  const agreePolicyInput = utils
+    .getByTestId('agreePolicy')
+    .querySelector('input') as Element
 
-  afterEach(() => {})
+  return {
+    nameInput,
+    emailInput,
+    passwordInput,
+    agreePolicyInput,
+    mockValue,
+    ...utils,
+  }
+}
+
+describe('test Sign Up page', () => {
+  let history: MemoryHistory
+
+  const server = setupServer()
+  beforeAll(() => {
+    server.listen()
+  })
+  beforeEach(() => {
+    history = createMemoryHistory()
+  })
+
+
+  afterAll(() => {
+    server.close()
+  })
 
   test('render form fields', () => {
-    render(<SignUp />)
+    setup(history)
 
     expect(document.title).toBe('Sign Up')
     expect(screen.getByTestId('name')).toBeInTheDocument()
     expect(screen.getByTestId('email')).toBeInTheDocument()
     expect(screen.getByTestId('password')).toBeInTheDocument()
     expect(screen.getByTestId('agreePolicy')).toBeInTheDocument()
-    expect(screen.getByTestId('submit')).toBeInTheDocument()
+    expect(screen.getByTestId('submit-button')).toBeInTheDocument()
   })
 
   test('all fields should be filled when user change values', async () => {
-    const { nameInput, emailInput, passwordInput, mockValue } = setup()
+    const { nameInput, emailInput, passwordInput, mockValue } = setup(history)
 
     await act(async () => {
       await userEvent.type(nameInput, 'userName')
@@ -64,10 +83,18 @@ describe('test Sign Up page', () => {
     expect(passwordInput).toHaveValue(mockValue.password)
   })
 
-  test('submit with correct form values', async () => {
-    // const onSubmit = jest.fn()
-    const { nameInput, emailInput, passwordInput, agreePolicyInput, ref } =
-      setup()
+  test('submit sign up should jump to verification', async () => {
+    await server.use(
+      rest.post('/api/user', (req, res, ctx) => {
+        const { name, password, email, agreePolicy } = req.body as IRequestUserSignUp
+        return res(
+          ctx.status(201),
+          ctx.json({ id: Date.now(), name, password, email, agreePolicy })
+        )
+      }),
+    )
+
+    const { nameInput, emailInput, passwordInput, agreePolicyInput } = setup(history)
 
     await act(async () => {
       await userEvent.type(nameInput, 'Tom')
@@ -78,11 +105,7 @@ describe('test Sign Up page', () => {
       await userEvent.click(screen.getByTestId('submit-button'))
     })
 
-    expect(ref.onSubmit).toHaveBeenCalledWith({
-      name: 'Tom',
-      email: 'Tom@email.com',
-      password: '123456',
-      agreePolicy: true,
-    })
+    expect(history.location.pathname).toBe('/landing/verification')
   })
 })
+
