@@ -1,0 +1,43 @@
+@use '~@/style/variables.scss';
+
+:local {
+  .wrapper {
+    padding: 56px 16px;
+
+    .policy {
+      --font-size: #{$font-size-sm};
+
+      color: #000;
+
+      &-link {
+        color: $color-primary;
+        cursor: pointer;
+      }
+    }
+
+    :global {
+      .adm-list-body {
+        overflow: unset;
+        border: none;
+      }
+
+      .adm-form-item {
+        --adm-color-border: #{$color-light-gray};
+
+        & + .adm-form-item {
+          margin-top: 24px;
+        }
+
+        .adm-list-item-content {
+          padding: 0 16px;
+          border: 1px solid $color-light-gray;
+          border-radius: 16px;
+        }
+      }
+
+      .adm-button-primary {
+        border-radius: 16px;
+      }
+    }
+  }
+}

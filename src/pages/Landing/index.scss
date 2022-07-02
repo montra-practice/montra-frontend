@@ -1,9 +1,10 @@
-@import "~@/style/variables.scss";
+@use '~@/style/variables.scss';
 
 :local {
   .wrapper {
     padding: 0 20px;
     height: 100%;
+
     .landing-item {
       display: flex;
       justify-content: center;
@@ -25,13 +26,14 @@
 
       p {
         margin-top: 16px;
-        font-size: $font-size-sm;
+        font-size: $font-size-normal;
         color: $color-light-dark;
       }
     }
 
     div.indicator {
       align-items: center;
+
       --dot-size: 8px;
       --active-dot-size: 16px;
       --dot-color: #{$color-light-primary};
@@ -39,28 +41,26 @@
       --dot-border-radius: 50%;
       --active-dot-border-radius: var(--dot-border-radius);
       --dot-spacing: 16px;
-
-      :global {
-        .adm-page-indicator-dot-active {
-          height: var(--active-dot-size);
-        }
-      }
     }
 
     .buttons {
       margin-top: 32px;
+    }
 
-      :global {
-        .adm-button {
-          --adm-button-border-radius: 16px;
-          font-weight: 600;
+    :global {
+      .adm-page-indicator-dot-active {
+        height: var(--active-dot-size);
+      }
 
-          & + .adm-button {
-            margin-top: 16px;
-          }
+      .adm-button {
+        --adm-button-border-radius: 16px;
+
+        font-weight: 600;
+
+        & + .adm-button {
+          margin-top: 16px;
         }
       }
     }
   }
-
 }

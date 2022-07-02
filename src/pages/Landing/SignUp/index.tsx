@@ -2,6 +2,7 @@ import { Form, Button, Input, Checkbox } from 'antd-mobile'
 import { useEffect } from 'react'
 import { signUpUser } from '@/store/user/api'
 import { useNavigate } from 'react-router-dom'
+import styles from './index.scss'
 
 export default () => {
   const navigate = useNavigate()
@@ -16,7 +17,7 @@ export default () => {
   }
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <Form
         layout="horizontal"
         onFinish={onSubmit}
@@ -55,13 +56,13 @@ export default () => {
           />
         </Form.Item>
         <Form.Item name="agreePolicy">
-          <Checkbox data-testid="agreePolicy" >
+          <Checkbox data-testid="agreePolicy" className={styles.policy}>
             By signing up, you agree to the
-            <span>Terms of Service and Privacy Policy</span>
+            <span className={styles['policy-link']}>Terms of Service and Privacy Policy</span>
           </Checkbox>
 
         </Form.Item>
       </Form>
-    </>
+    </div>
   )
 }
