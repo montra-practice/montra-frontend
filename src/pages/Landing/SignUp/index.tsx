@@ -41,11 +41,15 @@ export default () => {
         </Form.Item>
         <Form.Item
           name="email"
-          rules={[{ required: true, message: 'Email cannot empty' }]}
+          rules={[
+            { required: true, message: 'Email cannot empty' },
+            { pattern: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/g, message: 'Please enter a valid email address' }
+          ]}
         >
           <Input placeholder="Email" data-testid="email" />
         </Form.Item>
         <Form.Item
+          className={styles.password}
           name="password"
           rules={[{ required: true, message: 'Password cannot empty' }]}
         >
@@ -54,15 +58,24 @@ export default () => {
             placeholder="Password"
             data-testid="password"
           />
+          {/*<img className={styles.eye} src={eye} alt="eye"/>*/}
         </Form.Item>
-        <Form.Item name="agreePolicy">
-          <Checkbox data-testid="agreePolicy" className={styles.policy}>
+        <Form.Item
+          className={styles.policy}
+          name="agreePolicy"
+          rules={[{required: true, message: 'Please agree the Policy'}]}
+        >
+          <Checkbox data-testid="agreePolicy">
             By signing up, you agree to the
             <span className={styles['policy-link']}>Terms of Service and Privacy Policy</span>
           </Checkbox>
-
         </Form.Item>
       </Form>
+
+      <p className={styles.tip}>
+        Already have an account?
+        <a href="#/landing/login">&nbsp;Login</a>
+      </p>
     </div>
   )
 }

@@ -13,6 +13,36 @@
         color: $color-primary;
         cursor: pointer;
       }
+
+      :global(div.adm-list-item-content) {
+        padding: 0;
+        border: none;
+      }
+    }
+
+    .tip {
+      font-size: $font-size-normal;
+      text-align: center;
+      color: $color-light-dark;
+
+      a {
+        text-decoration: none;
+        color: $color-primary;
+      }
+    }
+
+    .password {
+      .eye {
+        display: inline-block;
+        width: 22px;
+        height: 15px;
+      }
+
+      :global(.adm-form-item-child-inner) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
 
     :global {

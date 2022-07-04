@@ -10,4 +10,14 @@
       --color: #{$color-primary};
     }
   }
+
+  // CheckBox
+  .adm-checkbox {
+    --adm-color-primary: #{$color-primary};
+    --icon-size: 24px;
+
+    div.adm-checkbox-icon {
+      border-radius: 5px;
+    }
+  }
 }

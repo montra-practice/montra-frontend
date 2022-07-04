@@ -8,6 +8,7 @@ module.exports = {
         ignorePseudoClasses: ['global', 'local'],
       },
     ],
+    'no-descending-specificity': null,
   },
   extends: [
     'stylelint-config-standard',
