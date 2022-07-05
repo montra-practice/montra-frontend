@@ -31,6 +31,7 @@ Schema.warning = jest.fn()
 
 excludeWarning()
 // remove px tester warning
+// https://github.com/ant-design/ant-design-mobile/issues/5192
 function excludeWarning() {
   const errorSpy = jest.spyOn(console, 'error')
     .mockImplementation((msg, ...rest) => {
