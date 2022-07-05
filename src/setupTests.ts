@@ -5,14 +5,12 @@
 import '@testing-library/jest-dom'
 import Schema from 'async-validator'
 
-const originError = console.error
-
 Schema.warning = jest.fn()
 
-excludeWarning()
 // remove px tester warning
 // https://github.com/ant-design/ant-design-mobile/issues/5192
-function excludeWarning() {
+const originError = console.error
+const excludeWarning = () => {
   const errorSpy = jest.spyOn(console, 'error')
     .mockImplementation((msg, ...rest) => {
       if (
@@ -29,3 +27,5 @@ function excludeWarning() {
     errorSpy.mockRestore()
   }
 }
+
+excludeWarning()
