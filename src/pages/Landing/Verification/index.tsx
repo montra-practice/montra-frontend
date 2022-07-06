@@ -1,8 +1,13 @@
+import CountDown from '@/components/CountDown'
+
 export default () => {
-  console.log('Ver!!!!!')
+
+
   return (
     <div>
-      <h2>Enter</h2>
+      <h2>Enter your Verification Code</h2>
+      <div>Code</div>
+      <CountDown minutes={5}/>
     </div>
   )
 }

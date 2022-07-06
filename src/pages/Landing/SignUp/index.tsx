@@ -58,7 +58,6 @@ export default () => {
             placeholder="Password"
             data-testid="password"
           />
-          {/*<img className={styles.eye} src={eye} alt="eye"/>*/}
         </Form.Item>
         <Form.Item
           className={styles.policy}
