@@ -9,6 +9,7 @@
     "build": "node scripts/build.js",
     "deploy": "node scripts/build.js && gh-pages -d build",
     "test": "node scripts/test.js --passWithNoTests",
+    "sonar-scanner": "yarn sonar-scanner",
     "postinstall": "husky install"
   },
   "proxy": "http://localhost:9001",
