@@ -8,7 +8,7 @@
     "lint": "yarn tslint -c tslint.json 'src/**/*.{ts,tsx}' --fix",
     "build": "node scripts/build.js",
     "deploy": "node scripts/build.js && gh-pages -d build",
-    "test": "node scripts/test.js --passWithNoTests",
+    "test": "node scripts/test.js --coverage",
     "sonar-scanner": "yarn sonar-scanner",
     "postinstall": "husky install"
   },
@@ -77,6 +77,7 @@
     "sass": "^1.52.3",
     "sass-loader": "^12.3.0",
     "semver": "^7.3.5",
+    "sonarqube-scanner": "^2.8.1",
     "source-map-loader": "^3.0.0",
     "style-loader": "^3.3.1",
     "stylelint": "^14.9.1",

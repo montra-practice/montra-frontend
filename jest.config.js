@@ -1,9 +1,8 @@
 module.exports = {
   rootDir: __dirname,
   setupFiles: ['react-app-polyfill/jsdom'],
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/test/setupTests.ts'],
   testMatch: [
-    '<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}',
     '<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}',
   ],
   testEnvironment: 'jsdom',
@@ -13,10 +12,10 @@ module.exports = {
   },
   moduleFileExtensions: ['tsx', 'js', 'ts', 'json'],
   transform: {
-    '^.+\\.(js|jsx|mjs|cjs|ts|tsx)$': '<rootDir>/config/jest/babelTransform.js',
-    '^.+\\.(css|scss)$': '<rootDir>/config/jest/cssTransform.js',
+    '^.+\\.(js|jsx|mjs|cjs|ts|tsx)$': '<rootDir>/test/babelTransform.js',
+    '^.+\\.(css|scss)$': '<rootDir>/test/cssTransform.js',
     '^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)':
-      '<rootDir>/config/jest/fileTransform.js',
+      '<rootDir>/test/fileTransform.js',
   },
   transformIgnorePatterns: [
     '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$',
@@ -26,10 +25,11 @@ module.exports = {
     'src/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.d.ts',
     '!**/node_modules/**',
-    '!**/apis/**',
+    '!src/store/**/api.ts',
   ],
   collectCoverage: true,
-  coverageReporters: ['text-summary'],
+  coverageReporters: ['html', 'text-summary'],
+  coverageDirectory: '<rootDir>/test/unit/coverage',
   watchPlugins: [
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
