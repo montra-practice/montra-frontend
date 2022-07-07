@@ -26,6 +26,7 @@ module.exports = {
     '!src/**/*.d.ts',
     '!**/node_modules/**',
     '!src/store/**/api.ts',
+    '!src/store/request.ts',
   ],
   collectCoverage: true,
   coverageReporters: ['html', 'text-summary'],
