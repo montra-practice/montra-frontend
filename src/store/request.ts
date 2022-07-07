@@ -1,9 +1,9 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
-const baseURL = '/api/v1'
+export const BASE_URL = '/api/v1'
 
 const instance = axios.create({
-  baseURL,
+  baseURL: BASE_URL,
 })
 
 export const onGet = (url: string, params?: {}, config?: AxiosRequestConfig) => {
@@ -47,7 +47,7 @@ export  const request = async (
         // TODO: Logout
         return
       } else {
-        return Promise.reject((data || {}).errorMessage)
+        return Promise.reject((data || {}).errorMessage || error.message)
       }
     }
     return { error }

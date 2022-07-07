@@ -5,12 +5,13 @@ import { Router } from 'react-router-dom'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 import SignUp from './index'
+import { BASE_URL } from '@/store/request'
 import { act } from 'react-dom/test-utils'
 import React from 'react'
 
 const setup = (history: MemoryHistory) => {
   const mockValue = {
-    name: 'userName',
+    username: 'userName',
     email: 'user@gmail.com',
     password: '123456',
   }
@@ -20,7 +21,7 @@ const setup = (history: MemoryHistory) => {
     </Router>,
   )
   const nameInput = utils
-    .getByTestId('name')
+    .getByTestId('username')
     .querySelector('input') as Element
   const emailInput = utils
     .getByTestId('email')
@@ -44,15 +45,23 @@ const setup = (history: MemoryHistory) => {
 
 describe('test Sign Up page', () => {
   let history: MemoryHistory
+  const server = setupServer(
+    rest.post(`${BASE_URL}/user/register`, (req, res, ctx) => {
+      const { username, password, email } = req.body as IUser
+      return res(
+        ctx.status(201),
+        ctx.json({ id: Date.now(), username, password, email })
+      )
+    }),
+  )
 
-  const server = setupServer()
   beforeAll(() => {
-    server.listen()
+    server.listen({onUnhandledRequest: 'error'})
   })
+
   beforeEach(() => {
     history = createMemoryHistory()
   })
-
 
   afterAll(() => {
     server.close()
@@ -62,7 +71,7 @@ describe('test Sign Up page', () => {
     setup(history)
 
     expect(document.title).toBe('Sign Up')
-    expect(screen.getByTestId('name')).toBeInTheDocument()
+    expect(screen.getByTestId('username')).toBeInTheDocument()
     expect(screen.getByTestId('email')).toBeInTheDocument()
     expect(screen.getByTestId('password')).toBeInTheDocument()
     expect(screen.getByTestId('agreePolicy')).toBeInTheDocument()
@@ -78,22 +87,12 @@ describe('test Sign Up page', () => {
       await userEvent.type(passwordInput, '123456')
     })
 
-    expect(nameInput).toHaveValue(mockValue.name)
+    expect(nameInput).toHaveValue(mockValue.username)
     expect(emailInput).toHaveValue(mockValue.email)
     expect(passwordInput).toHaveValue(mockValue.password)
   })
 
   test('submit sign up should jump to verification', async () => {
-    await server.use(
-      rest.post('/user/register', (req, res, ctx) => {
-        const { username, password, email } = req.body as IUser
-        return res(
-          ctx.status(201),
-          ctx.json({ id: Date.now(), username, password, email })
-        )
-      }),
-    )
-
     const { nameInput, emailInput, passwordInput, agreePolicyInput } = setup(history)
 
     await act(async () => {

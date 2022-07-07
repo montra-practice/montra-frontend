@@ -45,7 +45,7 @@ export default () => {
           name="username"
           rules={[{ required: true, message: 'Name cannot empty' }]}
         >
-          <Input placeholder="Name" data-testid="name" />
+          <Input placeholder="Name" data-testid="username" />
         </Form.Item>
         <Form.Item
           name="email"
