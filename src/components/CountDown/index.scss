@@ -1,0 +1,9 @@
+@use '~@/style/variables.scss' as *;
+
+:local {
+  .wrapper {
+    font-size: $font-size-mid;
+    font-weight: 600;
+    color: $color-primary;
+  }
+}

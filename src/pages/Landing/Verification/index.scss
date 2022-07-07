@@ -1,0 +1,34 @@
+@use '~@/style/variables.scss' as *;
+
+:local {
+  .wrapper {
+    padding: 50px 16px;
+    color: $color-dark-shallow;
+    font-size: $font-size-normal;
+    font-weight: 500;
+
+    h2 {
+      margin: 195px 0 53px;
+      font-size: $font-size-lg;
+      color: $color-dark-deep;
+    }
+
+    .code {
+      margin-bottom: 47px;
+    }
+
+    .tips {
+      margin: 16px 0;
+
+      span {
+        color: $color-primary;
+      }
+    }
+
+    .dont-receive {
+      margin-bottom: 46px;
+      text-decoration: underline;
+      color: $color-primary;
+    }
+  }
+}

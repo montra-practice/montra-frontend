@@ -47,7 +47,7 @@ export  const request = async (
         // TODO: Logout
         return
       } else {
-        return Promise.reject((data || {}).errorMessage || error.message)
+        return Promise.reject((data || {}).msg || error.message)
       }
     }
     return { error }

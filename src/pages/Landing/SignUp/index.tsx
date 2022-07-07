@@ -21,7 +21,11 @@ export default () => {
       email: values.email,
       password: values.password
     })
-    navigate('/landing/verification')
+    navigate('/landing/verification', {
+      state: {
+        email: values.email
+      }
+    })
   }
 
   return (

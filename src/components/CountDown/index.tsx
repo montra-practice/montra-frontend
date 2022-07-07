@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import styles from './index.scss'
 
 interface IProps {
   minutes?: number,
@@ -36,13 +37,11 @@ export default ({ minutes = 0, seconds = 0 }: IProps) => {
   }, [triggerCountDown])
 
   return (
-    <>
-      <p>
-        {`${
-          time.minutes.toString().padStart(2, '0')}:${
-          time.seconds.toString().padStart(2, '0')}`
-        }
-      </p>
-    </>
+    <div className={styles.wrapper}>
+      {`${
+        time.minutes.toString().padStart(2, '0')}:${
+        time.seconds.toString().padStart(2, '0')}`
+      }
+    </div>
   )
 }
