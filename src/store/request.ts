@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
-const baseURL = '/api/'
+const baseURL = '/api/v1'
 
 const instance = axios.create({
   baseURL,

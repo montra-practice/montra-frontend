@@ -85,11 +85,11 @@ describe('test Sign Up page', () => {
 
   test('submit sign up should jump to verification', async () => {
     await server.use(
-      rest.post('/api/user', (req, res, ctx) => {
-        const { name, password, email, agreePolicy } = req.body as IRequestUserSignUp
+      rest.post('/user/register', (req, res, ctx) => {
+        const { username, password, email } = req.body as IUser
         return res(
           ctx.status(201),
-          ctx.json({ id: Date.now(), name, password, email, agreePolicy })
+          ctx.json({ id: Date.now(), username, password, email })
         )
       }),
     )

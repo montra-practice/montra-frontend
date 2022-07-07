@@ -4,6 +4,10 @@ import { signUpUser } from '@/store/user/api'
 import { useNavigate } from 'react-router-dom'
 import styles from './index.scss'
 
+interface IFormFields extends IUser {
+  agreePolicy: boolean
+}
+
 export default () => {
   const navigate = useNavigate()
 
@@ -11,8 +15,12 @@ export default () => {
     document.title = 'Sign Up'
   }, [])
 
-  const onSubmit = async (values: IRequestUserSignUp) => {
-    await signUpUser(values)
+  const onSubmit = async (values: IFormFields) => {
+    await signUpUser({
+      username: values.username,
+      email: values.email,
+      password: values.password
+    })
     navigate('/landing/verification')
   }
 
@@ -34,7 +42,7 @@ export default () => {
         }
       >
         <Form.Item
-          name="name"
+          name="username"
           rules={[{ required: true, message: 'Name cannot empty' }]}
         >
           <Input placeholder="Name" data-testid="name" />

@@ -1,11 +1,9 @@
 import { useEffect } from 'react'
 
-function SignUp() {
+export default () => {
   useEffect(() => {
     document.title = 'Login'
   }, [])
 
   return <div>Login</div>
 }
-
-export default SignUp
