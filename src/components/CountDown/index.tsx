@@ -18,7 +18,7 @@ export default ({ minutes = 0, seconds = 0 }: IProps) => {
       setTimeOver(true)
     } else if (time.seconds === 0) {
       setTime({
-        minutes: time.minutes - 1,
+        minutes: time.minutes ? time.minutes - 1 : time.minutes,
         seconds: 59
       })
     } else {
@@ -38,12 +38,10 @@ export default ({ minutes = 0, seconds = 0 }: IProps) => {
   return (
     <>
       <p>
-        {`${time.minutes
-          .toString()
-          .padStart(2, '0')}
-        :${time.seconds
-          .toString()
-          .padStart(2, '0')}`}
+        {`${
+          time.minutes.toString().padStart(2, '0')}:${
+          time.seconds.toString().padStart(2, '0')}`
+        }
       </p>
     </>
   )
