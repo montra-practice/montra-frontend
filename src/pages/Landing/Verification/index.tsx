@@ -1,8 +1,9 @@
-import { useLocation } from 'react-router-dom'
-import CountDown from '@/components/CountDown'
-import { Button, PasscodeInput } from 'antd-mobile'
-import styles from './index.scss'
 import React, { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { Button, PasscodeInput } from 'antd-mobile'
+import CountDown from '@/components/CountDown'
+import { verifyPasscode } from '@/store/user/api'
+import styles from './index.scss'
 
 export interface ILocationState {
   email: string
@@ -11,6 +12,7 @@ export interface ILocationState {
 export default () => {
   const [passcode, setPasscode] = useState('')
   const location = useLocation()
+  const navigate = useNavigate()
 
   const onPasscodeChange = (value: string) => {
     if (value.length >= 6) {
@@ -19,7 +21,10 @@ export default () => {
   }
 
   const onVerify = () => {
-
+    verifyPasscode(passcode)
+      .then(() => {
+        navigate('/landing/login')
+      })
   }
 
   return (

@@ -1,10 +1,11 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { Toast } from 'antd-mobile'
 
+const HOST = process.env.NODE_ENV === 'production' ? 'http://122.112.234.17:3301/' : ''
 export const BASE_URL = '/api/v1'
 
 const instance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: HOST + BASE_URL,
 })
 
 export const onGet = (url: string, params?: {}, config?: AxiosRequestConfig) => {
