@@ -23,7 +23,7 @@
     .tip {
       font-size: $font-size-normal;
       text-align: center;
-      color: $color-light-dark;
+      color: $color-gray;
 
       a {
         text-decoration: none;
@@ -52,7 +52,7 @@
       }
 
       .adm-form-item {
-        --adm-color-border: #{$color-light-gray};
+        --adm-color-border: #{$color-gray-shallow};
 
         & + .adm-form-item {
           margin-top: 24px;
@@ -60,7 +60,7 @@
 
         .adm-list-item-content {
           padding: 0 16px;
-          border: 1px solid $color-light-gray;
+          border: 1px solid $color-gray-shallow;
           border-radius: 16px;
         }
       }

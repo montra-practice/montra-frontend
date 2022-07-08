@@ -16,11 +16,11 @@ export default () => {
   }, [])
 
   const onSubmit = async (values: IFormFields) => {
-    await signUpUser({
-      username: values.username,
-      email: values.email,
-      password: values.password
-    })
+    // await signUpUser({
+    //   username: values.username,
+    //   email: values.email,
+    //   password: values.password
+    // })
     Toast.show({
       icon: 'success',
       content: 'Registered Successfully'
