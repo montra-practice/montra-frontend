@@ -29,7 +29,7 @@ module.exports = {
     '!src/store/request.ts',
   ],
   collectCoverage: true,
-  coverageReporters: ['html', 'text-summary', 'lcov'],
+  coverageReporters: ['text-summary', 'lcov'],
   coverageDirectory: '<rootDir>/test/unit/coverage',
   watchPlugins: [
     'jest-watch-typeahead/filename',
