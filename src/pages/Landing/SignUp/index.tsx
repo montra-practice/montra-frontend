@@ -1,4 +1,4 @@
-import { Form, Button, Input, Checkbox } from 'antd-mobile'
+import { Form, Button, Input, Checkbox, Toast } from 'antd-mobile'
 import { useEffect } from 'react'
 import { signUpUser } from '@/store/user/api'
 import { useNavigate } from 'react-router-dom'
@@ -20,6 +20,10 @@ export default () => {
       username: values.username,
       email: values.email,
       password: values.password
+    })
+    Toast.show({
+      icon: 'success',
+      content: 'Registered Successfully'
     })
     navigate('/landing/verification', {
       state: {

@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { Toast } from 'antd-mobile'
 
 export const BASE_URL = '/api/v1'
 
@@ -28,6 +29,11 @@ export  const request = async (
 ) => {
   // TODO: GET TOKEN
   const token = ''
+  Toast.show({
+    icon: 'loading',
+    duration: 0,
+    content: '加载中…',
+  })
   try {
     const { data = {}, headers }: AxiosResponse<{}> = await instance(url, {
       headers: {
@@ -37,8 +43,11 @@ export  const request = async (
       method,
       ...config,
     })
+    Toast.clear()
+
     return { response: data, headers }
   } catch (error: any) {
+    Toast.clear()
     if (!disableErrorHandler) {
       // TODO
       // 统一处理网络错误
@@ -47,7 +56,12 @@ export  const request = async (
         // TODO: Logout
         return
       } else {
-        return Promise.reject((data || {}).msg || error.message)
+        const errorMessage = (data || {}).msg || error.message
+        Toast.show({
+          icon: 'fail',
+          content: errorMessage,
+        })
+        return Promise.reject(errorMessage)
       }
     }
     return { error }
