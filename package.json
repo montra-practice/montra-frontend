@@ -110,12 +110,12 @@
     ]
   },
   "lint-staged": {
-    "**/*.{html,md,css,scss,js,json,ts,tsx,yml,yaml}": [
-      "prettier --write"
-    ],
     "**/*.scss": "stylelint '**/*.scss' --fix",
     "**/*.{tsx,ts}": [
       "eslint --fix --ext .ts,.tsx"
+    ],
+    "**/*.{html,md,css,scss,js,json,ts,tsx,yml,yaml}": [
+      "prettier --write"
     ]
   }
 }

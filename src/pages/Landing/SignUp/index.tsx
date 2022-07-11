@@ -19,16 +19,16 @@ export default () => {
     await signUpUser({
       username: values.username,
       email: values.email,
-      password: values.password
+      password: values.password,
     })
     Toast.show({
       icon: 'success',
-      content: 'Registered Successfully'
+      content: 'Registered Successfully',
     })
     navigate('/landing/verification', {
       state: {
-        email: values.email
-      }
+        email: values.email,
+      },
     })
   }
 
@@ -59,7 +59,10 @@ export default () => {
           name="email"
           rules={[
             { required: true, message: 'Email cannot empty' },
-            { pattern: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/g, message: 'Please enter a valid email address' }
+            {
+              pattern: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/g,
+              message: 'Please enter a valid email address',
+            },
           ]}
         >
           <Input placeholder="Email" data-testid="email" />
@@ -78,11 +81,13 @@ export default () => {
         <Form.Item
           className={styles.policy}
           name="agreePolicy"
-          rules={[{required: true, message: 'Please agree the Policy'}]}
+          rules={[{ required: true, message: 'Please agree the Policy' }]}
         >
           <Checkbox data-testid="agreePolicy">
             By signing up, you agree to the
-            <span className={styles['policy-link']}>Terms of Service and Privacy Policy</span>
+            <span className={styles['policy-link']}>
+              Terms of Service and Privacy Policy
+            </span>
           </Checkbox>
         </Form.Item>
       </Form>
