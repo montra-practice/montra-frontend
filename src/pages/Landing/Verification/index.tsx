@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Button, PasscodeInput } from 'antd-mobile'
 import CountDown from '@/components/CountDown'
@@ -14,6 +14,10 @@ export default () => {
   const location = useLocation()
   const navigate = useNavigate()
 
+  useEffect(() => {
+    document.title = 'Verification'
+  }, [])
+
   const onPasscodeChange = (value: string) => {
     if (value.length >= 6) {
       setPasscode(value)
@@ -21,10 +25,9 @@ export default () => {
   }
 
   const onVerify = () => {
-    verifyPasscode(passcode)
-      .then(() => {
-        navigate('/landing/login')
-      })
+    verifyPasscode(passcode).then(() => {
+      navigate('/landing/login')
+    })
   }
 
   return (
@@ -37,14 +40,15 @@ export default () => {
         onChange={onPasscodeChange}
         data-testid="passcode"
       />
-      <CountDown minutes={5}/>
+      <CountDown minutes={5} />
       <p className={styles.tips}>
-        We send verification code to your
-        email
+        We send verification code to your email
         <span>{(location.state as ILocationState).email}.</span>
         You can check your inbox.
       </p>
-      <p className={styles['dont-receive']}>I didn’t received the code? Send again</p>
+      <p className={styles['dont-receive']}>
+        I didn’t received the code? Send again
+      </p>
       <Button
         color="primary"
         block

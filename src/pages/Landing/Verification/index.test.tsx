@@ -10,10 +10,7 @@ describe('test Verification component', () => {
   let state: ILocationState
   const server = setupServer(
     rest.post(`${BASE_URL}/user/verify`, (req, res, ctx) => {
-      return res(
-        ctx.status(201),
-        ctx.json(req.body)
-      )
+      return res(ctx.status(201), ctx.json(req.body))
     }),
   )
 
@@ -21,7 +18,7 @@ describe('test Verification component', () => {
     render(
       <Router initialEntries={[{ state }]}>
         <Verification />
-      </Router>
+      </Router>,
     )
   }
 
@@ -30,7 +27,7 @@ describe('test Verification component', () => {
   })
 
   beforeAll(() => {
-    server.listen({onUnhandledRequest: 'error'})
+    server.listen({ onUnhandledRequest: 'error' })
   })
 
   afterAll(() => {
@@ -40,6 +37,7 @@ describe('test Verification component', () => {
   test('Verification component should render', () => {
     setup()
 
+    expect(document.title).toBe('Verification')
     expect(screen.getByText('Enter your Verification Code')).toBeInTheDocument()
     expect(screen.getByText(/test@mail.com/i)).toBeInTheDocument()
   })
@@ -60,13 +58,13 @@ describe('test Verification component', () => {
     expect(screen.getByTestId('verify')).toBeDisabled()
   })
 
-  test('navigate to Login page when user fire verify button', () => {
+  test('navigate to Login page when user fire verify button', async () => {
     setup()
 
     userEvent.type(screen.getByTestId('passcode'), '123456')
     userEvent.click(screen.getByTestId('verify'))
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(screen.getByText(/login/i)).toBeInTheDocument()
     })
   })

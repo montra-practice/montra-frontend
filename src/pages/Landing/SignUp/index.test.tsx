@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { createMemoryHistory, MemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
@@ -6,7 +6,6 @@ import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 import SignUp from './index'
 import { BASE_URL } from '@/store/request'
-import { act } from 'react-dom/test-utils'
 import React from 'react'
 
 const setup = (history: MemoryHistory) => {
@@ -20,18 +19,18 @@ const setup = (history: MemoryHistory) => {
       <SignUp />
     </Router>,
   )
-  const nameInput = utils
-    .getByTestId('username')
-    .querySelector('input') as Element
-  const emailInput = utils
-    .getByTestId('email')
-    .querySelector('input') as Element
-  const passwordInput = utils
-    .getByTestId('password')
-    .querySelector('input') as Element
-  const agreePolicyInput = utils
-    .getByTestId('agreePolicy')
-    .querySelector('input') as Element
+  const nameInput = within(screen.getByTestId('username')).getByPlaceholderText(
+    'Name',
+  ) as Element
+  const emailInput = within(screen.getByTestId('email')).getByPlaceholderText(
+    'Email',
+  ) as Element
+  const passwordInput = within(
+    screen.getByTestId('password'),
+  ).getByPlaceholderText('Password') as Element
+  const agreePolicyInput = within(screen.getByTestId('agreePolicy')).getByRole(
+    'checkbox',
+  ) as Element
 
   return {
     nameInput,
@@ -50,13 +49,13 @@ describe('test Sign Up page', () => {
       const { username, password, email } = req.body as IUser
       return res(
         ctx.status(201),
-        ctx.json({ id: Date.now(), username, password, email })
+        ctx.json({ id: Date.now(), username, password, email }),
       )
     }),
   )
 
   beforeAll(() => {
-    server.listen({onUnhandledRequest: 'error'})
+    server.listen({ onUnhandledRequest: 'error' })
   })
 
   beforeEach(() => {
@@ -81,11 +80,9 @@ describe('test Sign Up page', () => {
   test('all fields should be filled when user change values', async () => {
     const { nameInput, emailInput, passwordInput, mockValue } = setup(history)
 
-    await act(async () => {
-      await userEvent.type(nameInput, 'userName')
-      await userEvent.type(emailInput, 'user@gmail.com')
-      await userEvent.type(passwordInput, '123456')
-    })
+    await userEvent.type(nameInput, 'userName')
+    await userEvent.type(emailInput, 'user@gmail.com')
+    await userEvent.type(passwordInput, '123456')
 
     expect(nameInput).toHaveValue(mockValue.username)
     expect(emailInput).toHaveValue(mockValue.email)
@@ -93,18 +90,18 @@ describe('test Sign Up page', () => {
   })
 
   test('submit sign up should jump to verification', async () => {
-    const { nameInput, emailInput, passwordInput, agreePolicyInput } = setup(history)
+    const { nameInput, emailInput, passwordInput, agreePolicyInput } =
+      setup(history)
 
-    await act(async () => {
-      await userEvent.type(nameInput, 'Tom')
-      await userEvent.type(emailInput, 'Tom@email.com')
-      await userEvent.type(passwordInput, '123456')
-      await userEvent.click(agreePolicyInput)
+    await userEvent.type(nameInput, 'Tom')
+    await userEvent.type(emailInput, 'Tom@email.com')
+    await userEvent.type(passwordInput, '123456')
+    await userEvent.click(agreePolicyInput)
 
-      await userEvent.click(screen.getByTestId('submit-button'))
+    await userEvent.click(screen.getByTestId('submit-button'))
+
+    await waitFor(() => {
+      expect(history.location.pathname).toBe('/landing/verification')
     })
-
-    expect(history.location.pathname).toBe('/landing/verification')
   })
 })
-
