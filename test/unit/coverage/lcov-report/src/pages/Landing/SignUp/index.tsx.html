@@ -27,9 +27,9 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">0% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">8/8</span>
+            <span class="fraction">0/8</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -39,15 +39,15 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">0% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">3/3</span>
+            <span class="fraction">0/3</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">0% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">8/8</span>
+            <span class="fraction">0/8</span>
           </div>
         </div>
         <p class="quiet">
@@ -61,7 +61,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line high"></div>
+      <div class="status-line low"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -175,30 +175,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -275,31 +275,31 @@ interface IFormFields extends IUser {
   agreePolicy: boolean
 }
 &nbsp;
-export default () =&gt; {
-  const navigate = useNavigate()
+export default <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate()</span>
 &nbsp;
-  useEffect(() =&gt; {
-    document.title = 'Sign Up'
+<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    document.title = 'Sign Up'</span>
   }, [])
 &nbsp;
-  const onSubmit = async (values: IFormFields) =&gt; {
-    await signUpUser({
+  const onSubmit = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (values: IFormFields) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    await signUpUser({</span>
       username: values.username,
       email: values.email,
       password: values.password,
     })
-    Toast.show({
+<span class="cstat-no" title="statement not covered" >    Toast.show({</span>
       icon: 'success',
       content: 'Registered Successfully',
     })
-    navigate('/landing/verification', {
+<span class="cstat-no" title="statement not covered" >    navigate('/landing/verification', {</span>
       state: {
         email: values.email,
       },
     })
   }
 &nbsp;
-  return (
+<span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;div className={styles.wrapper}&gt;
       &lt;Form
         layout="horizontal"
@@ -380,7 +380,7 @@ export default () =&gt; {
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at Mon Jul 11 2022 16:24:51 GMT+0800 (China Standard Time)
+      at Mon Jul 11 2022 17:06:04 GMT+0800 (China Standard Time)
     </div>
     <script src="../../../../prettify.js"></script>
     <script>

@@ -10,7 +10,8 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "max-len": [2, { "code": 120 }],
-    "no-undef": "off"
+    "no-undef": "off",
+    "camelcase": [2, { "properties": "always" }]
   },
   "globals": {
     "React": true,

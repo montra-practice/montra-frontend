@@ -4,30 +4,22 @@
   .wrapper {
     padding: 56px 16px;
 
-    .policy {
-      --font-size: #{$font-size-sm};
-
-      color: #000;
-
-      &-link {
-        color: $color-primary;
-        cursor: pointer;
-      }
-
-      :global(div.adm-list-item-content) {
-        padding: 0;
-        border: none;
-      }
-    }
-
-    .tip {
-      font-size: $font-size-normal;
+    .other-operation {
+      margin-top: 33px;
+      color: $color-primary;
+      font-size: $font-size-mid;
+      font-weight: 600;
       text-align: center;
-      color: $color-gray;
 
-      a {
-        text-decoration: none;
-        color: $color-primary;
+      .sign-up {
+        margin-top: 38px;
+        color: $color-gray;
+        font-size: $font-size-normal;
+        font-weight: 500;
+
+        span {
+          color: $color-primary;
+        }
       }
     }
 
