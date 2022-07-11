@@ -1,13 +1,15 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import Verification, { ILocationState } from './index'
-import { MemoryRouter as Router } from 'react-router-dom'
+import { Router } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
 import { setupServer } from 'msw/node'
 import { rest } from 'msw'
 import { BASE_URL } from '@/store/request'
+import { createMemoryHistory, MemoryHistory } from 'history'
 
 describe('test Verification component', () => {
   let state: ILocationState
+  let history: MemoryHistory
   const server = setupServer(
     rest.post(`${BASE_URL}/user/verify`, (req, res, ctx) => {
       return res(ctx.status(201), ctx.json(req.body))
@@ -15,14 +17,16 @@ describe('test Verification component', () => {
   )
 
   const setup = () => {
+    history.replace(history.location.pathname, state)
     render(
-      <Router initialEntries={[{ state }]}>
+      <Router location={history.location} navigator={history}>
         <Verification />
       </Router>,
     )
   }
 
   beforeEach(() => {
+    history = createMemoryHistory()
     state = { email: 'test@mail.com' }
   })
 
@@ -58,14 +62,14 @@ describe('test Verification component', () => {
     expect(screen.getByTestId('verify')).toBeDisabled()
   })
 
-  test('navigate to Login page when user fire verify button', async () => {
+  test('navigate to Login page when user fire verify button', () => {
     setup()
 
     userEvent.type(screen.getByTestId('passcode'), '123456')
     userEvent.click(screen.getByTestId('verify'))
 
-    await waitFor(() => {
-      expect(screen.getByText(/login/i)).toBeInTheDocument()
+    return waitFor(() => {
+      expect(history.location.pathname).toBe('/landing/login')
     })
   })
 })

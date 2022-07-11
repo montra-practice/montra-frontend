@@ -56,6 +56,7 @@ export default () => {
         disabled={!passcode}
         onClick={onVerify}
         data-testid="verify"
+        type="button"
       >
         Verify
       </Button>
