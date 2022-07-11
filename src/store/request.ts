@@ -1,14 +1,19 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { Toast } from 'antd-mobile'
 
-const HOST = process.env.NODE_ENV === 'production' ? 'http://122.112.234.17:3301/' : ''
+const HOST =
+  process.env.NODE_ENV === 'production' ? 'http://122.112.234.17:3301' : ''
 export const BASE_URL = '/api/v1'
 
 const instance = axios.create({
   baseURL: HOST + BASE_URL,
 })
 
-export const onGet = (url: string, params?: {}, config?: AxiosRequestConfig) => {
+export const onGet = (
+  url: string,
+  params?: {},
+  config?: AxiosRequestConfig,
+) => {
   return request(url, 'GET', {
     ...config,
     params,
@@ -22,7 +27,7 @@ export const onPost = (url: string, data?: {}, config?: AxiosRequestConfig) => {
   })
 }
 
-export  const request = async (
+export const request = async (
   url: string,
   method: string,
   config?: AxiosRequestConfig,
@@ -39,7 +44,7 @@ export  const request = async (
     const { data = {}, headers }: AxiosResponse<{}> = await instance(url, {
       headers: {
         'Content-Type': 'application/json',
-        authorization: token
+        authorization: token,
       },
       method,
       ...config,
