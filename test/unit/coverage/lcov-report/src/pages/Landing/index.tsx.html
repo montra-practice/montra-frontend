@@ -23,9 +23,9 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">0% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">0/8</span>
+            <span class="fraction">8/8</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -35,15 +35,15 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">0% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">0/4</span>
+            <span class="fraction">4/4</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">0% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">0/8</span>
+            <span class="fraction">8/8</span>
           </div>
         </div>
         <p class="quiet">
@@ -57,7 +57,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line low"></div>
+      <div class="status-line high"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -140,7 +140,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -158,19 +158,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -182,7 +180,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -212,8 +212,8 @@ import whereYourMoneyImg from '@/assets/images/where_your_money_goes.png'
 import planningImg from '@/assets/images/planning_ahead.png'
 import styles from './index.scss'
 &nbsp;
-function <span class="fstat-no" title="function not covered" >Landing(</span>) {
-  const swiperList = <span class="cstat-no" title="statement not covered" >[</span>
+function Landing() {
+  const swiperList = [
     {
       image: controlMoneyImg,
       title: 'Gain total control of your money',
@@ -231,17 +231,17 @@ function <span class="fstat-no" title="function not covered" >Landing(</span>) {
       description: 'Setup your budget for each category so you in control',
     },
   ]
-  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate()</span>
+  const navigate = useNavigate()
 &nbsp;
-  const goToSignUp = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    navigate('/landing/sign-up')</span>
+  const goToSignUp = () =&gt; {
+    navigate('/landing/sign-up')
   }
 &nbsp;
-  const goToLogin = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    navigate('/landing/login')</span>
+  const goToLogin = () =&gt; {
+    navigate('/landing/login')
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div className={styles.wrapper}&gt;
       &lt;Space direction="vertical" block&gt;
         &lt;Swiper
@@ -254,8 +254,8 @@ function <span class="fstat-no" title="function not covered" >Landing(</span>) {
           }}
           defaultIndex={0}
         &gt;
-          {swiperList.map(<span class="fstat-no" title="function not covered" >(i</span>tem, index) =&gt; (
-<span class="cstat-no" title="statement not covered" >            &lt;Swiper.Item key={index}&gt;</span>
+          {swiperList.map((item, index) =&gt; (
+            &lt;Swiper.Item key={index}&gt;
               &lt;div className={styles['landing-item']}&gt;
                 &lt;img src={item.image} alt={item.title} /&gt;
                 &lt;h2&gt;{item.title}&lt;/h2&gt;
@@ -292,7 +292,7 @@ export default Landing
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at Tue Jul 12 2022 13:35:21 GMT+0800 (China Standard Time)
+      at Tue Jul 12 2022 13:58:24 GMT+0800 (China Standard Time)
     </div>
     <script src="../../../prettify.js"></script>
     <script>
