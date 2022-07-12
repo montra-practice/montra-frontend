@@ -128,28 +128,24 @@
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -202,17 +198,13 @@ import { useNavigate } from 'react-router-dom'
 import { Button, Form, Input } from 'antd-mobile'
 import styles from './index.scss'
 &nbsp;
-interface IFormFields {
-&nbsp;
-}
-&nbsp;
 export default () =&gt; {
   const navigate = useNavigate()
   useEffect(() =&gt; {
     document.title = 'Login'
   }, [])
 &nbsp;
-  const onSubmit = (values: IFormFields) =&gt; {
+  const onSubmit = (values: Partial&lt;IUser&gt;) =&gt; {
     navigate('/landing/setup')
   }
 &nbsp;
@@ -257,9 +249,11 @@ export default () =&gt; {
           /&gt;
         &lt;/Form.Item&gt;
       &lt;/Form&gt;
-      &lt;div&gt;
+      &lt;div className={styles['other-operation']}&gt;
         &lt;p&gt;Forgot Password?&lt;/p&gt;
-        &lt;p&gt;Don’t have an account yet? &lt;span&gt;Sign Up&lt;/span&gt;&lt;/p&gt;
+        &lt;p className={styles['sign-up']}&gt;
+          Don’t have an account yet? &lt;span&gt;Sign Up&lt;/span&gt;
+        &lt;/p&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   )
@@ -278,7 +272,7 @@ export default () =&gt; {
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at Mon Jul 11 2022 17:06:04 GMT+0800 (China Standard Time)
+      at Tue Jul 12 2022 17:47:13 GMT+0800 (中国标准时间)
     </div>
     <script src="../../../../prettify.js"></script>
     <script>
