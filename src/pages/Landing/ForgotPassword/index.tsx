@@ -2,11 +2,20 @@ import { Button, Form, Input } from 'antd-mobile'
 import styles from './index.scss'
 import { EMAIL_REGX } from '@/constants/base'
 import { useEffect } from 'react'
+import { forgotPassword } from '@/store/user/api'
+import { useNavigate } from 'react-router-dom'
 
 export default () => {
+  const navigator = useNavigate()
   useEffect(() => {
     document.title = 'Forgot Password'
   }, [])
+
+  const onSubmit = (values: { email: string }) => {
+    forgotPassword(values.email).then(() => {
+      navigator('/landing/on-the-way')
+    })
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -16,6 +25,7 @@ export default () => {
       </div>
       <Form
         layout="horizontal"
+        onFinish={onSubmit}
         footer={
           <Button block type="submit" color="primary" size="large">
             Continue

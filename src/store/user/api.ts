@@ -13,5 +13,5 @@ export const login = (data: Partial<IUser>) => {
 }
 
 export const forgotPassword = (email: string) => {
-  return onPost('/user/forget-password', email)
+  return onPost('/user/forgot-password', email)
 }
