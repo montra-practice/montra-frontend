@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Form, Input } from 'antd-mobile'
 import { login } from '@/store/user/api'
+import { EMAIL_REGX } from '@/constants/base'
 import styles from './index.scss'
 
 export default () => {
@@ -46,15 +47,14 @@ export default () => {
           rules={[
             { required: true, message: 'Email cannot empty' },
             {
-              pattern: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/g,
-              message: 'Please enter a valid email address',
+              pattern: EMAIL_REGX,
+              message: 'Please enter correct email address',
             },
           ]}
         >
           <Input placeholder="Email" data-testid="email" />
         </Form.Item>
         <Form.Item
-          className={styles.password}
           name="password"
           rules={[{ required: true, message: 'Password cannot empty' }]}
         >

@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { register } from '@/store/user/api'
 import { useNavigate } from 'react-router-dom'
 import styles from './index.scss'
+import { EMAIL_REGX } from '@/constants/base'
 
 interface IFormFields extends IUser {
   agreePolicy: boolean
@@ -61,7 +62,7 @@ export default () => {
           rules={[
             { required: true, message: 'Email cannot empty' },
             {
-              pattern: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/g,
+              pattern: EMAIL_REGX,
               message: 'Please enter a valid email address',
             },
           ]}
