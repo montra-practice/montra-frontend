@@ -240,7 +240,7 @@ export default <span class="fstat-no" title="function not covered" >()</span> =&
       &lt;CountDown minutes={5} /&gt;
       &lt;p className={styles.tips}&gt;
         We send verification code to your email
-        &lt;span&gt;{(location.state as ILocationState).email}.&lt;/span&gt;
+        &lt;span&gt;{(location.state as ILocationState)?.email}.&lt;/span&gt;
         You can check your inbox.
       &lt;/p&gt;
       &lt;p className={styles['dont-receive']}&gt;
@@ -274,7 +274,7 @@ export default <span class="fstat-no" title="function not covered" >()</span> =&
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at Mon Jul 11 2022 17:06:04 GMT+0800 (China Standard Time)
+      at Tue Jul 12 2022 13:35:21 GMT+0800 (China Standard Time)
     </div>
     <script src="../../../../prettify.js"></script>
     <script>

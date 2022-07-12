@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Form, Input } from 'antd-mobile'
+import { login } from '@/store/user/api'
 import styles from './index.scss'
 
 export default () => {
@@ -10,7 +11,17 @@ export default () => {
   }, [])
 
   const onSubmit = (values: Partial<IUser>) => {
-    navigate('/landing/setup')
+    login(values).then(() => {
+      navigate('/landing/setup')
+    })
+  }
+
+  const goToForgotPassword = () => {
+    navigate('/landing/forgot-password')
+  }
+
+  const goToSignUp = () => {
+    navigate('/landing/sign-up')
   }
 
   return (
@@ -55,9 +66,14 @@ export default () => {
         </Form.Item>
       </Form>
       <div className={styles['other-operation']}>
-        <p>Forgot Password?</p>
+        <p onClick={goToForgotPassword} data-testid="forgot-password">
+          Forgot Password?
+        </p>
         <p className={styles['sign-up']}>
-          Don’t have an account yet? <span>Sign Up</span>
+          Don’t have an account yet?
+          <span onClick={goToSignUp} data-testid="sign-up">
+            Sign Up
+          </span>
         </p>
       </div>
     </div>

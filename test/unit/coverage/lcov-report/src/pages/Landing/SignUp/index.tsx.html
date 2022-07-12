@@ -41,7 +41,7 @@
           <div class="fl pad1y space-right2">
             <span class="strong">0% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">0/3</span>
+            <span class="fraction">0/4</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -164,7 +164,9 @@
 <a name='L99'></a><a href='#L99'>99</a>
 <a name='L100'></a><a href='#L100'>100</a>
 <a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -187,11 +189,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -267,7 +271,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Form, Button, Input, Checkbox, Toast } from 'antd-mobile'
 import { useEffect } from 'react'
-import { signUpUser } from '@/store/user/api'
+import { register } from '@/store/user/api'
 import { useNavigate } from 'react-router-dom'
 import styles from './index.scss'
 &nbsp;
@@ -283,20 +287,22 @@ export default <span class="fstat-no" title="function not covered" >()</span> =&
   }, [])
 &nbsp;
   const onSubmit = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (values: IFormFields) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    await signUpUser({</span>
+<span class="cstat-no" title="statement not covered" >    register({</span>
       username: values.username,
       email: values.email,
       password: values.password,
     })
-<span class="cstat-no" title="statement not covered" >    Toast.show({</span>
-      icon: 'success',
-      content: 'Registered Successfully',
-    })
-<span class="cstat-no" title="statement not covered" >    navigate('/landing/verification', {</span>
-      state: {
-        email: values.email,
-      },
-    })
+      .then(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >        Toast.show({</span>
+          icon: 'success',
+          content: 'Registered Successfully',
+        })
+<span class="cstat-no" title="statement not covered" >        navigate('/landing/verification', {</span>
+          state: {
+            email: values.email,
+          },
+        })
+      })
   }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
@@ -380,7 +386,7 @@ export default <span class="fstat-no" title="function not covered" >()</span> =&
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at Mon Jul 11 2022 17:06:04 GMT+0800 (China Standard Time)
+      at Tue Jul 12 2022 13:35:21 GMT+0800 (China Standard Time)
     </div>
     <script src="../../../../prettify.js"></script>
     <script>

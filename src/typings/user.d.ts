@@ -3,7 +3,3 @@ declare interface IUser {
   email: string
   password: string
 }
-
-declare interface IRequestUserSignUp extends IUser {
-  agreePolicy: boolean
-}
