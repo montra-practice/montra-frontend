@@ -1,7 +1,7 @@
 @import 'variables';
 
-// Button
 :global {
+  // Button
   button.adm-button {
     --background-color: #{$color-light-primary};
     --text-color: #{$color-primary};
@@ -21,7 +21,7 @@
     }
   }
 
-  // passcode
+  // Passcode
   div.adm-passcode-input {
     --adm-color-primary: #{$color-primary};
 
@@ -43,6 +43,33 @@
           border-right: none;
         }
       }
+    }
+  }
+
+  // Form
+  .adm-form {
+    div.adm-list-body {
+      overflow: unset;
+      border: none;
+    }
+
+    .adm-form-item {
+      --adm-color-border: #{$color-gray-shallow};
+
+      & + .adm-form-item {
+        margin-top: 24px;
+      }
+
+      .adm-list-item-content {
+        padding: 0 16px;
+        border: 1px solid $color-gray-shallow;
+        border-radius: 16px;
+      }
+    }
+
+    .adm-button-primary {
+      border-radius: 16px;
+      font-weight: 600;
     }
   }
 }

@@ -1,3 +1,9 @@
+import styles from './index.scss'
+
 export default () => {
-  return <div>Let’s setup your account!</div>
+  return (
+    <div className={styles.wrapper}>
+      <h2>Let’s setup your account!</h2>
+    </div>
+  )
 }
