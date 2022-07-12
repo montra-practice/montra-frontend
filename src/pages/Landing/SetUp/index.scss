@@ -1,0 +1,15 @@
+@use '~@/style/variables.scss' as *;
+
+:local {
+  .wrapper {
+    padding: 70px 16px;
+
+    h2 {
+      margin-bottom: 46px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 600;
+      color: $color-dark-deep;
+    }
+  }
+}

@@ -1,8 +1,9 @@
 import { Form, Button, Input, Checkbox, Toast } from 'antd-mobile'
 import { useEffect } from 'react'
-import { signUpUser } from '@/store/user/api'
+import { register } from '@/store/user/api'
 import { useNavigate } from 'react-router-dom'
 import styles from './index.scss'
+import { EMAIL_REGX } from '@/constants/base'
 
 interface IFormFields extends IUser {
   agreePolicy: boolean
@@ -16,19 +17,20 @@ export default () => {
   }, [])
 
   const onSubmit = async (values: IFormFields) => {
-    await signUpUser({
+    register({
       username: values.username,
       email: values.email,
       password: values.password,
-    })
-    Toast.show({
-      icon: 'success',
-      content: 'Registered Successfully',
-    })
-    navigate('/landing/verification', {
-      state: {
-        email: values.email,
-      },
+    }).then(() => {
+      Toast.show({
+        icon: 'success',
+        content: 'Registered Successfully',
+      })
+      navigate('/landing/verification', {
+        state: {
+          email: values.email,
+        },
+      })
     })
   }
 
@@ -60,7 +62,7 @@ export default () => {
           rules={[
             { required: true, message: 'Email cannot empty' },
             {
-              pattern: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/g,
+              pattern: EMAIL_REGX,
               message: 'Please enter a valid email address',
             },
           ]}

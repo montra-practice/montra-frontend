@@ -40,7 +40,7 @@ describe('test Login page', () => {
   const server = setupServer(
     rest.post(`${BASE_URL}/user/login`, (req, res, ctx) => {
       const { password, email } = req.body as IUser
-      return res(ctx.status(201), ctx.json({ id: Date.now(), password, email }))
+      return res(ctx.status(201), ctx.json({ token: 'token', password, email }))
     }),
   )
 
@@ -86,5 +86,21 @@ describe('test Login page', () => {
     return waitFor(() => {
       expect(history.location.pathname).toBe('/landing/setup')
     })
+  })
+
+  test('navigate to forgot-password when user fire on Forgot Password link', () => {
+    setup()
+
+    userEvent.click(screen.getByTestId('forgot-password'))
+
+    expect(history.location.pathname).toBe('/landing/forgot-password')
+  })
+
+  test('navigate to sign-up when user fire on Sign Up link', () => {
+    setup()
+
+    userEvent.click(screen.getByTestId('sign-up'))
+
+    expect(history.location.pathname).toBe('/landing/sign-up')
   })
 })

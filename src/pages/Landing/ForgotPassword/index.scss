@@ -1,0 +1,22 @@
+@use '~@/style/variables.scss' as *;
+
+:local {
+  .wrapper {
+    padding: 85px 16px;
+
+    .title {
+      margin-bottom: 46px;
+      color: $color-dark-deep;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    :global {
+      .adm-list-item,
+      .adm-form-footer {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}

@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Form, Input } from 'antd-mobile'
+import { login } from '@/store/user/api'
+import { EMAIL_REGX } from '@/constants/base'
 import styles from './index.scss'
 
 export default () => {
@@ -10,7 +12,17 @@ export default () => {
   }, [])
 
   const onSubmit = (values: Partial<IUser>) => {
-    navigate('/landing/setup')
+    login(values).then(() => {
+      navigate('/landing/setup')
+    })
+  }
+
+  const goToForgotPassword = () => {
+    navigate('/landing/forgot-password')
+  }
+
+  const goToSignUp = () => {
+    navigate('/landing/sign-up')
   }
 
   return (
@@ -35,15 +47,14 @@ export default () => {
           rules={[
             { required: true, message: 'Email cannot empty' },
             {
-              pattern: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/g,
-              message: 'Please enter a valid email address',
+              pattern: EMAIL_REGX,
+              message: 'Please enter correct email address',
             },
           ]}
         >
           <Input placeholder="Email" data-testid="email" />
         </Form.Item>
         <Form.Item
-          className={styles.password}
           name="password"
           rules={[{ required: true, message: 'Password cannot empty' }]}
         >
@@ -55,9 +66,14 @@ export default () => {
         </Form.Item>
       </Form>
       <div className={styles['other-operation']}>
-        <p>Forgot Password?</p>
+        <p onClick={goToForgotPassword} data-testid="forgot-password">
+          Forgot Password?
+        </p>
         <p className={styles['sign-up']}>
-          Don’t have an account yet? <span>Sign Up</span>
+          Don’t have an account yet?
+          <span onClick={goToSignUp} data-testid="sign-up">
+            Sign Up
+          </span>
         </p>
       </div>
     </div>

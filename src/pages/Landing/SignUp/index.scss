@@ -30,30 +30,5 @@
         color: $color-primary;
       }
     }
-
-    :global {
-      .adm-list-body {
-        overflow: unset;
-        border: none;
-      }
-
-      .adm-form-item {
-        --adm-color-border: #{$color-gray-shallow};
-
-        & + .adm-form-item {
-          margin-top: 24px;
-        }
-
-        .adm-list-item-content {
-          padding: 0 16px;
-          border: 1px solid $color-gray-shallow;
-          border-radius: 16px;
-        }
-      }
-
-      .adm-button-primary {
-        border-radius: 16px;
-      }
-    }
   }
 }

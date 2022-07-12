@@ -43,7 +43,7 @@ export default () => {
       <CountDown minutes={5} />
       <p className={styles.tips}>
         We send verification code to your email
-        <span>{(location.state as ILocationState).email}.</span>
+        <span>{(location.state as ILocationState)?.email}.</span>
         You can check your inbox.
       </p>
       <p className={styles['dont-receive']}>
