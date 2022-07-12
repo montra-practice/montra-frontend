@@ -13,8 +13,9 @@
     "sonar-scanner": "yarn sonar-scanner",
     "postinstall": "husky install"
   },
-  "proxy": "http://localhost:9001",
+  "proxy": "http://localhost:7001",
   "dependencies": {
+    "ahooks": "^3.5.2",
     "antd-mobile": "^5.16.1",
     "axios": "^0.27.2",
     "camelcase": "^6.2.1",

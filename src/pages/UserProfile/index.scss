@@ -1,0 +1,44 @@
+:local {
+  .user-profile-container {
+    min-height: calc(100vh - 40px);
+    padding: 20px;
+    background-color: #f7f7f7;
+
+    .user-profile-box {
+      display: flex;
+      align-items: center;
+
+      .avatar-box {
+        padding: 5px;
+        border: 2px solid #7f3dff;
+        border-radius: 50%;
+      }
+
+      .user-info {
+        flex: 1;
+        margin-left: 14px;
+
+        & > span {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 17px;
+          color: #91919f;
+        }
+
+        & > p {
+          margin-top: 8px;
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 29px;
+          color: #161719;
+        }
+      }
+
+      .action-box {
+        padding: 9px;
+        border: 1px solid #f1f1fa;
+        border-radius: 8px;
+      }
+    }
+  }
+}
