@@ -43,3 +43,7 @@ Open [http://localhost:9001](http://localhost:9001) to view mock server in the b
 #### TypeScript
 
 - declare ts type start with 'I'. (e.g: IUser)
+
+### Git
+
+### make sure to use `git pull` with `--rebase` arg
