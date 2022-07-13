@@ -1,5 +1,5 @@
 import styles from './index.scss'
-import { CategoryTypeIcons } from '@/utils/consts'
+import { CategoryTypeIcons } from '@/constants/transaction'
 
 type List = {
   date?: string
@@ -19,7 +19,7 @@ export default (props: PropsData) => {
     <>
       {props.list &&
         props.list.map((item) => (
-          <div className={styles['list-wrapper']}>
+          <div className={styles['list-wrapper']} key={item.id}>
             {item.date && (
               <div className={styles['create-date']}>{item.date}</div>
             )}
