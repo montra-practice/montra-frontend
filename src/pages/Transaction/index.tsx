@@ -1,5 +1,7 @@
-import Filter from '@/components/Filter'
+// import Filter from '@/components/Filter'
+import TransactionList from '@/components/TransactionList'
+import { transactionList } from '@/utils/consts'
 
 export default () => {
-  return <Filter></Filter>
+  return <TransactionList list={transactionList} />
 }

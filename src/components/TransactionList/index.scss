@@ -1,0 +1,57 @@
+@use '@/style/variables.scss' as *;
+
+:local {
+  .list-wrapper {
+    margin-bottom: 27px;
+
+    .create-date {
+      font-size: $font-size-mid;
+      margin-bottom: 27px;
+      font-weight: 600;
+    }
+
+    .item-wrapper {
+      margin: 0 17px 37px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .cate-icon {
+        width: 60px;
+        height: 60px;
+      }
+
+      .cat-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex: 1;
+        margin-left: 9px;
+        font-size: $font-size-normal;
+        color: $color-dark-shallow;
+
+        .cate-title {
+          font-weight: 500;
+        }
+
+        .money {
+          font-weight: 600;
+          text-align: right;
+
+          &.income {
+            color: $color-green;
+          }
+
+          &.expense {
+            color: $color-red;
+          }
+        }
+
+        .cate-desc {
+          font-size: 13px;
+          margin-top: 13px;
+        }
+      }
+    }
+  }
+}
