@@ -4,15 +4,19 @@ import { Button, Form, Input } from 'antd-mobile'
 import { login } from '@/store/user/api'
 import { EMAIL_REGX } from '@/constants/base'
 import styles from './index.scss'
+import useToken from '@/hooks/UseToken'
 
 export default () => {
   const navigate = useNavigate()
+  const [, setToken] = useToken('token')
+
   useEffect(() => {
     document.title = 'Login'
   }, [])
 
   const onSubmit = (values: Partial<IUser>) => {
-    login(values).then(() => {
+    login(values).then((res: any) => {
+      setToken('token', res.response?.token)
       navigate('/landing/setup')
     })
   }
