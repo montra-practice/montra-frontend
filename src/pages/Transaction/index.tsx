@@ -11,7 +11,9 @@ export default () => {
         <span>See you finacial report</span>
         <img src={RightArrow} alt="right arrow" className={styles.arrow} />
       </div>
-      <TransactionList list={transactionList} />
+      {transactionList.map((list) => (
+        <TransactionList {...list} key={list.date} />
+      ))}
     </div>
   )
 }

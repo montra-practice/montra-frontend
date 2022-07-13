@@ -68,42 +68,76 @@ export const sortOptions = [
 export const transactionList = [
   {
     date: 'Today',
-    id: 1,
-    type: SHOPPING,
-    desc: 'test',
-    money: '123',
-    time: '3:00 PM',
+    list: [
+      {
+        id: 1,
+        type: SHOPPING,
+        desc: 'test',
+        money: '123',
+        time: '3:00 PM',
+      },
+      {
+        id: 1,
+        type: SHOPPING,
+        desc: 'test',
+        money: '123',
+        time: '3:00 PM',
+      },
+      {
+        id: 1,
+        type: SHOPPING,
+        desc: 'test',
+        money: '123',
+        time: '3:00 PM',
+      },
+    ],
   },
   {
     date: 'Yesterday',
-    id: 2,
-    type: FOOD,
-    desc: 'test',
-    money: '123',
-    time: '3:00 PM',
+    list: [
+      {
+        id: 2,
+        type: FOOD,
+        desc: 'test',
+        money: '123',
+        time: '3:00 PM',
+      },
+    ],
   },
   {
     date: '9/11',
-    id: 3,
-    type: SUBSCRIPTION,
-    desc: 'test',
-    money: '123',
-    time: '3:00 PM',
+    list: [
+      {
+        id: 3,
+        type: SUBSCRIPTION,
+        desc: 'test',
+        money: '123',
+        time: '3:00 PM',
+      },
+    ],
   },
   {
     date: '7/11',
-    id: 4,
-    type: TRANSPORTATION,
-    desc: 'test',
-    money: '123',
-    time: '3:00 PM',
+    list: [
+      {
+        id: 4,
+        type: TRANSPORTATION,
+        desc: 'test',
+        money: '123',
+        time: '3:00 PM',
+      },
+    ],
   },
   {
     date: '5/11',
-    id: 5,
-    type: TRANSPORTATION,
-    desc: 'test',
-    money: '123',
-    time: '3:00 PM',
+    list: [
+      {
+        id: 5,
+        type: TRANSPORTATION,
+        desc: 'test',
+        money: '123',
+        time: '3:00 PM',
+      },
+    ],
   },
 ]
