@@ -5,7 +5,7 @@ import Login from './Login'
 import Verification from './Verification'
 import SetUp from './SetUp'
 import ForgotPassword from './ForgotPassword'
-import OnTheWay from './ForgotPassword/onTheWay'
+import OnTheWay from './OnTheWay'
 
 export default [
   <Route path="/landing" element={<Landing />} key="Landing" />,
