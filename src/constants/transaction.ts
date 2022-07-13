@@ -4,6 +4,10 @@ import Subscription from '@/assets/icons/subscription.png'
 import Transportation from '@/assets/icons/transportation.png'
 import Salary from '@/assets/icons/salary.png'
 
+import rightArrow from '@/assets/icons/arrow.svg'
+
+export const RightArrow = rightArrow
+
 export const SHOPPING = 'Shopping'
 export const FOOD = 'Food'
 export const SUBSCRIPTION = 'Subscription'

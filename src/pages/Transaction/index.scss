@@ -1,0 +1,32 @@
+@use '@/style/variables.scss' as *;
+
+:local {
+  .wrapper {
+    padding: 16px;
+
+    .financial {
+      width: 100%;
+      height: 48px;
+      border-radius: 8px;
+      background-color: $color-light-primary;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      margin-bottom: 21px;
+
+      span {
+        font-size: $font-size-normal;
+        color: $color-primary;
+        margin-left: 16px;
+      }
+
+      .arrow {
+        width: 8px;
+        height: 18px;
+        margin-right: 15px;
+      }
+    }
+  }
+}
