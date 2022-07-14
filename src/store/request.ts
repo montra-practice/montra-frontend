@@ -1,6 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { Toast } from 'antd-mobile'
-
 const HOST =
   process.env.NODE_ENV === 'production' ? 'http://122.112.234.17:3301' : ''
 export const BASE_URL = '/api/v1'
@@ -33,8 +32,6 @@ export const request = async (
   config?: AxiosRequestConfig,
   disableErrorHandler?: boolean,
 ) => {
-  // TODO: GET TOKEN
-  const token = ''
   Toast.show({
     icon: 'loading',
     duration: 0,
@@ -44,7 +41,7 @@ export const request = async (
     const { data = {}, headers }: AxiosResponse<any> = await instance(url, {
       headers: {
         'Content-Type': 'application/json',
-        authorization: token,
+        authorization: localStorage.getItem('token') || '',
       },
       method,
       ...config,

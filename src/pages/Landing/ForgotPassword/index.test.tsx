@@ -44,7 +44,6 @@ describe('test ForgotPassword component', () => {
 
   beforeEach(() => {
     history = createMemoryHistory()
-    // history.replace(history.location.pathname, { email: 'test@mail.com' })
   })
 
   afterAll(() => {

@@ -16,7 +16,7 @@ export default () => {
 
   const onSubmit = (values: Partial<IUser>) => {
     login(values).then((res: any) => {
-      setToken('token', res.response?.token)
+      setToken(res.response.data)
       navigate('/landing/setup')
     })
   }
