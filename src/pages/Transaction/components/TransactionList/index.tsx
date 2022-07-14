@@ -20,8 +20,8 @@ export default (props: PropsData) => {
     <div className={styles['list-wrapper']}>
       {props.date && <div className={styles['create-date']}>{props.date}</div>}
       {props.list &&
-        props.list.map((item) => (
-          <div className={styles['item-wrapper']} key={item.id}>
+        props.list.map((item, index) => (
+          <div className={styles['item-wrapper']} key={index}>
             <img
               src={CategoryTypeIcons[item.id]}
               alt="category type img"
