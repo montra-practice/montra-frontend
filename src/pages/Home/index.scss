@@ -1,0 +1,139 @@
+@use '~@/style/variables.scss' as *;
+
+:local {
+  .wrapper {
+    height: 100%;
+    padding: 0 20px;
+
+    .header {
+      height: 64px;
+      padding-top: 44px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .avatar {
+        width: 40px;
+        height: 40px;
+        box-sizing: border-box;
+        border: 1px solid $color-primary;
+        border-radius: 20px;
+        padding: 2px;
+
+        :global(.adm-image) {
+          height: 32px;
+          width: 32px;
+        }
+      }
+    }
+
+    .title {
+      text-align: center;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 17px;
+      color: #91919f;
+
+      & > p:last-child {
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 48px;
+        color: #161719;
+        padding-top: 9px;
+      }
+    }
+
+    .sub-title {
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      > div {
+        width: 164px;
+        height: 80px;
+        left: 16px;
+        background: #00a86b;
+        border-radius: 28px;
+        display: inline-flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        &:last-child {
+          background: #fd3c4a;
+        }
+
+        > div {
+          display: inline-block;
+
+          > div {
+            font-size: 14px;
+            line-height: 17px;
+            color: #fcfcfc;
+
+            &:last-child {
+              font-family: 'Inter';
+              font-weight: 600;
+              font-size: 22px;
+              line-height: 27px;
+            }
+          }
+        }
+      }
+    }
+
+    .line-chart {
+      p {
+        height: 48px;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 48px;
+        color: #0d0e0f;
+        margin-top: 12px;
+      }
+
+      > div:first-of-type {
+        height: 169px;
+        border: 1px dashed rebeccapurple;
+      }
+
+      > div:last-of-type {
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 8px;
+      }
+    }
+
+    .content {
+      > div:first-child {
+        height: 56px;
+        font-weight: 600;
+        font-size: 18px;
+        color: #292b2d;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        div {
+          width: 78px;
+          height: 32px;
+          background: #eee5ff;
+          border-radius: 40px;
+          display: inline-block;
+          line-height: 32px;
+          text-align: center;
+          font-weight: 500;
+          font-size: 14px;
+          color: #7f3dff;
+        }
+      }
+
+      > div:last-child {
+        height: 85px;
+        overflow-y: auto;
+      }
+    }
+  }
+}

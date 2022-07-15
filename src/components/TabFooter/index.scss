@@ -1,0 +1,38 @@
+:local {
+  .wrapper {
+    height: 100%;
+
+    .content {
+      overflow-y: auto;
+      height: calc(100vh - 104px);
+    }
+
+    .add-active {
+      position: absolute;
+      bottom: 128px;
+      width: 100%;
+      right: 0;
+      left: 0;
+      display: flex;
+    }
+
+    .footer {
+      position: absolute;
+      height: 70px;
+      bottom: 34px;
+      width: 100%;
+      right: 0;
+      left: 0;
+      border-radius: 4px;
+      background: #fcfcfc;
+
+      :global {
+        .adm-tab-bar-item-icon {
+          height: 68px;
+          display: flex;
+          align-items: flex-end;
+        }
+      }
+    }
+  }
+}
