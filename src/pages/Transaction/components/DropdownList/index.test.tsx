@@ -4,8 +4,13 @@ import { categoryTypes } from '@/constants/transaction'
 
 describe('Test DropdownList component', () => {
   it('should render dropdownlist', () => {
-    const mockTitle = 'TEST TITLE'
-    render(<DropdownList title={mockTitle} options={categoryTypes} />)
-    expect(screen.getByText(mockTitle)).toBeInTheDocument()
+    const mockProps = {
+      title: 'TEST TITLE',
+      onChange: jest.fn(),
+      value: [''],
+      options: categoryTypes,
+    }
+    render(<DropdownList {...mockProps} />)
+    expect(screen.getByText(mockProps.title)).toBeInTheDocument()
   })
 })

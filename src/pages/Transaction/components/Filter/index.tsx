@@ -7,15 +7,37 @@ import {
   categoryTypes,
 } from '@/constants/transaction'
 import styles from './index.scss'
-
-// import { useState } from 'react'
-
+import { useState } from 'react'
 interface IFilterProps {
   visible: boolean
   hideFilter: (show: boolean) => void
 }
 
 export default (props: IFilterProps) => {
+  const [filter, setFilter] = useState([])
+  const [sorter, setSorter] = useState([])
+  const [cateType, setCateType] = useState([])
+
+  const handleReset = () => {
+    setFilter([])
+    setSorter([])
+    setCateType([])
+  }
+
+  const handleFilter = (val: any) => {
+    setFilter(val)
+  }
+
+  const handleSorter = (val: any) => {
+    setSorter(val)
+  }
+
+  const handleCateType = (val: any) => {
+    setCateType(val)
+  }
+
+  const handleApply = () => {}
+
   return (
     <Mask
       opacity="thin"
@@ -27,22 +49,43 @@ export default (props: IFilterProps) => {
         <div className={styles.icon}></div>
         <div className={`${styles.row} ${styles['row-gap']}`}>
           <div className={styles.title}>Filter Transaction</div>
-          <Button className={styles['reset-btn']}>Reset</Button>
+          <Button className={styles['reset-btn']} onClick={handleReset}>
+            Reset
+          </Button>
         </div>
         <div className={styles['row-gap']}>
           <div className={`${styles.title} ${styles.padding}`}>Filter By</div>
-          <Selector options={filterOptions} multiple showCheckMark={false} />
+          <Selector
+            options={filterOptions}
+            multiple
+            showCheckMark={false}
+            onChange={handleFilter}
+            value={filter}
+          />
         </div>
         <div className={styles['row-gap']}>
           <div className={`${styles.title} ${styles.padding}`}>Sort By</div>
-          <Selector options={sortOptions} multiple showCheckMark={false} />
+          <Selector
+            options={sortOptions}
+            multiple
+            showCheckMark={false}
+            onChange={handleSorter}
+            value={sorter}
+          />
         </div>
         <div className={styles['row-gap']}>
           <div className={`${styles.title} ${styles.padding}`}>Category</div>
-          <DropdownList title="Category Type" options={categoryTypes} />
+          <DropdownList
+            title="Category Type"
+            options={categoryTypes}
+            onChange={handleCateType}
+            value={cateType}
+          />
         </div>
         <div className={styles['row-gap']}>
-          <Button className={styles['apply-btn']}>Apply</Button>
+          <Button className={styles['apply-btn']} onClick={handleApply}>
+            Apply
+          </Button>
         </div>
       </Card>
     </Mask>

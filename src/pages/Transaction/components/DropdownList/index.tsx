@@ -2,25 +2,22 @@
 import { Collapse, CheckList } from 'antd-mobile'
 import { ArrowRight, ArrowDown } from '@/constants/transaction'
 import styles from './index.scss'
-
-import { useState } from 'react'
-
 interface IChecklistItem {
   value: string
   label: string
 }
 interface IDropDownList {
   title: string
+  value: string[]
+  onChange: (val: string[]) => void
   options: IChecklistItem[]
 }
 
 export default (props: IDropDownList) => {
-  const [selectNum, setSelectNum] = useState(0)
-
   const title = (
     <div className={styles.row}>
       <span className={styles.title}>{props.title}</span>
-      <span className={styles.selected}>{selectNum} Selected</span>
+      <span className={styles.selected}>{props.value.length} Selected</span>
     </div>
   )
 
@@ -36,7 +33,7 @@ export default (props: IDropDownList) => {
     )
 
   const handleChange = (val: string[]) => {
-    setSelectNum(val.length)
+    props.onChange(val)
   }
 
   return (
@@ -47,7 +44,7 @@ export default (props: IDropDownList) => {
         arrow={arrow}
         className={styles['list-item']}
       >
-        <CheckList multiple onChange={handleChange}>
+        <CheckList multiple onChange={handleChange} value={props.value}>
           {props.options &&
             props.options.map((item) => (
               <CheckList.Item key={item.value} value={item.value}>
