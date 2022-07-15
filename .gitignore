@@ -15,6 +15,7 @@
 .DS_Store
 .idea
 /.vscode
+/.test
 .env.local
 .env.development.local
 .env.test.local
