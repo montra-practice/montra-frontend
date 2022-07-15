@@ -145,7 +145,7 @@ export const AddActiveIcon = (
   </svg>
 )
 
-export const ArrowDownIcon = (color?: string) => (
+export const ArrowDownIcon = (iconColor?: string) => (
   <svg
     width="24"
     height="24"
@@ -156,7 +156,7 @@ export const ArrowDownIcon = (color?: string) => (
     <path
       d="M12.009 14.5575L12.0001 15.3075L11.9912 14.5575C11.2017 14.5669 10.4405 14.2647 9.87244 13.7166L6.2345 10.0401L9.87976 13.6853L9.88672 13.6923L9.89386 13.6991C10.4624 14.2385 11.2163 14.5393 12.0001 14.5393C12.7839 14.5393 13.5378 14.2385 14.1063 13.6991L14.1135 13.6923L14.1204 13.6853L17.7657 10.0401L14.1277 13.7166C13.5597 14.2647 12.7985 14.5669 12.009 14.5575Z"
       fill="black"
-      stroke={color ? color : activeColor}
+      stroke={iconColor ? iconColor : activeColor}
       strokeWidth="1.5"
     />
   </svg>

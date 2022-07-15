@@ -4,8 +4,6 @@ import DropdownList from '../DropdownList'
 import { filterOptions, sortOptions } from '@/constants/transaction'
 import styles from './index.scss'
 
-// import { useState } from 'react'
-
 type FilterProps = {
   visible: boolean
   hideFilter: (show: boolean) => void
