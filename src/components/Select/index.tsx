@@ -36,7 +36,7 @@ const Select = ({ defaultValue, options = [] }: IProps) => {
       onClick={() => setVisibility(true)}
       onBlur={() => setVisibility(false)}
     >
-      <div className={styles.selectHeader}>
+      <div className={styles['select-header']}>
         {ArrowDownIcon()}
         <div>{computValue()}</div>
       </div>

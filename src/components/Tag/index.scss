@@ -15,6 +15,7 @@
 
     .selected {
       @include tag-default;
+
       background: #fceed4;
       border-radius: 16px;
       color: #fcac12;
