@@ -4,9 +4,11 @@ import Subscription from '@/assets/icons/subscription.png'
 import Transportation from '@/assets/icons/transportation.png'
 import Salary from '@/assets/icons/salary.png'
 
-import rightArrow from '@/assets/icons/arrow.svg'
+import arrowRight from '@/assets/icons/arrow_right.svg'
+import arrowDown from '@/assets/icons/arrow_down.png'
 
-export const RightArrow = rightArrow
+export const ArrowRight = arrowRight
+export const ArrowDown = arrowDown
 
 export const SHOPPING = 'Shopping'
 export const FOOD = 'Food'
@@ -14,7 +16,11 @@ export const SUBSCRIPTION = 'Subscription'
 export const TRANSPORTATION = 'Transportation'
 export const SALARY = 'Salary'
 
-// categroy type icon map
+export const INCOME = 'Income'
+export const EXPENSE = 'Expense'
+export const TRANSFER = 'Transfer'
+
+// category type icon map
 export const CategoryTypeIcons: { [key: number | string]: string } = {
   1: Shopping,
   2: Food,
@@ -27,23 +33,15 @@ export const CategoryTypeIcons: { [key: number | string]: string } = {
 export const filterOptions = [
   {
     value: 1,
-    label: SHOPPING,
+    label: INCOME,
   },
   {
     value: 2,
-    label: FOOD,
+    label: EXPENSE,
   },
   {
     value: 3,
-    label: SUBSCRIPTION,
-  },
-  {
-    value: 4,
-    label: TRANSPORTATION,
-  },
-  {
-    value: 5,
-    label: SALARY,
+    label: TRANSFER,
   },
 ]
 export const sortOptions = [
@@ -62,6 +60,29 @@ export const sortOptions = [
   {
     value: 4,
     label: 'Oldest',
+  },
+]
+
+export const categoryTypes = [
+  {
+    value: '1',
+    label: SHOPPING,
+  },
+  {
+    value: '2',
+    label: FOOD,
+  },
+  {
+    value: '3',
+    label: SUBSCRIPTION,
+  },
+  {
+    value: '4',
+    label: TRANSPORTATION,
+  },
+  {
+    value: '5',
+    label: SALARY,
   },
 ]
 

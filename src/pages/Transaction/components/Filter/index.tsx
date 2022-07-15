@@ -1,15 +1,21 @@
 import { Card, Button, Mask } from 'antd-mobile'
 import Selector from '../Selector'
 import DropdownList from '../DropdownList'
-import { filterOptions, sortOptions } from '@/constants/transaction'
+import {
+  filterOptions,
+  sortOptions,
+  categoryTypes,
+} from '@/constants/transaction'
 import styles from './index.scss'
 
-type FilterProps = {
+// import { useState } from 'react'
+
+interface IFilterProps {
   visible: boolean
   hideFilter: (show: boolean) => void
 }
 
-export default (props: FilterProps) => {
+export default (props: IFilterProps) => {
   return (
     <Mask
       opacity="thin"
@@ -20,11 +26,11 @@ export default (props: FilterProps) => {
       <Card className={styles.wrapper}>
         <div className={styles.icon}></div>
         <div className={`${styles.row} ${styles['row-gap']}`}>
-          <div className={styles.title}>Fitler Title</div>
+          <div className={styles.title}>Filter Transaction</div>
           <Button className={styles['reset-btn']}>Reset</Button>
         </div>
         <div className={styles['row-gap']}>
-          <div className={`${styles.title} ${styles.padding}`}>Fillter By</div>
+          <div className={`${styles.title} ${styles.padding}`}>Filter By</div>
           <Selector options={filterOptions} />
         </div>
         <div className={styles['row-gap']}>
@@ -33,7 +39,10 @@ export default (props: FilterProps) => {
         </div>
         <div className={styles['row-gap']}>
           <div className={`${styles.title} ${styles.padding}`}>Category</div>
-          <DropdownList title="Category Type" />
+          <DropdownList title="Category Type" options={categoryTypes} />
+        </div>
+        <div className={styles['row-gap']}>
+          <Button className={styles['apply-btn']}>Apply</Button>
         </div>
       </Card>
     </Mask>

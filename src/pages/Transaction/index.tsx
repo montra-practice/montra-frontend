@@ -1,6 +1,6 @@
 import Filter from './components/Filter'
 import TransactionList from './components/TransactionList'
-import { transactionList, RightArrow } from '@/constants/transaction'
+import { transactionList, ArrowRight } from '@/constants/transaction'
 import styles from './index.scss'
 import FilterIcon from '@/assets/icons/filter.png'
 
@@ -16,7 +16,7 @@ export default () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.row}>
-        <div>Seletor</div>
+        <div>Selector</div>
         <img
           src={FilterIcon}
           alt="filter icon"
@@ -30,7 +30,7 @@ export default () => {
 
       <div className={styles.financial}>
         <span>See you financial report</span>
-        <img src={RightArrow} alt="right arrow" className={styles.arrow} />
+        <img src={ArrowRight} alt="right arrow" className={styles.arrow} />
       </div>
 
       {transactionList.map((list) => (

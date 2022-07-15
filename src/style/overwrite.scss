@@ -86,4 +86,24 @@
     font-size: #{$font-size-sm};
     line-height: 18px;
   }
+
+  // checklist
+  // checked icon color
+  div.adm-check-list-item-extra {
+    color: #{$color-primary};
+  }
+
+  div.adm-list-item {
+    padding-left: 0;
+
+    // checklist item font
+    .adm-list-item-content-main {
+      // font-size: #{$font-size-sm};
+      color: #{$color-dark-shallow};
+
+      .adm-list-item-content {
+        padding-right: 0;
+      }
+    }
+  }
 }
