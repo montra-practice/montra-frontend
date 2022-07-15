@@ -1,5 +1,5 @@
 import { screen, render, fireEvent } from '@testing-library/react'
-import Filter from '..'
+import Filter from '.'
 
 describe('Filter component', () => {
   const mockProps = {
@@ -17,7 +17,7 @@ describe('Filter component', () => {
     expect(restBtn).toBeInTheDocument()
   })
 
-  it('shuld hide filter UI after click the filter mask', () => {
+  it('should hide filter UI after click the filter mask', () => {
     render(<Filter {...mockProps} />)
 
     const filterMask = screen.getByTestId('filterMask')

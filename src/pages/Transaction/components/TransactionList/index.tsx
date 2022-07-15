@@ -1,7 +1,7 @@
 import styles from './index.scss'
 import { CategoryTypeIcons } from '@/constants/transaction'
 
-type List = {
+interface IList {
   date?: string
   id: number | string // type id
   type: string
@@ -10,12 +10,12 @@ type List = {
   time: string
 }
 
-type PropsData = {
+interface IPropsData {
   date?: string
-  list: List[]
+  list: IList[]
 }
 
-export default (props: PropsData) => {
+export default (props: IPropsData) => {
   return (
     <div className={styles['list-wrapper']}>
       {props.date && <div className={styles['create-date']}>{props.date}</div>}

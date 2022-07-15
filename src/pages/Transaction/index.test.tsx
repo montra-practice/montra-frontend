@@ -1,7 +1,7 @@
 import { screen, render } from '@testing-library/react'
-import Transaction from '..'
+import Transaction from '.'
 
-describe('test transation page', () => {
+describe('test transaction page', () => {
   describe('render page UI', () => {
     it('should rend financial guide btn', () => {
       render(<Transaction />)

@@ -1,5 +1,5 @@
 import { screen, render } from '@testing-library/react'
-import TransactionList from '..'
+import TransactionList from '.'
 import { SUBSCRIPTION } from '@/constants/transaction'
 
 const mockData = {

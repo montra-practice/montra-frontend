@@ -1,5 +1,5 @@
 import { Card, Button, Mask } from 'antd-mobile'
-import Selector from '../Selector'
+import { Selector } from 'antd-mobile'
 import DropdownList from '../DropdownList'
 import {
   filterOptions,
@@ -31,11 +31,11 @@ export default (props: IFilterProps) => {
         </div>
         <div className={styles['row-gap']}>
           <div className={`${styles.title} ${styles.padding}`}>Filter By</div>
-          <Selector options={filterOptions} />
+          <Selector options={filterOptions} multiple showCheckMark={false} />
         </div>
         <div className={styles['row-gap']}>
           <div className={`${styles.title} ${styles.padding}`}>Sort By</div>
-          <Selector options={sortOptions} />
+          <Selector options={sortOptions} multiple showCheckMark={false} />
         </div>
         <div className={styles['row-gap']}>
           <div className={`${styles.title} ${styles.padding}`}>Category</div>
