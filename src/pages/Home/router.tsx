@@ -1,4 +1,4 @@
-import TabFooter from '@/components/TabFooter'
+import TabFooter from '@/pages/Home/TabFooter'
 import { Route } from 'react-router'
 import { Navigate } from 'react-router-dom'
 import Transaction from '../Transaction'
