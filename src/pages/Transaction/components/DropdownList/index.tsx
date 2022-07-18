@@ -1,6 +1,6 @@
 // dropdownlist created for category selecting
 import { Collapse, CheckList } from 'antd-mobile'
-import { ArrowRight, ArrowDown } from '@/constants/transaction'
+import { ArrowRight } from '@/constants/transaction'
 import styles from './index.scss'
 interface IChecklistItem {
   value: string
@@ -9,6 +9,7 @@ interface IChecklistItem {
 interface IDropDownList {
   title: string
   value: string[]
+  showSelectedNum?: boolean
   onChange: (val: string[]) => void
   options: IChecklistItem[]
 }
@@ -17,18 +18,28 @@ export default (props: IDropDownList) => {
   const title = (
     <div className={styles.row}>
       <span className={styles.title}>{props.title}</span>
-      <span className={styles.selected}>{props.value.length} Selected</span>
+      {props.showSelectedNum && (
+        <span className={styles.selected}>{props.value.length} Selected</span>
+      )}
     </div>
   )
 
   const arrow = (active: boolean) =>
     active ? (
-      <img src={ArrowDown} alt="down arrow" className={styles['arrow-down']} />
+      <img
+        src={ArrowRight}
+        alt="down arrow"
+        className={`${
+          props.showSelectedNum ? styles['arrow-down'] : styles['arrow-up']
+        }`}
+      />
     ) : (
       <img
         src={ArrowRight}
         alt="right arrow"
-        className={styles['arrow-right']}
+        className={`${
+          props.showSelectedNum ? styles['arrow-right'] : styles['arrow-down']
+        }`}
       />
     )
 

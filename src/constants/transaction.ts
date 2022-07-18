@@ -162,3 +162,18 @@ export const transactionList = [
     ],
   },
 ]
+
+export const selectOptions = [
+  {
+    value: '1',
+    label: 'Month',
+  },
+  {
+    value: '2',
+    label: 'Week',
+  },
+  {
+    value: '3',
+    label: 'Year',
+  },
+]

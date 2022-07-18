@@ -18,7 +18,11 @@
   }
 
   .arrow-down {
-    width: 18px;
+    transform: rotate(90deg);
+  }
+
+  .arrow-up {
+    transform: rotate(-90deg);
   }
 
   .title {

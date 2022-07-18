@@ -1,8 +1,13 @@
 import Filter from './components/Filter'
 import TransactionList from './components/TransactionList'
-import { transactionList, ArrowRight } from '@/constants/transaction'
+import {
+  transactionList,
+  ArrowRight,
+  selectOptions,
+} from '@/constants/transaction'
 import styles from './index.scss'
 import FilterIcon from '@/assets/icons/filter.png'
+import SelectList from './components/SelectList'
 
 import { useState } from 'react'
 
@@ -16,7 +21,9 @@ export default () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.row}>
-        <div>Selector</div>
+        <div>
+          <SelectList long={true} arrowRight={false} options={selectOptions} />
+        </div>
         <img
           src={FilterIcon}
           alt="filter icon"

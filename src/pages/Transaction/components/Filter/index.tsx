@@ -80,6 +80,7 @@ export default (props: IFilterProps) => {
             options={categoryTypes}
             onChange={handleCateType}
             value={cateType}
+            showSelectedNum={true}
           />
         </div>
         <div className={styles['row-gap']}>
