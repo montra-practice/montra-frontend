@@ -1,4 +1,4 @@
-import { ArrowDownIcon } from '@/assets/icons/home_icons'
+import { ReactComponent as ArrowDownIcon } from '@/assets/icons/arrow_down.svg'
 import { useState } from 'react'
 import styles from './index.scss'
 
@@ -16,7 +16,7 @@ const Select = ({ defaultValue, options = [] }: IProps) => {
   const [selection, setSelection] = useState(defaultValue)
   const [visibility, setVisibility] = useState(false)
 
-  const selectionChange = (item: Item) => {
+  const selectionChange = (item: Item) => () => {
     setSelection(item.key)
     setTimeout(() => {
       setVisibility(false)
@@ -29,15 +29,19 @@ const Select = ({ defaultValue, options = [] }: IProps) => {
     return item?.value
   }
 
+  const changeVisibility = (flag: boolean) => () => {
+    setVisibility(flag)
+  }
+
   return (
     <div
       tabIndex={0}
       className={styles.select}
-      onClick={() => setVisibility(true)}
-      onBlur={() => setVisibility(false)}
+      onClick={changeVisibility(true)}
+      onBlur={changeVisibility(false)}
     >
       <div className={styles['select-header']}>
-        {ArrowDownIcon()}
+        <ArrowDownIcon />
         <div>{computValue()}</div>
       </div>
       {visibility && (
@@ -50,7 +54,7 @@ const Select = ({ defaultValue, options = [] }: IProps) => {
                   className={
                     item.key === selection ? styles.selected : styles.item
                   }
-                  onClick={() => selectionChange(item)}
+                  onClick={selectionChange(item)}
                 >
                   {item.value}
                 </div>

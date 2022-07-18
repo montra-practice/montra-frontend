@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router'
 
 function Transfer() {
   const navigate = useNavigate()
-  return <NavBar onBack={() => navigate('/home')}>Transfer</NavBar>
+  const goBack = () => {
+    navigate('/home')
+  }
+  return <NavBar onBack={goBack}>Transfer</NavBar>
 }
 export default Transfer

@@ -22,7 +22,7 @@ export default () => {
           alt="filter icon"
           className={styles['filter-icon']}
           onClick={() => handleFilterShow(showFilter)}
-        ></img>
+        />
         {showFilter && (
           <Filter hideFilter={handleFilterShow} visible={showFilter}></Filter>
         )}

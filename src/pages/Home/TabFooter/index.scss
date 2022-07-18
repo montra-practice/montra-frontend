@@ -9,11 +9,23 @@
 
     .add-active {
       position: absolute;
-      bottom: 128px;
+      bottom: 104px;
+      padding-bottom: 25px;
       width: 100%;
       right: 0;
       left: 0;
       display: flex;
+
+      > div {
+        width: 100%;
+        text-align: center;
+
+        > div {
+          display: flex;
+          justify-content: space-evenly;
+          padding-top: 11px;
+        }
+      }
     }
 
     .footer {
@@ -26,11 +38,39 @@
       border-radius: 4px;
       background: #fcfcfc;
 
+      .add-icon {
+        margin-bottom: 27px;
+        padding: 7px;
+      }
+
+      .add-icon-active {
+        margin-bottom: 27px;
+        padding: 7px;
+        transform-origin: center;
+        transform: rotate(45deg);
+        border-radius: 50%;
+        background: rgb(139 80 255 / 24%);
+      }
+
       :global {
-        .adm-tab-bar-item-icon {
-          height: 68px;
-          display: flex;
-          align-items: flex-end;
+        .adm-tab-bar-item {
+          padding-top: 0;
+        }
+
+        .adm-tab-bar-item-active {
+          svg path {
+            fill: #7f3dff;
+          }
+        }
+
+        .adm-tab-bar-wrap {
+          overflow: visible;
+
+          .adm-tab-bar-item-icon {
+            height: 68px;
+            display: flex;
+            align-items: center;
+          }
         }
       }
     }

@@ -3,11 +3,10 @@
 :local {
   .wrapper {
     height: 100%;
-    padding: 0 20px;
 
     .header {
       height: 64px;
-      padding-top: 44px;
+      padding: 44px 20px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -48,6 +47,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0 20px;
 
       > div {
         width: 164px;
@@ -89,49 +89,73 @@
         line-height: 48px;
         color: #0d0e0f;
         margin-top: 12px;
+        padding: 0 20px;
       }
 
-      > div:first-of-type {
+      > div {
         height: 169px;
         border: 1px dashed rebeccapurple;
       }
-
-      > div:last-of-type {
-        height: 34px;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        margin-top: 8px;
-      }
     }
 
-    .content {
-      > div:first-child {
-        height: 56px;
-        font-weight: 600;
-        font-size: 18px;
-        color: #292b2d;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    .add-related {
+      position: relative;
 
-        div {
-          width: 78px;
-          height: 32px;
-          background: #eee5ff;
-          border-radius: 40px;
-          display: inline-block;
-          line-height: 32px;
-          text-align: center;
-          font-weight: 500;
-          font-size: 14px;
-          color: #7f3dff;
+      .add-active {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        right: 0;
+        left: 0;
+        background: linear-gradient(
+          180deg,
+          rgb(139 80 255 / 12%) 0%,
+          rgb(139 80 255 / 24%) 100%
+        );
+      }
+
+      .tags {
+        padding: 0 20px;
+
+        > div {
+          height: 34px;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          margin-top: 8px;
         }
       }
 
-      > div:last-child {
-        height: 85px;
-        overflow-y: auto;
+      .content {
+        padding: 0 20px;
+
+        > div:first-child {
+          height: 56px;
+          font-weight: 600;
+          font-size: 18px;
+          color: #292b2d;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          div {
+            width: 78px;
+            height: 32px;
+            background: #eee5ff;
+            border-radius: 40px;
+            display: inline-block;
+            line-height: 32px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 14px;
+            color: #7f3dff;
+          }
+        }
+
+        > div:last-child {
+          height: 297px;
+          overflow-y: auto;
+        }
       }
     }
   }

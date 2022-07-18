@@ -5,7 +5,7 @@ import Transportation from '@/assets/icons/transportation.png'
 import Salary from '@/assets/icons/salary.png'
 
 import arrowRight from '@/assets/icons/arrow_right.svg'
-import arrowDown from '@/assets/icons/arrow_down.png'
+import arrowDown from '@/assets/icons/arrow_down.svg'
 
 export const ArrowRight = arrowRight
 export const ArrowDown = arrowDown

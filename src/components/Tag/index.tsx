@@ -9,7 +9,7 @@ interface IProps {
 const Tag = ({ defaultValue, tags = [] }: IProps) => {
   const [selection, setSelection] = useState(defaultValue)
 
-  const selectionChange = (item: string) => {
+  const selectionChange = (item: string) => () => {
     setSelection(item)
   }
 
@@ -19,7 +19,7 @@ const Tag = ({ defaultValue, tags = [] }: IProps) => {
         <span
           key={tag}
           className={selection === tag ? styles.selected : styles.tag}
-          onClick={() => selectionChange(tag)}
+          onClick={selectionChange(tag)}
         >
           {tag}
         </span>

@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router'
 
 function Income() {
   const navigate = useNavigate()
-  return <NavBar onBack={() => navigate('/home')}>Income</NavBar>
+  const goBack = () => {
+    navigate('/home')
+  }
+  return <NavBar onBack={goBack}>Income</NavBar>
 }
 export default Income
