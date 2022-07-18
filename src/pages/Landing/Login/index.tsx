@@ -4,11 +4,11 @@ import { Button, Form, Input } from 'antd-mobile'
 import { login } from '@/store/user/api'
 import { EMAIL_REGX } from '@/constants/base'
 import styles from './index.scss'
-import useToken from '@/hooks/UseToken'
+import Token from '@/utils/token'
 
 export default () => {
   const navigate = useNavigate()
-  const [, setToken] = useToken('token')
+  const { setToken } = Token('token')
 
   useEffect(() => {
     document.title = 'Login'

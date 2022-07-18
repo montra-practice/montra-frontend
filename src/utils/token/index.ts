@@ -1,23 +1,25 @@
-import { useState } from 'react'
-
 export default (key: string, initialValue?: string) => {
-  const [token, setTokenState] = useState(() => {
+  const getToken = () => {
     try {
       const item = localStorage.getItem(key)
       return item ? JSON.parse(item) : initialValue
     } catch (error) {
       return initialValue
     }
-  })
+  }
 
   const setToken = (value: string) => {
     try {
-      setTokenState(() => value)
       localStorage.setItem(key, JSON.stringify(value))
+      console.log(localStorage.getItem('token'))
     } catch (error) {
       console.log(error)
     }
   }
 
-  return [token, setToken]
+  const removeToken = () => {
+    localStorage.removeItem(key)
+  }
+
+  return { getToken, setToken, removeToken }
 }
