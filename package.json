@@ -116,7 +116,8 @@
     "**/*.scss": "stylelint '**/*.scss' --fix",
     "**/*.{tsx,ts}": [
       "yarn test",
-      "eslint --fix --ext .ts,.tsx"
+      "eslint --fix --ext .ts,.tsx",
+      "git add ."
     ],
     "**/*.{html,md,css,scss,js,json,ts,tsx,yml,yaml}": [
       "prettier --write"
