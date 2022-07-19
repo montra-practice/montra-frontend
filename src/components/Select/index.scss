@@ -1,0 +1,65 @@
+:local {
+  .select {
+    box-sizing: border-box;
+    height: 40px;
+    position: relative;
+    padding: 8px 16px 8px 8px;
+    border: 1px solid rgb(245 242 242);
+    border-radius: 30px;
+
+    .select-header {
+      border: none;
+      color: #212325;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: fit-content;
+
+      div {
+        min-width: 40px;
+        max-width: 75px;
+        text-indent: 6px;
+        border: none;
+      }
+
+      &:focus {
+        border: 1px solid #bfa3f7;
+      }
+    }
+
+    .options {
+      width: 100%;
+      position: absolute;
+      border: 1px solid #d9d9d9;
+      border-radius: 10px;
+      box-shadow: 0 0 6px 0 rgba(0 0 0 / 30%);
+      z-index: 1;
+      right: 0;
+      opacity: 1;
+      top: 40px;
+      max-height: 100px;
+      overflow-y: auto;
+
+      @mixin options {
+        line-height: 20px;
+        padding: 8px 0 8px 6px;
+        border-bottom: 1px solid #bfa3f7;
+        background: white;
+      }
+
+      .item {
+        @include options;
+
+        &:hover {
+          background: #e9e3f6;
+        }
+      }
+
+      .selected {
+        @include options;
+
+        background: #e9e3f6;
+      }
+    }
+  }
+}

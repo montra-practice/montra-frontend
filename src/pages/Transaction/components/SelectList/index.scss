@@ -1,0 +1,103 @@
+@use '@/style/variables.scss' as *;
+
+:local {
+  @mixin base {
+    border: 1px solid #f1f1fa;
+    border-radius: 40px;
+  }
+
+  .select-short {
+    @include base;
+
+    width: 96px;
+    height: 40px;
+  }
+
+  .select-long {
+    @include base;
+
+    min-width: 311px;
+    height: 32px;
+    padding: 12px 16px;
+  }
+
+  @mixin flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .row {
+    @include flex-row;
+
+    height: 100%;
+    border-radius: 40px;
+    padding: 0 9px;
+    justify-content: space-between;
+  }
+
+  .arrow {
+    width: 18px;
+    margin: 0 9px;
+  }
+
+  .arrow-rotate {
+    transform: rotate(180deg);
+  }
+
+  .arrow-left {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+  }
+
+  @mixin font {
+    font-size: $font-size-sm;
+    color: $color-dark;
+  }
+
+  .title {
+    @include font;
+
+    font-weight: 600;
+  }
+
+  .cate-type-box {
+    @include flex-row;
+
+    padding: 8px 10px;
+    background: #fcfcfc;
+    border: 1px solid #f1f1fa;
+    border-radius: 32px;
+
+    .cate-type-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 7px;
+      background-color: $color-green;
+      margin-right: 7px;
+    }
+
+    .cat-type-title {
+      font-size: $font-size-sm;
+      color: $color-dark-shallow;
+    }
+  }
+
+  .content {
+    width: 100%;
+    border: 1px solid #f1f1fa;
+    border-radius: 5px;
+    padding: 16px;
+    background-color: #fff;
+  }
+
+  .item {
+    border-bottom: 1px solid $color-gray-light;
+    padding: 10px;
+    @include font;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+}

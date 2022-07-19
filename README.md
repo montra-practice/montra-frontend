@@ -1,6 +1,8 @@
 # Montra Frontend
 
-This project practice for bench
+This project practice for bench,
+
+## Node version 14.x, please use `Yarn`
 
 ## Available Scripts
 

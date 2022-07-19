@@ -71,15 +71,18 @@ describe('test ForgotPassword component', () => {
     expect(emailInput).toHaveValue(mockValue.email)
   })
 
-  test('click Continue should jump to on-the-way page', () => {
+  test('click Continue should jump to on-the-way page', async () => {
     const { emailInput } = setup()
 
     userEvent.type(emailInput, 'Tom@email.com')
 
     userEvent.click(screen.getByText('Continue'))
 
-    return waitFor(() => {
+    await waitFor(() => {
       expect(history.location.pathname).toBe('/landing/on-the-way')
+    })
+    await waitFor(() => {
+      expect((history.location.state as any).email).toBe('Tom@email.com')
     })
   })
 })

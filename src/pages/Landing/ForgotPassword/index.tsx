@@ -13,7 +13,9 @@ export default () => {
 
   const onSubmit = (values: { email: string }) => {
     forgotPassword(values.email).then(() => {
-      navigator('/landing/on-the-way')
+      navigator('/landing/on-the-way', {
+        state: { email: values.email },
+      })
     })
   }
 

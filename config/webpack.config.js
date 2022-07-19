@@ -1,5 +1,3 @@
-'use strict'
-
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
@@ -141,6 +139,19 @@ module.exports = function (webpackEnv) {
                         flexbox: 'no-2009',
                       },
                       stage: 3,
+                    },
+                  ],
+                  [
+                    'postcss-px-to-viewport',
+                    {
+                      viewportWidth: 375, // (Number) The width of the viewport.
+                      viewportHeight: 812, // (Number) The height of the viewport.
+                      unitPrecision: 3, // (Number) The decimal numbers to allow the REM units to grow to.
+                      viewportUnit: 'vw', // (String) Expected units.
+                      selectorBlackList: [], // (Array) The selectors to ignore and leave as px.
+                      minPixelValue: 1, // (Number) Set the minimum pixel value to replace.
+                      mediaQuery: false, // (Boolean) Allow px to be converted in media queries.
+                      propList: ['*', '!border'], // 指定转换的css属性的单位，*代表全部css属性的单位都进行转换
                     },
                   ],
                   // Adds PostCSS Normalize as the reset css with default options,
@@ -517,7 +528,8 @@ module.exports = function (webpackEnv) {
                     : isEnvDevelopment,
                   modules: {
                     mode: 'local',
-                    localIdentName: '[path][name]__[local]--[contenthash:base64:5]',
+                    localIdentName:
+                      '[path][name]__[local]--[contenthash:base64:5]',
                   },
                 },
                 'sass-loader',

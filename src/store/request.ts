@@ -1,8 +1,9 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { Toast } from 'antd-mobile'
+import Token from '@/utils/token'
 
 const HOST =
-  process.env.NODE_ENV === 'production' ? 'http://192.168.42.160:7001' : ''
+  process.env.NODE_ENV === 'production' ? 'http://122.112.234.17:3301' : ''
 export const BASE_URL = '/api/v1'
 
 const instance = axios.create({
@@ -33,18 +34,17 @@ export const request = async (
   config?: AxiosRequestConfig,
   disableErrorHandler?: boolean,
 ) => {
-  // TODO: GET TOKEN
-  const token = ''
   Toast.show({
     icon: 'loading',
     duration: 0,
     content: '加载中…',
   })
   try {
+    const { getToken } = Token('token')
     const { data = {}, headers }: AxiosResponse<any> = await instance(url, {
       headers: {
         'Content-Type': 'application/json',
-        authorization: token,
+        authorization: getToken(),
       },
       method,
       ...config,

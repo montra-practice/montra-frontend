@@ -4,8 +4,8 @@ export const register = (data: IUser) => {
   return onPost('/user/register', data)
 }
 
-export const verifyPasscode = (code: string) => {
-  return onPost('/user/verify', code)
+export const verifyPasscode = (verifyCode: string) => {
+  return onPost('/user/verify', { verifyCode })
 }
 
 export const login = (data: Partial<IUser>) => {
