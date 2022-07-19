@@ -9,7 +9,9 @@ import styles from './index.scss'
 const classPrefix = 'user-profile'
 
 const UserProfile = () => {
-  const { data, run } = useRequest(userProfileServices.getUserInfo)
+  const { data, run } = useRequest(userProfileServices.getUserInfo, {
+    manual: true,
+  })
   useEffect(() => {
     document.title = 'User Profile'
     run()

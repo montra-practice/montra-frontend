@@ -1,0 +1,89 @@
+:local {
+  .account-container {
+    :global {
+      .adm-nav-bar-title {
+        font-size: 22px;
+        color: #212325;
+      }
+    }
+
+    .account-balance-warpper {
+      text-align: center;
+      padding-top: 42px;
+      width: 100%;
+      height: 191px;
+      background: url('../../../assets/images/userProfile/account/user-profile-account_bgi.png')
+        no-repeat;
+      background-size: 100% 100%;
+
+      .text {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: #91919f;
+      }
+
+      .sum {
+        margin-top: 8px;
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 48px;
+        color: #161719;
+      }
+    }
+
+    .payment-list-wrapper {
+      padding-bottom: 92px;
+
+      .item-box {
+        display: flex;
+        align-items: center;
+        padding: 16px 25px 16px 18px;
+
+        .desc-box {
+          display: flex;
+          align-items: center;
+          flex: 1;
+          font-weight: 600;
+          font-size: 18px;
+          color: #000;
+
+          & > img {
+            display: block;
+            margin-right: 8px;
+            width: 48px;
+            height: 48px;
+          }
+        }
+
+        .sum {
+          display: block;
+          width: 80px;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 22px;
+          text-align: right;
+          color: #212325;
+        }
+      }
+    }
+
+    .add-btn-box {
+      position: fixed;
+      bottom: 0;
+      text-align: center;
+      width: 100%;
+      background-color: #fff;
+
+      .add-btn {
+        margin-bottom: 36px;
+        width: 91.46vw;
+        height: 56px;
+        font-size: 18px;
+        color: #fcfcfc;
+        background: #7f3dff;
+        border-radius: 16px;
+      }
+    }
+  }
+}
