@@ -6,21 +6,47 @@ import Verification from './Verification'
 import SetUp from './SetUp'
 import ForgotPassword from './ForgotPassword'
 import OnTheWay from './OnTheWay'
+import AuthWrapper from '@/components/AuthWrapper'
+
+const ROUTE_PATH = {
+  LANDING: '/landing',
+  LANDING_SIGN_UP: '/landing/sign-up',
+  LANDING_LOGIN: '/landing/login',
+  LANDING_VERIFICATION: '/landing/verification',
+  LANDING_SETUP: '/landing/setup',
+  LANDING_FORGOT_PASSWORD: '/landing/forgot-password',
+  LANDING_ON_THE_WAY: '/landing/on-the-way',
+}
 
 export default [
-  <Route path="/landing" element={<Landing />} key="Landing" />,
-  <Route path="/landing/sign-up" element={<SignUp />} key="SignUp" />,
-  <Route path="/landing/login" element={<Login />} key="Login" />,
+  <Route path={ROUTE_PATH.LANDING} key={ROUTE_PATH.LANDING}>
+    {AuthWrapper(<Landing />, ROUTE_PATH.LANDING)}
+  </Route>,
+  <Route path={ROUTE_PATH.LANDING_SIGN_UP} key={ROUTE_PATH.LANDING_SIGN_UP}>
+    {AuthWrapper(<SignUp />, ROUTE_PATH.LANDING_SIGN_UP)}
+  </Route>,
+  <Route path={ROUTE_PATH.LANDING_LOGIN} key={ROUTE_PATH.LANDING_LOGIN}>
+    {AuthWrapper(<Login />, ROUTE_PATH.LANDING_LOGIN)}
+  </Route>,
   <Route
-    path="/landing/verification"
-    element={<Verification />}
-    key="Verification"
-  />,
-  <Route path="/landing/setup" element={<SetUp />} key="SetUp" />,
+    path={ROUTE_PATH.LANDING_VERIFICATION}
+    key={ROUTE_PATH.LANDING_VERIFICATION}
+  >
+    {AuthWrapper(<Verification />, ROUTE_PATH.LANDING_VERIFICATION)}
+  </Route>,
+  <Route path={ROUTE_PATH.LANDING_SETUP} key={ROUTE_PATH.LANDING_SETUP}>
+    {AuthWrapper(<SetUp />, ROUTE_PATH.LANDING_SETUP)}
+  </Route>,
   <Route
-    path="/landing/forgot-password"
-    element={<ForgotPassword />}
-    key="ForgotPassword"
-  />,
-  <Route path="/landing/on-the-way" element={<OnTheWay />} key="OnTheWay" />,
+    path={ROUTE_PATH.LANDING_FORGOT_PASSWORD}
+    key={ROUTE_PATH.LANDING_FORGOT_PASSWORD}
+  >
+    {AuthWrapper(<ForgotPassword />, ROUTE_PATH.LANDING_FORGOT_PASSWORD)}
+  </Route>,
+  <Route
+    path={ROUTE_PATH.LANDING_ON_THE_WAY}
+    key={ROUTE_PATH.LANDING_ON_THE_WAY}
+  >
+    {AuthWrapper(<OnTheWay />, ROUTE_PATH.LANDING_ON_THE_WAY)}
+  </Route>,
 ]

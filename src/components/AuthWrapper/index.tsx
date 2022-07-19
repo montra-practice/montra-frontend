@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import Token from '@/utils/token'
 import { Navigate, Route } from 'react-router-dom'
 
-const WHITE_ROUTE_LIST = [/\/landing\/.*/]
+const WHITE_ROUTE_LIST = [/^\/$/, /\/landing.*/]
 
 export default (Component: ReactNode, currentPathname: string) => {
   const { getToken } = Token('token')

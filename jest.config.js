@@ -2,9 +2,7 @@ module.exports = {
   rootDir: __dirname,
   setupFiles: ['react-app-polyfill/jsdom'],
   setupFilesAfterEnv: ['<rootDir>/test/setupTests.ts'],
-  testMatch: [
-    '<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}',
-  ],
+  testMatch: ['<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}'],
   testEnvironment: 'jsdom',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
@@ -23,6 +21,7 @@ module.exports = {
   ],
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
+    'src/**/router.tsx',
     '!src/**/*.d.ts',
     '!**/node_modules/**',
     '!src/store/**/api.ts',

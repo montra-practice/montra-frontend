@@ -11,7 +11,6 @@ export default (key: string, initialValue?: string) => {
   const setToken = (value: string) => {
     try {
       localStorage.setItem(key, JSON.stringify(value))
-      console.log(localStorage.getItem('token'))
     } catch (error) {
       console.log(error)
     }
