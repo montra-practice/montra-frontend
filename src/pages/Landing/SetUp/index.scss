@@ -2,14 +2,26 @@
 
 :local {
   .wrapper {
+    height: 100%;
     padding: 70px 16px;
 
     h2 {
       margin-bottom: 46px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: 600;
+      font-size: $font-size-lg;
       color: $color-dark-deep;
+    }
+
+    p {
+      color: $color-dark-shallow;
+    }
+
+    :global {
+      .adm-button.adm-button-large {
+        width: calc(100% - 32px);
+        position: fixed;
+        bottom: 50px;
+        border-radius: 16px;
+      }
     }
   }
 }
