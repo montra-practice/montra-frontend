@@ -1,0 +1,95 @@
+:local {
+  .account-detail-container {
+    .detail-card {
+      padding-top: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      & > img {
+        margin-bottom: 8px;
+        width: 48px;
+        height: 48px;
+      }
+
+      .pay-type {
+        display: block;
+        margin-bottom: 12px;
+        font-weight: 600;
+        font-size: 24px;
+        color: #000;
+      }
+
+      .total {
+        font-weight: 700;
+        font-size: 32px;
+        color: #212325;
+      }
+    }
+
+    .consumption-record-card {
+      .consumption-date {
+        padding-left: 16px;
+        height: 48px;
+        line-height: 48px;
+        font-weight: 600;
+        font-size: 18px;
+        color: #0d0e0f;
+      }
+
+      .consumption-list {
+        .consumption-item {
+          padding: 0 20px;
+          display: flex;
+          align-items: center;
+          background: #fcfcfc;
+          border-radius: 24px;
+
+          & > img {
+            display: block;
+            padding: 14px 9px 15px 17px;
+            width: 60px;
+            height: 60px;
+          }
+
+          .content {
+            flex: 1;
+
+            .title {
+              margin-bottom: 10px;
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 19px;
+              color: #292b2d;
+            }
+
+            .desc {
+              font-weight: 500;
+              font-size: 13px;
+              line-height: 16px;
+              color: #91919f;
+            }
+          }
+
+          .others {
+            text-align: right;
+
+            .sum {
+              margin-bottom: 11px;
+              font-weight: 600;
+              font-size: 16px;
+              color: #fd3c4a;
+            }
+
+            .time {
+              font-weight: 500;
+              font-size: 13px;
+              line-height: 16px;
+              color: #91919f;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -9,8 +9,11 @@ import styles from './index.scss'
 const classPrefix = 'user-profile'
 
 const UserProfile = () => {
-  const { data, run } = useRequest(userProfileServices.getUserInfo)
+  const { data, run } = useRequest(userProfileServices.getUserInfo, {
+    manual: true,
+  })
   useEffect(() => {
+    document.title = 'User Profile'
     run()
   }, [run])
 
@@ -28,13 +31,14 @@ const UserProfile = () => {
           />
         </div>
         <div className={styles['user-info']}>
-          <span>{userInfo?.nickname}</span>
-          <p>{userInfo.realName}</p>
+          <span data-testid="nickname">{userInfo?.nickname}</span>
+          <p data-testid="realName">{userInfo.realName}</p>
         </div>
-        <div className={styles['action-box']}>
+        <div className={styles['action-box']} data-testid="edit-box">
           <Image src={editImg} width={20} height={20} fit="cover" />
         </div>
       </div>
+      {/* <p>James Harden</p> */}
       <UserFunctions />
     </div>
   )

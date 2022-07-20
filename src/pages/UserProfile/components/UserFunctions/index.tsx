@@ -17,6 +17,7 @@ const UserFunctions = () => {
       {userFunctionsConfigList?.map(({ title, icon, path }) => (
         <div
           key={title}
+          data-testid={title}
           className={styles['function-item']}
           onClick={() => goToPage(path)}
         >
