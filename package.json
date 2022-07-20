@@ -115,12 +115,12 @@
   "lint-staged": {
     "**/*.scss": "stylelint '**/*.scss' --fix",
     "**/*.{tsx,ts}": [
-      "yarn test",
-      "eslint --fix --ext .ts,.tsx",
-      "git add ."
+      "eslint --fix --ext .ts,.tsx"
     ],
     "**/*.{html,md,css,scss,js,json,ts,tsx,yml,yaml}": [
-      "prettier --write"
+      "yarn test",
+      "prettier --write",
+      "git add ."
     ]
   }
 }
