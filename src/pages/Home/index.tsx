@@ -9,6 +9,7 @@ import Tag from '@/components/Tag'
 import { MonthEnglish, Tags } from '@/constants/base'
 import { transactionList } from '@/constants/transaction'
 import TransactionList from '../Transaction/components/TransactionList'
+import TabFooter from '@/components/TabFooter'
 
 function Home() {
   return (
@@ -60,6 +61,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <TabFooter />
     </div>
   )
 }

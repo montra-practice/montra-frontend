@@ -6,6 +6,7 @@ import * as userProfileServices from '@/store/userProfile/index'
 import editImg from '@/assets/images/userProfile/edit_icon.png'
 
 import styles from './index.scss'
+import TabFooter from '@/components/TabFooter'
 const classPrefix = 'user-profile'
 
 const UserProfile = () => {
@@ -40,6 +41,7 @@ const UserProfile = () => {
       </div>
       {/* <p>James Harden</p> */}
       <UserFunctions />
+      <TabFooter />
     </div>
   )
 }

@@ -1,4 +1,3 @@
-import TabFooter from '@/pages/Home/TabFooter'
 import { Route } from 'react-router'
 import Home from './index'
 import AuthWrapper from '@/components/AuthWrapper'
@@ -8,9 +7,7 @@ const ROUTE_PATH = {
 }
 
 export default [
-  <Route element={<TabFooter />} key="home">
-    <Route path={ROUTE_PATH.HOME} key={ROUTE_PATH.HOME}>
-      {AuthWrapper(<Home />, ROUTE_PATH.HOME)}
-    </Route>
+  <Route path={ROUTE_PATH.HOME} key={ROUTE_PATH.HOME}>
+    {AuthWrapper(<Home />, ROUTE_PATH.HOME)}
   </Route>,
 ]

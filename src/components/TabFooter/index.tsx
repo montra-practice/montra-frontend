@@ -8,44 +8,40 @@ import { ReactComponent as TransferImg } from '@/assets/icons/home/transfer.svg'
 import { ReactComponent as ExpenseImg } from '@/assets/icons/home/expense.svg'
 import { TabBar } from 'antd-mobile'
 import { useState } from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './index.scss'
 
 const TabFooter = () => {
-  const [activeKey, setActiveKey] = useState('home')
-  const [add, setAdd] = useState(false)
   const navigate = useNavigate()
+  const location = useLocation()
+  const [activeKey] = useState(location.pathname)
+  const [addStatus, setAddStatus] = useState(false)
 
   const onTabChange = (key: string) => {
     if (key === 'add') {
-      setAdd(!add)
+      setAddStatus(!addStatus)
       return
     }
     navigate(`${key}`)
-    setActiveKey(key)
-    setAdd(false)
+    setAddStatus(false)
   }
 
   const goToAdd = (uri: string) => () => navigate(`${uri}`)
 
-  const activeBlur = (e: { target: any }) => {
+  const activeBlur = () => (e: { target: any }) => {
     const alts = ['income', 'transfer', 'expense']
     if (alts.includes(e.target.alt)) return
-    setAdd(false)
-  }
-
-  const changeAddState = (flag: boolean) => () => {
-    setAdd(flag)
+    setAddStatus(false)
   }
 
   const tabs = [
     {
-      key: 'home',
+      key: '/home',
       title: 'Home',
       icon: <HomeIcon />,
     },
     {
-      key: 'transaction',
+      key: '/transaction',
       title: 'Transaction',
       icon: <TransactionIcon />,
     },
@@ -54,38 +50,37 @@ const TabFooter = () => {
       title: 'Add',
       icon: (
         <AddIcon
-          className={add ? styles['add-icon-active'] : styles['add-icon']}
+          className={addStatus ? styles['add-icon-active'] : styles['add-icon']}
         />
       ),
     },
     {
-      key: 'budget',
+      key: '/budget',
       title: 'Budget',
       icon: <BudgetIcon />,
     },
     {
-      key: 'user-profile',
+      key: '/user-profile',
       title: 'Profile',
       icon: <ProfileIcon />,
     },
   ]
 
-  const AddActive = (
-    <div onClick={(e) => activeBlur(e)}>
-      <TransferImg onClick={goToAdd('transfer')} />
-      <div>
-        <IncomeImg onClick={goToAdd('income')} />
-        <ExpenseImg onClick={goToAdd('expense')} />
+  const renderAddType = () => {
+    return (
+      <div className={styles['add-active']} onClick={activeBlur()}>
+        <TransferImg onClick={goToAdd('/transfer')} />
+        <div>
+          <IncomeImg onClick={goToAdd('/income')} />
+          <ExpenseImg onClick={goToAdd('/expense')} />
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.content} onClick={changeAddState(false)}>
-        <Outlet></Outlet>
-      </div>
-      <div className={styles['add-active']}>{add && AddActive}</div>
+      {addStatus && renderAddType()}
       <div className={styles.footer}>
         <TabBar activeKey={activeKey} onChange={onTabChange}>
           {tabs.map((item) => (

@@ -8,8 +8,8 @@ import {
 import styles from './index.scss'
 import FilterIcon from '@/assets/icons/filter.png'
 import SelectList from './components/SelectList'
-
 import { useState } from 'react'
+import TabFooter from '@/components/TabFooter'
 
 export default () => {
   const [showFilter, setShow] = useState(false)
@@ -43,6 +43,8 @@ export default () => {
       {transactionList.map((list) => (
         <TransactionList {...list} key={list.date} />
       ))}
+
+      <TabFooter />
     </div>
   )
 }

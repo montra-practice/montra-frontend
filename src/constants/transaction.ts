@@ -16,9 +16,17 @@ export const SUBSCRIPTION = 'Subscription'
 export const TRANSPORTATION = 'Transportation'
 export const SALARY = 'Salary'
 
-export const INCOME = 'Income'
-export const EXPENSE = 'Expense'
-export const TRANSFER = 'Transfer'
+export const TRANSACTION_TYPES = {
+  INCOME: 'INCOME',
+  EXPENSE: 'EXPENSE',
+  TRANSFER: 'TRANSFER',
+}
+
+export const TRANSACTION_TYPES_LABEL = {
+  [TRANSACTION_TYPES.INCOME]: 'Income',
+  [TRANSACTION_TYPES.EXPENSE]: 'Expense',
+  [TRANSACTION_TYPES.TRANSFER]: 'Transfer',
+}
 
 // category type icon map
 export const CategoryTypeIcons: { [key: number | string]: string } = {
@@ -30,20 +38,10 @@ export const CategoryTypeIcons: { [key: number | string]: string } = {
 }
 
 /*** MOCK DATA */
-export const filterOptions = [
-  {
-    value: 1,
-    label: INCOME,
-  },
-  {
-    value: 2,
-    label: EXPENSE,
-  },
-  {
-    value: 3,
-    label: TRANSFER,
-  },
-]
+export const filterOptions = Object.keys(TRANSACTION_TYPES).map(
+  (type, index) => ({ label: TRANSACTION_TYPES_LABEL[type], value: index + 1 }),
+)
+
 export const sortOptions = [
   {
     value: 1,
