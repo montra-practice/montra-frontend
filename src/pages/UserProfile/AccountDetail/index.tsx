@@ -32,7 +32,7 @@ const AccountDetail = () => {
 
   useEffect(() => {
     run({ type })
-  }, [run])
+  }, [run, type])
 
   const right = (
     <div style={{ fontSize: 24 }}>
