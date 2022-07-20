@@ -4,6 +4,7 @@ import SelectList from '../Transaction/components/SelectList'
 import { categoryTypes, walletTypes } from '@/constants/transaction'
 import Attachment from './components/Attachment/index'
 import BottomCard from './components/BottomCard/index'
+import Repeat from './components/Repeat'
 import styles from './index.scss'
 import { useState } from 'react'
 
@@ -51,6 +52,7 @@ export default () => {
           className={styles['margin-bottom']}
         ></SelectList>
         <Attachment visible={false} hideAttach={hideAttach}></Attachment>
+        <Repeat />
       </BottomCard>
     </div>
   )

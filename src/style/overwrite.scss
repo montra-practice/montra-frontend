@@ -106,4 +106,41 @@
       }
     }
   }
+
+  // switch
+  div.adm-switch {
+    width: 42px;
+    height: 24px;
+    border-radius: 16px;
+
+    --checked-color: #{$color-primary};
+  }
+
+  @mixin switch-base {
+    width: 20px;
+    height: 20px;
+    border-radius: 16px;
+  }
+
+  div.adm-switch-checkbox {
+    min-width: 42px;
+    height: 24px;
+    background: #{$color-light-primary};
+
+    .adm-switch-handle {
+      @include switch-base;
+
+      box-shadow: none;
+    }
+  }
+
+  div.adm-switch-checkbox::before {
+    @include switch-base;
+
+    background: #{$color-light-primary};
+  }
+
+  div.adm-switch.adm-switch-checked .adm-switch-handle {
+    left: 20px;
+  }
 }
