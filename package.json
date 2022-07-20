@@ -118,7 +118,6 @@
       "eslint --fix --ext .ts,.tsx"
     ],
     "**/*.{html,md,css,scss,js,json,ts,tsx,yml,yaml}": [
-      "yarn test",
       "prettier --write",
       "git add ."
     ]
