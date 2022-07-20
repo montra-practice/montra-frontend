@@ -1,0 +1,23 @@
+@use '~@/style/variables.scss' as *;
+
+:local {
+  .wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    padding: 0 16px;
+    text-align: center;
+
+    h1 {
+      margin-bottom: 50px;
+      color: $color-dark-shallow;
+    }
+
+    .link {
+      font-size: $font-size-normal;
+      color: $color-primary;
+    }
+  }
+}
