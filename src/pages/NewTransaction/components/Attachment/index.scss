@@ -1,0 +1,63 @@
+@use '@/style/variables.scss' as *;
+
+:local {
+  @mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .attach-wrapper {
+    @include flex-center;
+
+    min-width: 343px;
+    height: 56px;
+    border: 1px dashed $color-gray-shallow;
+    border-radius: 16px;
+  }
+
+  .attach-icon {
+    width: 19px;
+    height: 22px;
+    margin-right: 16px;
+  }
+
+  .title {
+    font-size: $font-size-normal;
+    color: $color-gray;
+  }
+
+  .type-wrapper {
+    padding-top: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .type-bg {
+      width: 107px;
+      height: 91px;
+      background: $color-light-primary;
+      border-radius: 16px;
+      @include flex-center;
+
+      flex-direction: column;
+
+      .icon-normal {
+        width: 28px;
+        height: 24px;
+      }
+
+      .icon-doc {
+        width: 24px;
+        height: 28px;
+      }
+
+      .name {
+        font-size: $font-size-normal;
+        color: $color-primary;
+        margin-top: 12px;
+        font-weight: 600;
+      }
+    }
+  }
+}

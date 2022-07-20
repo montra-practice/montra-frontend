@@ -177,3 +177,18 @@ export const selectOptions = [
     label: 'Year',
   },
 ]
+
+export const walletTypes = [
+  {
+    value: '1',
+    label: 'Wallet',
+  },
+  {
+    value: '2',
+    label: 'Bank',
+  },
+  {
+    value: '3',
+    label: 'Paypal',
+  },
+]

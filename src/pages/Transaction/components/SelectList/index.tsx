@@ -1,6 +1,7 @@
 import styles from './index.scss'
 import { ArrowDown } from '@/constants/transaction'
 import { useState } from 'react'
+import { List } from 'antd-mobile'
 
 interface IOption {
   value: string
@@ -8,18 +9,14 @@ interface IOption {
 }
 
 interface ISelectList {
+  className?: any
   long?: boolean
   arrowRight?: boolean
   selectedWithBorder?: boolean
   options: IOption[]
 }
 
-export default ({
-  long = true,
-  arrowRight = true,
-  selectedWithBorder = false,
-  options = [{ value: '', label: '' }],
-}: ISelectList) => {
+const SelectList = (props: ISelectList) => {
   const [show, setShow] = useState(false)
   const [checkedItem, setCheckedItem] = useState({ value: 1, label: 'Test' })
 
@@ -33,12 +30,18 @@ export default ({
   }
 
   return (
-    <div className={`${long ? styles['select-long'] : styles['select-short']}`}>
+    <div
+      className={`${props.className} ${
+        props.long ? styles['select-long'] : styles['select-short']
+      }`}
+    >
       <div
-        className={`${styles.row} ${arrowRight ? '' : styles['arrow-left']}`}
+        className={`${styles.row} ${
+          props.arrowRight ? '' : styles['arrow-left']
+        }`}
         onClick={() => handleSelect(show)}
       >
-        {selectedWithBorder ? (
+        {props.selectedWithBorder ? (
           <div className={styles['cate-type-box']}>
             <div className={styles['cate-type-icon']}></div>
             <div className={styles['cat-type-title']}>{checkedItem.label}</div>
@@ -54,9 +57,9 @@ export default ({
           className={`${styles.arrow} ${show ? styles['arrow-rotate'] : ''}`}
         ></img>
       </div>
-      {show && (
+      {/* {show && (
         <div className={styles.content}>
-          {options.map((item) => (
+          {props.options.map((item) => (
             <div
               className={styles.item}
               onClick={() => selectItem(item)}
@@ -66,7 +69,29 @@ export default ({
             </div>
           ))}
         </div>
+      )} */}
+      {show && (
+        <List mode="card" className={styles.content}>
+          {props.options.map((item) => (
+            <List.Item
+              className={styles.item}
+              onClick={() => selectItem(item)}
+              key={item.value}
+              arrow={false}
+            >
+              {item.label}
+            </List.Item>
+          ))}
+        </List>
       )}
     </div>
   )
 }
+
+SelectList.defaultProps = {
+  long: true,
+  arrowRight: true,
+  selectedWithBorder: false,
+}
+
+export default SelectList

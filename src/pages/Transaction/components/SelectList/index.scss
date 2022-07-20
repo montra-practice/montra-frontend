@@ -84,20 +84,22 @@
   }
 
   .content {
-    width: 100%;
     border: 1px solid #f1f1fa;
     border-radius: 5px;
-    padding: 16px;
     background-color: #fff;
+    overflow: hidden;
+    margin: 0;
   }
 
   .item {
+    background-color: #fff;
     border-bottom: 1px solid $color-gray-light;
-    padding: 10px;
     @include font;
 
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 100%;
+
+    --border-inner: none;
+    --border-top: none;
   }
 }

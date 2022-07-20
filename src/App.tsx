@@ -8,6 +8,7 @@ import IncomeRouter from '@/pages/Income/router'
 import ExpenseRouter from '@/pages/Expense/router'
 import TransferRouter from '@/pages/Transfer/router'
 import NotFound from '@/pages/NotFound/router'
+import NewTransaction from '@/pages/NewTransaction/router'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         {IncomeRouter}
         {ExpenseRouter}
         {TransferRouter}
+        {NewTransaction}
         {NotFound}
         <Route path="*" element={<Navigate replace to="/404" />}></Route>
       </Routes>
