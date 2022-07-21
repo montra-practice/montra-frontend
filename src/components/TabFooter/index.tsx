@@ -15,15 +15,15 @@ const TabFooter = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const [activeKey] = useState(location.pathname)
-  const [addStatus, setAddStatus] = useState(false)
+  const [addStatus, toggleAddStatus] = useState(false)
 
   const onTabChange = (key: string) => {
     if (key === 'add') {
-      setAddStatus(!addStatus)
+      toggleAddStatus(!addStatus)
       return
     }
     navigate(`${key}`)
-    setAddStatus(false)
+    toggleAddStatus(false)
   }
 
   const goToAdd = (uri: string) => () => navigate(`${uri}`)
@@ -31,7 +31,7 @@ const TabFooter = () => {
   const activeBlur = () => (e: { target: any }) => {
     const alts = ['income', 'transfer', 'expense']
     if (alts.includes(e.target.alt)) return
-    setAddStatus(false)
+    toggleAddStatus(false)
   }
 
   const tabs = [
