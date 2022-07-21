@@ -1,4 +1,4 @@
-import { NavBar, Input } from 'antd-mobile'
+import { NavBar, Input, Button } from 'antd-mobile'
 import { useNavigate } from 'react-router'
 import SelectList from '../Transaction/components/SelectList'
 import { categoryTypes, walletTypes } from '@/constants/transaction'
@@ -20,10 +20,11 @@ export default () => {
     setMoney(val)
   }
 
-  const hideAttach = () => {}
   return (
     <div className={styles.wrapper}>
-      <NavBar onBack={goBack}>Expense</NavBar>
+      <NavBar onBack={goBack} className={styles.nav}>
+        Expense
+      </NavBar>
       <div className={styles.alert}>How much?</div>
       <div className={styles.row}>
         <span className={styles.dollar}>$</span>
@@ -37,22 +38,19 @@ export default () => {
       </div>
       <BottomCard withIcon={false}>
         <SelectList
-          long={true}
+          size="large"
           options={categoryTypes}
           selectedWithBorder={true}
-          className={styles['margin-bottom']}
         ></SelectList>
 
-        <div className={`${styles['desc-wrapper']} ${styles['margin-bottom']}`}>
+        <div className={styles['desc-wrapper']}>
           <Input placeholder="Describe" className={styles.desc}></Input>
         </div>
 
-        <SelectList
-          options={walletTypes}
-          className={styles['margin-bottom']}
-        ></SelectList>
-        <Attachment visible={false} hideAttach={hideAttach}></Attachment>
+        <SelectList options={walletTypes}></SelectList>
+        <Attachment></Attachment>
         <Repeat />
+        <Button className="btn-big">Continue</Button>
       </BottomCard>
     </div>
   )

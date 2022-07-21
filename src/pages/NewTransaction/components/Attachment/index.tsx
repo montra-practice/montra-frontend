@@ -8,10 +8,7 @@ import FileIcon from '@/assets/icons/file.png'
 import styles from './index.scss'
 import { useState } from 'react'
 
-interface IAttachProps {
-  visible: boolean
-  hideAttach: (show: boolean) => void
-}
+interface IAttachProps {}
 
 export default (props: IAttachProps) => {
   const [visible, setVisible] = useState(false)

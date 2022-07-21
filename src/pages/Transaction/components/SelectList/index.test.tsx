@@ -3,7 +3,6 @@ import SelectList from '.'
 import { selectOptions } from '@/constants/transaction'
 
 const mockData = {
-  long: true,
   arrowRight: true,
   selectedWithBorder: false,
   options: selectOptions,

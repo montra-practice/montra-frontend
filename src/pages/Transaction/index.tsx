@@ -22,7 +22,7 @@ export default () => {
     <div className={styles.wrapper}>
       <div className={styles.row}>
         <div>
-          <SelectList long={false} arrowRight={false} options={selectOptions} />
+          <SelectList size="small" arrowRight={false} options={selectOptions} />
         </div>
         <img
           src={FilterIcon}

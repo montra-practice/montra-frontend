@@ -5,6 +5,10 @@
     height: 100%;
     background-color: $color-green;
 
+    .nav {
+      color: #fff;
+    }
+
     .alert {
       color: #fcfcfc;
       font-size: $font-size-mid;
@@ -38,9 +42,19 @@
       font-size: $font-size-normal;
       color: $color-dark-deep;
       font-weight: 600;
+      margin-bottom: 16px;
     }
 
-    .margin-bottom {
+    .btn {
+      padding: 17px 131px;
+      color: #fcfcfc;
+      font-size: $font-size-mid;
+      font-weight: 600;
+      border-radius: 16px;
+      background-color: $color-primary;
+      margin: 0 auto;
+      display: inline-block;
+      margin-top: 35px;
       margin-bottom: 16px;
     }
   }
