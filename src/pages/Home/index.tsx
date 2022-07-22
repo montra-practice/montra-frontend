@@ -8,7 +8,7 @@ import Select from '@/components/Select'
 import Tag from '@/components/Tag'
 import { MonthEnglish, Tags } from '@/constants/base'
 import { transactionList } from '@/constants/transaction'
-import TransactionList from '../Transaction/components/TransactionList'
+import TransactionList from '@/components/TransactionList'
 import TabFooter from '@/components/TabFooter'
 import { useNavigate } from 'react-router-dom'
 
