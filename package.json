@@ -119,7 +119,8 @@
     ],
     "**/*.scss": "stylelint '**/*.scss' --fix",
     "**/*.{html,md,css,scss,js,json,ts,tsx,yml,yaml}": [
-      "prettier --write"
+      "prettier --write",
+      "git add ."
     ]
   }
 }

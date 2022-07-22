@@ -3,3 +3,8 @@ declare interface IUser {
   email: string
   password: string
 }
+
+declare interface IResetPassword {
+  newPassword: string
+  repeatPassword: string
+}

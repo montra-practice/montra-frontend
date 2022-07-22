@@ -15,3 +15,7 @@ export const login = (data: Partial<IUser>) => {
 export const forgotPassword = (email: string) => {
   return onPost('/user/forgot-password', email)
 }
+
+export const resetPassword = (data: IResetPassword) => {
+  return onPost('/user/reset-password', data)
+}
