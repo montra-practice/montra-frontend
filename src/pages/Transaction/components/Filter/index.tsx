@@ -84,7 +84,7 @@ export default (props: IFilterProps) => {
           />
         </div>
         <div className={styles['row-gap']}>
-          <Button className={styles['apply-btn']} onClick={handleApply}>
+          <Button className="btn-big" onClick={handleApply}>
             Apply
           </Button>
         </div>

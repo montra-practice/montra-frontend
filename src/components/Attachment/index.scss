@@ -1,12 +1,7 @@
 @use '@/style/variables.scss' as *;
+@use '@/style/mixin.scss' as *;
 
 :local {
-  @mixin flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .attach-wrapper {
     @include flex-center;
 
@@ -14,6 +9,7 @@
     height: 56px;
     border: 1px dashed $color-gray-shallow;
     border-radius: 16px;
+    margin: 16px 0;
   }
 
   .attach-icon {

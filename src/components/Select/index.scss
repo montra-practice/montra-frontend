@@ -15,6 +15,10 @@
       align-items: center;
       width: fit-content;
 
+      .rotate {
+        transform: rotate(180deg);
+      }
+
       div {
         min-width: 40px;
         max-width: 75px;
@@ -37,13 +41,13 @@
       right: 0;
       opacity: 1;
       top: 40px;
-      max-height: 100px;
+      max-height: 120px;
       overflow-y: auto;
 
       @mixin options {
         line-height: 20px;
         padding: 8px 0 8px 6px;
-        border-bottom: 1px solid #bfa3f7;
+        border-bottom: 1px solid #e0e2e9;
         background: white;
       }
 

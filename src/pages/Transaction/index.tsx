@@ -1,5 +1,5 @@
 import Filter from './components/Filter'
-import TransactionList from './components/TransactionList'
+import TransactionList from '@/components/TransactionList'
 import {
   transactionList,
   ArrowRight,
@@ -7,7 +7,7 @@ import {
 } from '@/constants/transaction'
 import styles from './index.scss'
 import FilterIcon from '@/assets/icons/filter.png'
-import SelectList from './components/SelectList'
+import SelectList from '../../components/SelectList'
 import { useState } from 'react'
 import TabFooter from '@/components/TabFooter'
 
@@ -22,7 +22,7 @@ export default () => {
     <div className={styles.wrapper}>
       <div className={styles.row}>
         <div>
-          <SelectList long={false} arrowRight={false} options={selectOptions} />
+          <SelectList size="small" arrowRight={false} options={selectOptions} />
         </div>
         <img
           src={FilterIcon}

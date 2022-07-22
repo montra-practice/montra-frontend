@@ -2,17 +2,17 @@ import styles from './index.scss'
 import { CategoryTypeIcons } from '@/constants/transaction'
 
 interface IList {
-  date?: string
   id: number | string // type id
   type: string
   desc: string
   money: number | string
   time: string
+  date?: string
 }
 
 interface IPropsData {
-  date?: string
   list: IList[]
+  date?: string
 }
 
 export default (props: IPropsData) => {

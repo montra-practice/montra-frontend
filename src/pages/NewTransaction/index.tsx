@@ -1,12 +1,13 @@
-import { NavBar, Input } from 'antd-mobile'
-import { useNavigate } from 'react-router'
-import SelectList from '../Transaction/components/SelectList'
+import { NavBar, Input, Button } from 'antd-mobile'
+import { useNavigate, useLocation } from 'react-router'
+import { useState } from 'react'
 import { categoryTypes, walletTypes } from '@/constants/transaction'
-import Attachment from './components/Attachment/index'
-import BottomCard from './components/BottomCard/index'
+import AmountInput from '@/components/AmountInput'
+import SelectList from '@/components/SelectList'
+import Attachment from '@/components/Attachment'
+import BottomCard from '@/components/BottomCard'
 import Repeat from './components/Repeat'
 import styles from './index.scss'
-import { useState } from 'react'
 
 export default () => {
   const navigate = useNavigate()
@@ -14,45 +15,40 @@ export default () => {
     navigate('/home')
   }
 
-  const [money, setMoney] = useState('')
+  const { pathname } = useLocation()
+  const curType = pathname.split('/')[1]
+  const title = curType[0].toUpperCase() + curType.substr(1)
 
-  const handleMoneyInput = (val: string) => {
-    setMoney(val)
+  const [amount, setAmount] = useState('0')
+
+  const handleAmountInput = (val: string) => {
+    setAmount(val)
   }
 
-  const hideAttach = () => {}
   return (
-    <div className={styles.wrapper}>
-      <NavBar onBack={goBack}>Expense</NavBar>
-      <div className={styles.alert}>How much?</div>
-      <div className={styles.row}>
-        <span className={styles.dollar}>$</span>
-        <Input
-          placeholder="0"
-          className={styles.input}
-          value={money}
-          type="number"
-          onChange={(v) => handleMoneyInput(v)}
-        />
-      </div>
+    <div className={styles[curType]}>
+      <NavBar onBack={goBack} className="nav-bar-white">
+        {title}
+      </NavBar>
+      <AmountInput
+        amount={amount}
+        handleAmount={handleAmountInput}
+      ></AmountInput>
       <BottomCard withIcon={false}>
         <SelectList
-          long={true}
+          size="large"
           options={categoryTypes}
           selectedWithBorder={true}
-          className={styles['margin-bottom']}
         ></SelectList>
 
-        <div className={`${styles['desc-wrapper']} ${styles['margin-bottom']}`}>
-          <Input placeholder="Describe" className={styles.desc}></Input>
+        <div className={styles['desc-wrapper']}>
+          <Input placeholder="Describe" />
         </div>
 
-        <SelectList
-          options={walletTypes}
-          className={styles['margin-bottom']}
-        ></SelectList>
-        <Attachment visible={false} hideAttach={hideAttach}></Attachment>
+        <SelectList options={walletTypes}></SelectList>
+        <Attachment></Attachment>
         <Repeat />
+        <Button className="btn-big">Continue</Button>
       </BottomCard>
     </div>
   )

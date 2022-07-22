@@ -3,8 +3,8 @@ import styles from './index.scss'
 import { ReactNode } from 'react'
 
 interface ICardProps {
-  withIcon?: boolean
   children: ReactNode
+  withIcon?: boolean
 }
 
 const BottomCard = (props: ICardProps) => {

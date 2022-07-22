@@ -2,11 +2,12 @@
 
 :local {
   .wrapper {
-    height: 100%;
+    height: calc(100% - 84px);
+    overflow-y: auto;
 
     .header {
       height: 64px;
-      padding: 44px 20px 0;
+      padding: 20px 20px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -153,7 +154,7 @@
         }
 
         > div:last-child {
-          height: 297px;
+          height: 270px;
           overflow-y: auto;
         }
       }

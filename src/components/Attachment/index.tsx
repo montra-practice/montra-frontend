@@ -8,10 +8,7 @@ import FileIcon from '@/assets/icons/file.png'
 import styles from './index.scss'
 import { useState } from 'react'
 
-interface IAttachProps {
-  visible: boolean
-  hideAttach: (show: boolean) => void
-}
+interface IAttachProps {}
 
 export default (props: IAttachProps) => {
   const [visible, setVisible] = useState(false)
@@ -30,7 +27,7 @@ export default (props: IAttachProps) => {
           src={AttachIcon}
           alt="attach icon"
           className={styles['attach-icon']}
-        ></img>
+        />
         <span className={styles.title}>Add attachment</span>
       </div>
       <Mask
@@ -46,7 +43,7 @@ export default (props: IAttachProps) => {
                 src={CameraIcon}
                 alt="camera icon"
                 className={styles['icon-normal']}
-              ></img>
+              />
               <span className={styles.name}>Camera</span>
             </div>
             <div className={styles['type-bg']}>
@@ -54,7 +51,7 @@ export default (props: IAttachProps) => {
                 src={GalleryIcon}
                 alt="gallery icon"
                 className={styles['icon-normal']}
-              ></img>
+              />
               <span className={styles.name}>Image</span>
             </div>
             <div className={styles['type-bg']}>
@@ -62,7 +59,7 @@ export default (props: IAttachProps) => {
                 src={FileIcon}
                 alt="doc icon"
                 className={styles['icon-doc']}
-              ></img>
+              />
               <span className={styles.name}>Document</span>
             </div>
           </div>

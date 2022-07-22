@@ -1,6 +1,26 @@
+@use '@/style/variables.scss' as *;
+@use '@/style/mixin.scss' as *;
+
 :global {
   body,
   #root {
     height: 100vh;
+
+    .btn-big {
+      @include flex-center;
+
+      width: 343px;
+      height: 56px;
+      color: #fcfcfc;
+      font-size: $font-size-mid;
+      font-weight: 600;
+      border-radius: 16px;
+      background-color: $color-primary;
+      margin-bottom: 16px;
+    }
+
+    .nav-bar-white {
+      color: #fff;
+    }
   }
 }

@@ -15,39 +15,36 @@ const TabFooter = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const [activeKey] = useState(location.pathname)
-  const [addStatus, setAddStatus] = useState(false)
+  const [addStatus, toggleAddStatus] = useState(false)
 
   const onTabChange = (key: string) => {
     if (key === 'add') {
-      setAddStatus(!addStatus)
+      toggleAddStatus(!addStatus)
       return
     }
     navigate(`${key}`)
-    setAddStatus(false)
+    toggleAddStatus(false)
   }
 
   const goToAdd = (uri: string) => () => navigate(`${uri}`)
 
   const activeBlur = () => (e: { target: any }) => {
-    const alts = ['income', 'transfer', 'expense']
-    if (alts.includes(e.target.alt)) return
-    setAddStatus(false)
+    if (e.target.tagName !== 'svg') {
+      toggleAddStatus(false)
+    }
   }
 
   const tabs = [
     {
       key: '/home',
-      title: 'Home',
       icon: <HomeIcon />,
     },
     {
       key: '/transaction',
-      title: 'Transaction',
       icon: <TransactionIcon />,
     },
     {
       key: 'add',
-      title: 'Add',
       icon: (
         <AddIcon
           className={addStatus ? styles['add-icon-active'] : styles['add-icon']}
@@ -56,20 +53,22 @@ const TabFooter = () => {
     },
     {
       key: '/budget',
-      title: 'Budget',
       icon: <BudgetIcon />,
     },
     {
       key: '/user-profile',
-      title: 'Profile',
       icon: <ProfileIcon />,
     },
   ]
 
   const renderAddType = () => {
     return (
-      <div className={styles['add-active']} onClick={activeBlur()}>
-        <TransferImg onClick={goToAdd('/transfer')} />
+      <div
+        className={styles['add-active']}
+        onClick={activeBlur()}
+        data-testid="addActive"
+      >
+        <TransferImg onClick={goToAdd('/transfer')} data-testid="transfer" />
         <div>
           <IncomeImg onClick={goToAdd('/income')} />
           <ExpenseImg onClick={goToAdd('/expense')} />
@@ -87,6 +86,7 @@ const TabFooter = () => {
             <TabBar.Item
               key={item.key}
               icon={item.icon}
+              data-testid={item.key}
               className={item.key === activeKey ? styles['tab-selected'] : ''}
             />
           ))}

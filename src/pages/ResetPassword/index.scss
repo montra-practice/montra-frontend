@@ -1,0 +1,11 @@
+:local {
+  .wrapper {
+    padding: 56px 16px;
+
+    :global {
+      .adm-form-footer {
+        padding: 20px 0;
+      }
+    }
+  }
+}
