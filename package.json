@@ -113,14 +113,14 @@
     ]
   },
   "lint-staged": {
+    "**/*.{html,md,css,scss,js,json,ts,tsx,yml,yaml}": [
+      "prettier --write"
+    ],
     "**/*.{tsx,ts}": [
       "eslint --fix --ext .ts,.tsx",
-      "yarn test"
-    ],
-    "**/*.scss": "stylelint '**/*.scss' --fix",
-    "**/*.{html,md,css,scss,js,json,ts,tsx,yml,yaml}": [
-      "prettier --write",
+      "yarn test",
       "git add ."
-    ]
+    ],
+    "**/*.scss": "stylelint '**/*.scss' --fix"
   }
 }
