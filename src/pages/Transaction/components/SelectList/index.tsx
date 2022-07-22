@@ -9,14 +9,14 @@ interface IOption {
 }
 
 interface ISelectList {
+  size: 'large' | 'middle' | 'small'
+  options: IOption[]
+  onSelect?: (item: IOption) => void
+  arrowRight?: boolean
+  selectedWithBorder?: boolean
   defaultValue?: string
   defaultLabel?: string
   className?: any
-  size: 'large' | 'middle' | 'small'
-  arrowRight?: boolean
-  selectedWithBorder?: boolean
-  options: IOption[]
-  onSelect?: (item: IOption) => void
 }
 
 function getInitItem(

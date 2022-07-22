@@ -3,8 +3,8 @@ import styles from './index.scss'
 
 interface IInputProps {
   amount: string
-  placeholder?: string
   handleAmount: (v: string) => void
+  placeholder?: string
 }
 
 export default (props: IInputProps) => {

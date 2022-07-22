@@ -9,9 +9,9 @@ interface IChecklistItem {
 interface IDropDownList {
   title: string
   value: string[]
-  showSelectedNum?: boolean
-  onChange: (val: string[]) => void
   options: IChecklistItem[]
+  onChange: (val: string[]) => void
+  showSelectedNum?: boolean
 }
 
 export default (props: IDropDownList) => {
