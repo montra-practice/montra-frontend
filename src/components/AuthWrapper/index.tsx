@@ -4,10 +4,14 @@ import { Navigate, Route } from 'react-router-dom'
 
 const WHITE_ROUTE_LIST = [/^\/$/, /\/landing.*/]
 
-export default (Component: ReactNode, currentPathname: string) => {
+export default (
+  Component: ReactNode,
+  currentPathname: string,
+  isInWhite?: boolean,
+) => {
   const { getToken } = Token('token')
-  const isInWhiteList = WHITE_ROUTE_LIST.some((pathRegx) =>
-    pathRegx.test(currentPathname),
+  const isInWhiteList = WHITE_ROUTE_LIST.some(
+    (pathRegx) => pathRegx.test(currentPathname) || isInWhite,
   )
 
   return (

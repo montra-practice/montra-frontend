@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 import { NavBar, Space, Toast } from 'antd-mobile'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useRequest } from 'ahooks'
 import editImg from '@/assets/images/userProfile/edit_icon.png'
 import { IMGS_MAP, capitalizeFirstLetter } from '../Account/config'
@@ -21,10 +21,15 @@ type RecordItemProps = {
 }
 
 const AccountDetail = () => {
+  const navigate = useNavigate()
   const { type } = useParams()
   const { data, run } = useRequest(accountDetailServices.getAccountDetail, {
     manual: true,
   })
+
+  const handleToEditPage = () => {
+    navigate('/user-profile/account/edit')
+  }
 
   const handleBack = () => {
     window.history.back()
@@ -35,9 +40,14 @@ const AccountDetail = () => {
   }, [run, type])
 
   const right = (
-    <div style={{ fontSize: 24 }}>
+    <div>
       <Space style={{ '--gap': '24px' }}>
-        <img src={editImg} alt="" style={{ width: 20, height: 20 }} />
+        <img
+          src={editImg}
+          alt=""
+          style={{ width: 20, height: 20 }}
+          onClick={handleToEditPage}
+        />
       </Space>
     </div>
   )
@@ -46,10 +56,6 @@ const AccountDetail = () => {
     window.history.back()
   }
   const resultData = data?.response?.data
-  console.log(
-    '🚀 ~ file: index.tsx ~ line 38 ~ AccountDetail ~ resultData',
-    resultData,
-  )
   return (
     <div className={styles['account-detail-container']}>
       <NavBar onBack={handleBack} style={{ '--height': '64px' }} right={right}>

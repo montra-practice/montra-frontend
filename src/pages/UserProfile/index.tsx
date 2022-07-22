@@ -19,6 +19,7 @@ const UserProfile = () => {
   }, [run])
 
   const userInfo = data?.response?.data || {}
+
   return (
     <div className={styles[`${classPrefix}-container`]}>
       <div className={styles[`${classPrefix}-box`]}>
@@ -39,7 +40,6 @@ const UserProfile = () => {
           <Image src={editImg} width={20} height={20} fit="cover" />
         </div>
       </div>
-      {/* <p>James Harden</p> */}
       <UserFunctions />
       <TabFooter />
     </div>

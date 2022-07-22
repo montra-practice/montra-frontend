@@ -39,7 +39,7 @@ const Account = () => {
       </div>
       <div className={styles['payment-list-wrapper']}>
         {accountInfo?.payList?.length > 0 &&
-          accountInfo?.payList.map(
+          accountInfo.payList.map(
             ({ payment, sum }: { payment: string; sum: number }) => (
               <div
                 key={payment}
