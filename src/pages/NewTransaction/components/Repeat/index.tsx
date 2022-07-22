@@ -1,7 +1,7 @@
 import { List, Switch, Button, Mask } from 'antd-mobile'
 import { useState } from 'react'
-import BottomCard from '../BottomCard'
-import SelectList from '@/pages/Transaction/components/SelectList'
+import BottomCard from '@/components/BottomCard'
+import SelectList from '@/components/SelectList'
 import { selectOptions } from '@/constants/transaction'
 import styles from './index.scss'
 

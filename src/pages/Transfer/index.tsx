@@ -1,8 +1,8 @@
 import { NavBar, Button, Input } from 'antd-mobile'
 import { useNavigate } from 'react-router'
-import AmountInput from '../NewTransaction/components/AmountInput'
-import BottomCard from '../NewTransaction/components/BottomCard'
-import Attachment from '../NewTransaction/components/Attachment'
+import AmountInput from '../../components/AmountInput'
+import BottomCard from '@/components/BottomCard'
+import Attachment from '@/components/Attachment'
 import TransferIcon from '@/assets/icons/transfer.png'
 import styles from './index.scss'
 
