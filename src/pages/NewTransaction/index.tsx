@@ -27,7 +27,9 @@ export default () => {
 
   return (
     <div className={styles[curType]}>
-      <NavBar onBack={goBack}>{title}</NavBar>
+      <NavBar onBack={goBack} className="nav-bar-white">
+        {title}
+      </NavBar>
       <AmountInput
         amount={amount}
         handleAmount={handleAmountInput}

@@ -15,7 +15,11 @@ export default () => {
   const handleAmountInput = () => {}
   return (
     <div className={styles.wrapper}>
-      <NavBar onBack={goBack} data-testid="transferNav">
+      <NavBar
+        onBack={goBack}
+        data-testid="transferNav"
+        className="nav-bar-white"
+      >
         Transfer
       </NavBar>
       <AmountInput amount="0" handleAmount={handleAmountInput}></AmountInput>
