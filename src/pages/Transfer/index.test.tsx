@@ -18,7 +18,7 @@ describe('test Transfer page', () => {
       </Router>,
     )
     expect(screen.getByText('Transfer')).toBeInTheDocument()
-    expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getByTestId('transferNav')).toBeInTheDocument()
   })
 
   it('goes back to home page when click the back button', () => {
@@ -28,7 +28,7 @@ describe('test Transfer page', () => {
       </Router>,
     )
     // eslint-disable-next-line testing-library/no-node-access
-    fireEvent.click(screen.getByRole('button').firstElementChild!)
+    fireEvent.click(screen.getByTestId('transferNav'))
     expect(history.location.pathname).toEqual('/home')
   })
 })

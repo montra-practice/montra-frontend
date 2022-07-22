@@ -4,8 +4,8 @@ import HomeRouter from '@/pages/Home/router'
 import LandingRouter from '@/pages/Landing/router'
 import UserProfile from '@/pages/UserProfile/router'
 import TransactionRouter from '@/pages/Transaction/router'
-import IncomeRouter from '@/pages/Income/router'
-import ExpenseRouter from '@/pages/Expense/router'
+// import IncomeRouter from '@/pages/Income/router'
+// import ExpenseRouter from '@/pages/Expense/router'
 import TransferRouter from '@/pages/Transfer/router'
 import NotFound from '@/pages/NotFound/router'
 import NewTransaction from '@/pages/NewTransaction/router'
@@ -22,8 +22,8 @@ function App() {
         {HomeRouter}
         {UserProfile}
         {TransactionRouter}
-        {IncomeRouter}
-        {ExpenseRouter}
+        {/* {IncomeRouter}
+        {ExpenseRouter} */}
         {TransferRouter}
         {NewTransaction}
         {ResetPassword}
