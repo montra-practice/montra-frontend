@@ -10,6 +10,8 @@ import TransferRouter from '@/pages/Transfer/router'
 import NotFound from '@/pages/NotFound/router'
 import NewTransaction from '@/pages/NewTransaction/router'
 import ResetPassword from '@/pages/ResetPassword/router'
+import NotificationRouter from '@/pages/Notification/router'
+import BudgetRouter from '@/pages/Budget/router'
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         {TransferRouter}
         {NewTransaction}
         {ResetPassword}
+        {NotificationRouter}
+        {BudgetRouter}
         {NotFound}
         <Route path="*" element={<Navigate replace to="/404" />}></Route>
       </Routes>

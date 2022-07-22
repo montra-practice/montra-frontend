@@ -6,7 +6,7 @@ interface IProps {
   tags: string[]
 }
 
-const Tag = ({ defaultValue, tags = [] }: IProps) => {
+const Tag = ({ defaultValue, tags }: IProps) => {
   const [selection, setSelection] = useState(defaultValue)
 
   const selectionChange = (item: string) => () => {
@@ -15,15 +15,16 @@ const Tag = ({ defaultValue, tags = [] }: IProps) => {
 
   return (
     <div className={styles.wrapper}>
-      {tags.map((tag: string) => (
-        <span
-          key={tag}
-          className={selection === tag ? styles.selected : styles.tag}
-          onClick={selectionChange(tag)}
-        >
-          {tag}
-        </span>
-      ))}
+      {tags &&
+        tags.map((tag: string) => (
+          <span
+            key={tag}
+            className={selection === tag ? styles.selected : styles.tag}
+            onClick={selectionChange(tag)}
+          >
+            {tag}
+          </span>
+        ))}
     </div>
   )
 }

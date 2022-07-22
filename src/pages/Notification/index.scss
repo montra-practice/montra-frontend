@@ -1,0 +1,40 @@
+@use '~@/style/mixin.scss' as *;
+
+:local {
+  .header {
+    margin-top: 44px;
+    height: 64px;
+    font-weight: 600;
+    font-size: 18px;
+
+    .action {
+      position: relative;
+
+      > div {
+        position: absolute;
+        right: 0;
+        border-radius: 4px 4px 0 0;
+
+        > div {
+          width: 134px;
+          height: 49px;
+          background: #fff;
+          box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
+          text-align: center;
+          line-height: 49px;
+          font-weight: 400;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .no-data {
+    @include flex-center;
+
+    font-weight: 500;
+    font-size: 14px;
+    color: #91919f;
+    height: calc(100% - 108px);
+  }
+}

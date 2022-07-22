@@ -12,7 +12,7 @@ interface Item {
   value: string
 }
 
-const Select = ({ defaultValue, options = [] }: IProps) => {
+const Select = ({ defaultValue, options }: IProps) => {
   const [selection, setSelection] = useState(defaultValue)
   const [visibility, setVisibility] = useState(false)
 
@@ -39,13 +39,14 @@ const Select = ({ defaultValue, options = [] }: IProps) => {
       className={styles.select}
       onClick={changeVisibility(true)}
       onBlur={changeVisibility(false)}
+      data-testid="header"
     >
       <div className={styles['select-header']}>
-        <ArrowDownIcon />
+        <ArrowDownIcon className={visibility ? styles.rotate : ''} />
         <div>{computValue()}</div>
       </div>
       {visibility && (
-        <div className={styles.options}>
+        <div className={styles.options} data-testid="options">
           {options &&
             options.map((item) => {
               return (

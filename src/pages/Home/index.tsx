@@ -10,8 +10,14 @@ import { MonthEnglish, Tags } from '@/constants/base'
 import { transactionList } from '@/constants/transaction'
 import TransactionList from '../Transaction/components/TransactionList'
 import TabFooter from '@/components/TabFooter'
+import { useNavigate } from 'react-router-dom'
 
 function Home() {
+  const navigate = useNavigate()
+  const goNotification = () => {
+    navigate('/notification')
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -20,7 +26,7 @@ function Home() {
           options={MonthEnglish}
           defaultValue={new Date().getMonth() + ''}
         ></Select>
-        <NotificationIcon />
+        <NotificationIcon data-testid="notification" onClick={goNotification} />
       </div>
       <div className={styles.title}>
         <p>Account Balance</p>
@@ -61,6 +67,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <TabFooter />
       <TabFooter />
     </div>
   )
