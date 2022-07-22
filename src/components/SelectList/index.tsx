@@ -81,7 +81,7 @@ const SelectList = (props: ISelectList) => {
             alt="icon"
             data-testid="arrow"
             className={`${styles.arrow} ${show ? styles['arrow-rotate'] : ''}`}
-          ></img>
+          />
         </div>
       </div>
       {show && (

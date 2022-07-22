@@ -26,16 +26,16 @@ export default () => {
       <BottomCard withIcon={false}>
         <div className={styles.content}>
           <div className={styles.row}>
-            <Input className={styles.from} placeholder="from"></Input>
+            <Input className={styles.from} placeholder="from" />
             <img
               src={TransferIcon}
               alt="transfer icon"
               className={styles['transfer-icon']}
-            ></img>
-            <Input className={styles.to} placeholder="to"></Input>
+            />
+            <Input className={styles.to} placeholder="to" />
           </div>
           <div className={styles['desc-wrapper']}>
-            <Input placeholder="Describe"></Input>
+            <Input placeholder="Describe" />
           </div>
           <Attachment></Attachment>
         </div>

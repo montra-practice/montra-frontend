@@ -27,7 +27,7 @@ export default (props: IAttachProps) => {
           src={AttachIcon}
           alt="attach icon"
           className={styles['attach-icon']}
-        ></img>
+        />
         <span className={styles.title}>Add attachment</span>
       </div>
       <Mask
@@ -43,7 +43,7 @@ export default (props: IAttachProps) => {
                 src={CameraIcon}
                 alt="camera icon"
                 className={styles['icon-normal']}
-              ></img>
+              />
               <span className={styles.name}>Camera</span>
             </div>
             <div className={styles['type-bg']}>
@@ -51,7 +51,7 @@ export default (props: IAttachProps) => {
                 src={GalleryIcon}
                 alt="gallery icon"
                 className={styles['icon-normal']}
-              ></img>
+              />
               <span className={styles.name}>Image</span>
             </div>
             <div className={styles['type-bg']}>
@@ -59,7 +59,7 @@ export default (props: IAttachProps) => {
                 src={FileIcon}
                 alt="doc icon"
                 className={styles['icon-doc']}
-              ></img>
+              />
               <span className={styles.name}>Document</span>
             </div>
           </div>

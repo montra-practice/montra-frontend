@@ -42,7 +42,7 @@ export default () => {
         ></SelectList>
 
         <div className={styles['desc-wrapper']}>
-          <Input placeholder="Describe"></Input>
+          <Input placeholder="Describe" />
         </div>
 
         <SelectList options={walletTypes}></SelectList>
