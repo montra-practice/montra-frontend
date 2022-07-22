@@ -68,7 +68,6 @@ function Home() {
         </div>
       </div>
       <TabFooter />
-      <TabFooter />
     </div>
   )
 }
