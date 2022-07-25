@@ -23,6 +23,8 @@ function Home() {
       <div className={styles.header}>
         <Avatar className={styles.avatar} src={incomeImg} alt="avatar" />
         <Select
+          size="small"
+          arrow="left"
           options={MonthEnglish}
           defaultValue={new Date().getMonth() + ''}
         ></Select>
