@@ -33,6 +33,7 @@ export default () => {
       <AmountInput
         amount={amount}
         handleAmount={handleAmountInput}
+        className={styles.amount}
       ></AmountInput>
       <BottomCard withIcon={false}>
         <Select

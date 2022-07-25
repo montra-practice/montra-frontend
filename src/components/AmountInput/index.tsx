@@ -5,11 +5,12 @@ interface IInputProps {
   amount: string
   handleAmount: (v: string) => void
   placeholder?: string
+  className?: string
 }
 
 export default (props: IInputProps) => {
   return (
-    <div>
+    <div className={props.className}>
       <div className={styles.alert}>How much?</div>
       <div className={styles.row}>
         <span className={styles.dollar}>$</span>

@@ -22,7 +22,11 @@ export default () => {
       >
         Transfer
       </NavBar>
-      <AmountInput amount="0" handleAmount={handleAmountInput}></AmountInput>
+      <AmountInput
+        amount="0"
+        handleAmount={handleAmountInput}
+        className={styles.amount}
+      ></AmountInput>
       <BottomCard withIcon={false}>
         <div className={styles.content}>
           <div className={styles.row}>
