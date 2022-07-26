@@ -4,21 +4,35 @@ import AttachIcon from '@/assets/icons/attach.png'
 import CameraIcon from '@/assets/icons/camera.png'
 import GalleryIcon from '@/assets/icons/gallery.png'
 import FileIcon from '@/assets/icons/file.png'
-
+import { fileTypes } from '@/constants/base'
+import Camera from './camera'
 import styles from './index.scss'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 interface IAttachProps {}
 
 export default (props: IAttachProps) => {
   const [visible, setVisible] = useState(false)
+  const imgUpload = useRef<HTMLInputElement>(null)
+  const fileUpload = useRef<HTMLInputElement>(null)
 
   const handleMaskVisible = () => {
     setVisible(!visible)
   }
 
+  const openImgDirectory = () => {
+    console.log(imgUpload)
+    imgUpload.current?.click()
+  }
+
+  const openFileDirectory = () => {
+    console.log(fileUpload)
+    fileUpload.current?.click()
+  }
+
   return (
     <>
+      <Camera />
       <div
         onClick={() => handleMaskVisible()}
         className={styles['attach-wrapper']}
@@ -46,7 +60,13 @@ export default (props: IAttachProps) => {
               />
               <span className={styles.name}>Camera</span>
             </div>
-            <div className={styles['type-bg']}>
+            <input
+              type="file"
+              accept="image/*"
+              className={styles.hide}
+              ref={imgUpload}
+            />
+            <div className={styles['type-bg']} onClick={openImgDirectory}>
               <img
                 src={GalleryIcon}
                 alt="gallery icon"
@@ -54,7 +74,13 @@ export default (props: IAttachProps) => {
               />
               <span className={styles.name}>Image</span>
             </div>
-            <div className={styles['type-bg']}>
+            <input
+              type="file"
+              accept={fileTypes}
+              className={styles.hide}
+              ref={fileUpload}
+            />
+            <div className={styles['type-bg']} onClick={openFileDirectory}>
               <img
                 src={FileIcon}
                 alt="doc icon"

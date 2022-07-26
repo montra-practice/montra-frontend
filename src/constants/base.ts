@@ -16,3 +16,5 @@ export const MonthEnglish = [
 ]
 
 export const Tags = ['Today', 'Week', 'Month', 'Year']
+
+export const fileTypes = '.doc,.xsl,.excel,.docx'
