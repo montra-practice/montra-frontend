@@ -27,6 +27,7 @@ function Notification() {
       },
     ]
     setList(list)
+    document.title = 'Notification'
   }, [])
 
   const showActionTab = (flag?: boolean) => () => {

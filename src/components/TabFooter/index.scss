@@ -1,15 +1,21 @@
 :local {
-  .wrapper {
+  .add-active {
     width: 100%;
-    position: fixed;
+    position: absolute;
+    bottom: 75px;
+    top: 0;
     left: 0;
-    bottom: 0;
-    background: #fcfcfc;
+    text-align: center;
+    background: linear-gradient(
+      180deg,
+      rgb(139 80 255 / 10%) 0%,
+      rgb(139 80 255 / 24%) 100%
+    );
 
-    .add-active {
-      padding-bottom: 25px;
+    > div {
+      position: absolute;
+      bottom: 25px;
       width: 100%;
-      text-align: center;
 
       > div {
         display: flex;
@@ -17,41 +23,47 @@
         padding-top: 11px;
       }
     }
+  }
 
-    .footer {
-      .add-icon {
-        margin-bottom: 27px;
-        padding: 7px;
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fcfcfc;
+
+    .add-icon {
+      margin-bottom: 27px;
+      padding: 7px;
+    }
+
+    .add-icon-active {
+      margin-bottom: 27px;
+      padding: 7px;
+      transform-origin: center;
+      transform: rotate(45deg);
+      border-radius: 50%;
+      background: rgb(139 80 255 / 24%);
+    }
+
+    :global {
+      .adm-tab-bar-item {
+        padding-top: 0;
       }
 
-      .add-icon-active {
-        margin-bottom: 27px;
-        padding: 7px;
-        transform-origin: center;
-        transform: rotate(45deg);
-        border-radius: 50%;
-        background: rgb(139 80 255 / 24%);
+      .adm-tab-bar-item-active {
+        svg path {
+          fill: #7f3dff;
+        }
       }
 
-      :global {
-        .adm-tab-bar-item {
-          padding-top: 0;
-        }
+      .adm-tab-bar-wrap {
+        overflow: visible;
 
-        .adm-tab-bar-item-active {
-          svg path {
-            fill: #7f3dff;
-          }
-        }
-
-        .adm-tab-bar-wrap {
-          overflow: visible;
-
-          .adm-tab-bar-item-icon {
-            height: 68px;
-            display: flex;
-            align-items: center;
-          }
+        .adm-tab-bar-item-icon {
+          height: 68px;
+          display: flex;
+          align-items: center;
         }
       }
     }

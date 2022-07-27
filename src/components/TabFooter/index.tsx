@@ -64,21 +64,25 @@ const TabFooter = () => {
   const renderAddType = () => {
     return (
       <div
+        tabIndex={0}
+        onBlur={activeBlur()}
         className={styles['add-active']}
         onClick={activeBlur()}
         data-testid="addActive"
       >
-        <TransferImg onClick={goToAdd('/transfer')} data-testid="transfer" />
         <div>
-          <IncomeImg onClick={goToAdd('/income')} />
-          <ExpenseImg onClick={goToAdd('/expense')} />
+          <TransferImg onClick={goToAdd('/transfer')} data-testid="transfer" />
+          <div>
+            <IncomeImg onClick={goToAdd('/income')} />
+            <ExpenseImg onClick={goToAdd('/expense')} />
+          </div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className={styles.wrapper}>
+    <>
       {addStatus && renderAddType()}
       <div className={styles.footer}>
         <TabBar activeKey={activeKey} onChange={onTabChange}>
@@ -92,7 +96,7 @@ const TabFooter = () => {
           ))}
         </TabBar>
       </div>
-    </div>
+    </>
   )
 }
 

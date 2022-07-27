@@ -49,7 +49,7 @@ const Select = (props: ISelect) => {
     setShow(!show)
   }
 
-  const selectItem = (item: any) => {
+  const selectItem = (item: any) => () => {
     setCheckedItem(item)
     setShow(false)
     props.onSelect && props.onSelect(item)
@@ -88,7 +88,7 @@ const Select = (props: ISelect) => {
               className={
                 checkedItem.value === item.value ? styles.selected : styles.item
               }
-              onClick={() => selectItem(item)}
+              onClick={selectItem(item)}
               key={item.value}
             >
               {item.label}

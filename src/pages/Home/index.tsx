@@ -11,12 +11,17 @@ import { transactionList } from '@/constants/transaction'
 import TransactionList from '@/components/TransactionList'
 import TabFooter from '@/components/TabFooter'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 function Home() {
   const navigate = useNavigate()
   const goNotification = () => {
     navigate('/notification')
   }
+
+  useEffect(() => {
+    document.title = 'Home'
+  }, [])
 
   return (
     <div className={styles.wrapper}>
@@ -64,9 +69,7 @@ function Home() {
             Recent Transaction
             <div>See All</div>
           </div>
-          <div>
-            <TransactionList list={transactionList[0].list} />
-          </div>
+          <TransactionList list={transactionList[0].list} />
         </div>
       </div>
       <TabFooter />
