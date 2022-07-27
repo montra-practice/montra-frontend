@@ -1,55 +1,68 @@
 import { useEffect, useState } from 'react'
 import { openCamera } from './cameraMethods'
 import styles from './camera.scss'
+import StartIcon from '@/assets/icons/start_icon.png'
+import { CheckCircleFill, RedoOutline } from 'antd-mobile-icons'
 
-// const VIDEO_WIDTH = 300
-// const RATIO = document.body.scrollWidth / document.body.scrollHeight
-// const VIDEO_HEIGHT = VIDEO_WIDTH / RATIO
+const VIDEO_WIDTH = document.body.scrollWidth
+interface ICameraProps {
+  onBack: () => void
+  onComplete: (imgSrc: string) => void
+}
 
-export default () => {
-  openCamera()
-
-  const [photograph, setPhotograph] = useState('')
-  // const [canvasVisible, setCanvasVisible] = useState(false)
+export default (props: ICameraProps) => {
+  const [iconShow, setIconShow] = useState(false)
+  const [imgSrc, setImgSrc] = useState('')
 
   useEffect(() => {
+    openCamera()
     const canvas = document.getElementById('canvas') as HTMLCanvasElement
     const cameraBtn = document.getElementById('cameraBtn') as HTMLDivElement
     const context = canvas.getContext('2d') as CanvasRenderingContext2D
     const video = document.getElementById('video') as HTMLVideoElement
 
-    cameraBtn.addEventListener('click', function () {
-      // draw canvas image
+    const handleDramImg = () => {
+      context.drawImage(video, 0, 0, video.width, video.height)
+      setImgSrc(canvas.toDataURL('image/png'))
+      setIconShow(true)
+    }
+    cameraBtn.addEventListener('click', handleDramImg)
 
-      const { videoWidth, videoHeight } = video
-      console.log(
-        videoWidth,
-        videoHeight,
-        window.screen.width,
-        document.body.scrollWidth,
-        document.body.clientWidth,
-      )
-      const videoRadio = videoWidth / videoHeight
-      const docWidth = document.body.scrollWidth
-      // const docHeight = docWidth / videoRadio
+    return () => {
+      cameraBtn.removeEventListener('click', handleDramImg)
+    }
+  }, [])
 
-      console.log(docWidth / videoRadio)
+  const goBack = () => {
+    props.onBack()
+    setIconShow(false)
+  }
 
-      context.drawImage(video, 0, 0, 300, 400)
-      setPhotograph(canvas.toDataURL('image/jpeg'))
-      // setCanvasVisible(true)
-    })
-  })
+  const complete = () => {
+    props.onComplete(imgSrc)
+  }
+
   return (
     <>
       <div className={styles.camera}>
-        {/* <div> */}
-        <video id="video" className={styles.video}></video>
-        <canvas id="canvas" className={styles.canvas}></canvas>
-        <img src={photograph} className={styles.photo} alt="photograph" />
-        {/* </div> */}
-        <div id="cameraBtn" className={styles.startBtn}>
-          拍照
+        <video id="video" width={VIDEO_WIDTH} height="300"></video>
+        <canvas
+          id="canvas"
+          width={VIDEO_WIDTH}
+          height="300"
+          className={styles.canvas}
+        ></canvas>
+        <div className={styles.bottom}>
+          <RedoOutline className={styles.back} onClick={goBack} />
+          <img
+            id="cameraBtn"
+            src={StartIcon}
+            alt="start icon"
+            className={styles['camera-btn']}
+          />
+          {iconShow && (
+            <CheckCircleFill className={styles.complete} onClick={complete} />
+          )}
         </div>
       </div>
     </>

@@ -7,43 +7,88 @@ import FileIcon from '@/assets/icons/file.png'
 import { fileTypes } from '@/constants/base'
 import Camera from './camera'
 import styles from './index.scss'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface IAttachProps {}
 
 export default (props: IAttachProps) => {
+  const initFileType = 'image/*'
   const [visible, setVisible] = useState(false)
-  const imgUpload = useRef<HTMLInputElement>(null)
+  const [cameraVisible, setCameraVisible] = useState(false)
+  const [fileType, setFileType] = useState(initFileType)
+  const [imgSrc, setImgSrc] = useState('')
+  const [fileName, setFileName] = useState('')
   const fileUpload = useRef<HTMLInputElement>(null)
 
   const handleMaskVisible = () => {
     setVisible(!visible)
   }
 
-  const openImgDirectory = () => {
-    console.log(imgUpload)
-    imgUpload.current?.click()
+  const handleCamera = () => {
+    setCameraVisible(!cameraVisible)
   }
 
-  const openFileDirectory = () => {
-    console.log(fileUpload)
-    fileUpload.current?.click()
+  const openFileDirectory = (type: string) => {
+    setFileType(type)
+    setTimeout(() => fileUpload.current?.click(), 0)
+  }
+
+  const handleComplete = (img: string) => {
+    handleCamera()
+    handleMaskVisible()
+    setImgSrc(img)
+  }
+
+  useEffect(() => {
+    const input = fileUpload.current as HTMLInputElement
+    const handleFile = () => {
+      const files = input?.files || []
+      if (fileType === initFileType) {
+        setImgSrc(URL.createObjectURL(files[0]))
+        setFileName('')
+      } else {
+        setFileName(files[0].name)
+        setImgSrc('')
+        console.log('file')
+      }
+
+      handleMaskVisible()
+    }
+    input.addEventListener('change', handleFile)
+    console.log(fileUpload.current, fileUpload.current?.files)
+  })
+
+  const Attach = (imgSrc: string, fileName: string) => {
+    if (imgSrc) {
+      return (
+        <img src={imgSrc} alt="img upload" className={styles['upload-img']} />
+      )
+    } else if (fileName) {
+      return (
+        <div className={styles['file-wrapper']}>
+          <img src={FileIcon} alt="doc icon" className={styles['file-icon']} />
+          <div className={styles.title}>
+            {fileName} {imgSrc}
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div onClick={handleMaskVisible} className={styles['attach-wrapper']}>
+          <img
+            src={AttachIcon}
+            alt="attach icon"
+            className={styles['attach-icon']}
+          />
+          <span className={styles.title}>Add attachment</span>
+        </div>
+      )
+    }
   }
 
   return (
     <>
-      <Camera />
-      <div
-        onClick={() => handleMaskVisible()}
-        className={styles['attach-wrapper']}
-      >
-        <img
-          src={AttachIcon}
-          alt="attach icon"
-          className={styles['attach-icon']}
-        />
-        <span className={styles.title}>Add attachment</span>
-      </div>
+      {Attach(imgSrc, fileName)}
       <Mask
         opacity="thin"
         visible={visible}
@@ -52,7 +97,8 @@ export default (props: IAttachProps) => {
       >
         <BottomCard>
           <div className={styles['type-wrapper']}>
-            <div className={styles['type-bg']}>
+            {/* camera */}
+            <div className={styles['type-bg']} onClick={handleCamera}>
               <img
                 src={CameraIcon}
                 alt="camera icon"
@@ -60,13 +106,11 @@ export default (props: IAttachProps) => {
               />
               <span className={styles.name}>Camera</span>
             </div>
-            <input
-              type="file"
-              accept="image/*"
-              className={styles.hide}
-              ref={imgUpload}
-            />
-            <div className={styles['type-bg']} onClick={openImgDirectory}>
+            {/* upload image */}
+            <div
+              className={styles['type-bg']}
+              onClick={() => openFileDirectory(initFileType)}
+            >
               <img
                 src={GalleryIcon}
                 alt="gallery icon"
@@ -74,13 +118,11 @@ export default (props: IAttachProps) => {
               />
               <span className={styles.name}>Image</span>
             </div>
-            <input
-              type="file"
-              accept={fileTypes}
-              className={styles.hide}
-              ref={fileUpload}
-            />
-            <div className={styles['type-bg']} onClick={openFileDirectory}>
+            {/* upload other File except image */}
+            <div
+              className={styles['type-bg']}
+              onClick={() => openFileDirectory(fileTypes)}
+            >
               <img
                 src={FileIcon}
                 alt="doc icon"
@@ -91,6 +133,17 @@ export default (props: IAttachProps) => {
           </div>
         </BottomCard>
       </Mask>
+      {/* camera page for taking a picture */}
+      {cameraVisible && (
+        <Camera onBack={handleCamera} onComplete={handleComplete} />
+      )}
+      {/* input for uploading files */}
+      <input
+        type="file"
+        accept={fileType}
+        ref={fileUpload}
+        className={styles.hide}
+      />
     </>
   )
 }
