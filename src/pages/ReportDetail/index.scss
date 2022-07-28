@@ -1,0 +1,79 @@
+:local {
+  .header {
+    margin-top: 20px;
+    height: 64px;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  .switch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+
+    > div:first-child {
+      margin-bottom: 0;
+    }
+
+    > img {
+      height: 48px;
+      width: 48px;
+    }
+  }
+
+  .money {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #000;
+    padding-left: 16px;
+  }
+
+  .chart {
+    width: 375px;
+    height: 169.5px;
+    border: 1px solid #7f3dff;
+    margin-top: 16px;
+  }
+
+  .tab {
+    height: 56px;
+    background: #f1f1fa;
+    border-radius: 32px;
+    margin: 8px 16px;
+
+    > div {
+      display: inline-flex;
+      width: 50%;
+      border-radius: 32px;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 16px;
+      color: #0d0e0f;
+    }
+
+    .active-tab {
+      background: #7f3dff;
+      color: #fcfcfc;
+    }
+  }
+
+  .filter {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    > div {
+      margin-bottom: 0;
+    }
+  }
+
+  .list {
+    height: 280px;
+    overflow-y: auto;
+  }
+}

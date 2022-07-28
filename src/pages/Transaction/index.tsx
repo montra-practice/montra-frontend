@@ -1,4 +1,4 @@
-import Filter from './components/Filter'
+import Filter from '@/components/Filter'
 import TransactionList from '@/components/TransactionList'
 import {
   transactionList,
@@ -10,12 +10,18 @@ import FilterIcon from '@/assets/icons/filter.png'
 import Select from '@/components/Select'
 import { useState } from 'react'
 import TabFooter from '@/components/TabFooter'
+import { useNavigate } from 'react-router-dom'
 
 export default () => {
+  const navigate = useNavigate()
   const [showFilter, setShow] = useState(false)
 
   const handleFilterShow = (show: boolean) => {
     setShow(!show)
+  }
+
+  const seeReport = () => {
+    navigate('/financial-report')
   }
 
   return (
@@ -33,7 +39,7 @@ export default () => {
         )}
       </div>
 
-      <div className={styles.financial}>
+      <div className={styles.financial} onClick={seeReport}>
         <span>See you financial report</span>
         <img src={ArrowRight} alt="right arrow" className={styles.arrow} />
       </div>

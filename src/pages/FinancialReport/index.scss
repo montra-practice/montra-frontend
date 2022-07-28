@@ -1,0 +1,124 @@
+@use '@/style/mixin.scss' as *;
+
+:local {
+  .wrapper {
+    padding-top: 20px;
+    height: calc(100% - 20px);
+
+    :global {
+      .adm-tabs-header {
+        border: none;
+
+        .adm-tabs-tab-line {
+          background: transparent;
+        }
+
+        .adm-tabs-tab-wrapper {
+          text-align: center;
+          padding: 0 4px;
+
+          .adm-tabs-tab {
+            width: 100%;
+            padding: 0;
+            border-radius: 4px;
+            border: 2px solid rgb(255 255 255 / 24%);
+          }
+
+          .adm-tabs-tab-active {
+            border-color: #fff;
+          }
+        }
+      }
+    }
+
+    .type {
+      text-align: center;
+      width: 100%;
+
+      .time {
+        height: 210px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 130px;
+        color: #fff;
+        opacity: 0.72;
+      }
+
+      .title {
+        width: 343px;
+        height: 78px;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+        text-align: center;
+        color: #fff;
+      }
+
+      .box {
+        margin: 27px;
+        height: 100%;
+
+        .budgets {
+          @include flex-center;
+
+          display: inline-flex;
+          background: #fcfcfc;
+          border: 1px solid #e3e5e5;
+          border-radius: 24px;
+          padding: 16px;
+          width: fit-content;
+
+          > img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+          }
+
+          > span {
+            padding-left: 8px;
+          }
+        }
+
+        .budgets:nth-child(2n + 2) {
+          margin-left: 22px;
+        }
+
+        .budgets:nth-child(2n + 3) {
+          margin-top: 10px;
+        }
+      }
+    }
+
+    .content {
+      padding: 16px;
+
+      > div:first-child {
+        margin-top: 138px;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+        color: #fff;
+        text-align: left;
+      }
+
+      > div:nth-child(2) {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+        color: #fff;
+        margin-top: 14px;
+        text-align: left;
+      }
+
+      > button {
+        margin-top: 384px;
+        font-weight: 600;
+        font-size: 18px;
+        color: #7f3dff;
+        border-radius: 16px;
+        background: #fff;
+      }
+    }
+  }
+}

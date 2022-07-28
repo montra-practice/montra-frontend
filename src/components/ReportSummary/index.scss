@@ -1,0 +1,82 @@
+@use '@/style/mixin.scss' as *;
+
+:local {
+  .type {
+    text-align: center;
+    width: 100%;
+
+    .time {
+      height: 210px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 130px;
+      color: #fff;
+      opacity: 0.72;
+    }
+
+    .title {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 39px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .money {
+      margin-top: 21px;
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 80px;
+      color: #fff;
+    }
+
+    .box {
+      margin: 127px auto 0;
+      width: 343px;
+      height: 231px;
+      background: #fff;
+      border-radius: 24px;
+
+      > div:first-child {
+        white-space: pre-line;
+        padding-top: 16px;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+        text-align: center;
+        color: #0d0e0f;
+      }
+
+      > div:nth-child(2) {
+        width: 156px;
+        height: 64px;
+        border: 1px solid #e3e5e5;
+        border-radius: 24px;
+        font-weight: 600;
+        font-size: 18px;
+        text-align: center;
+        color: #0d0e0f;
+        margin: 14px auto;
+        @include flex-center;
+
+        > img {
+          width: 32px;
+          height: 32px;
+          border-radius: 8px;
+        }
+
+        > span {
+          padding-left: 8px;
+        }
+      }
+    }
+
+    > div:last-child {
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 44px;
+      color: #0d0e0f;
+    }
+  }
+}

@@ -12,6 +12,8 @@ import NewTransaction from '@/pages/NewTransaction/router'
 import ResetPassword from '@/pages/ResetPassword/router'
 import NotificationRouter from '@/pages/Notification/router'
 import BudgetRouter from '@/pages/Budget/router'
+import FinancialReportRouter from '@/pages/FinancialReport/router'
+import ReportDetailRouter from '@/pages/ReportDetail/router'
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         {ResetPassword}
         {NotificationRouter}
         {BudgetRouter}
+        {FinancialReportRouter}
+        {ReportDetailRouter}
         {NotFound}
         <Route path="*" element={<Navigate replace to="/404" />}></Route>
       </Routes>
