@@ -1,7 +1,7 @@
 import { List, Switch, Button, Mask } from 'antd-mobile'
 import { useState } from 'react'
 import BottomCard from '@/components/BottomCard'
-import SelectList from '@/components/SelectList'
+import Select from '@/components/Select'
 import { selectOptions } from '@/constants/transaction'
 import styles from './index.scss'
 
@@ -105,43 +105,46 @@ export default (props: IRepeat) => {
         <BottomCard>
           {!next ? (
             <div className={styles['select-wrapper']}>
-              <SelectList options={selectOptions} onSelect={handleFreqSelect} />
-              <SelectList
+              <Select
+                options={selectOptions}
+                onSelect={handleFreqSelect}
+              ></Select>
+              <Select
                 options={selectOptions}
                 onSelect={handleEndAfterSelect}
-              />
+              ></Select>
             </div>
           ) : (
             <div className={styles['select-wrapper']}>
               <div className={styles.between}>
-                <SelectList
+                <Select
                   size="middle"
                   options={selectOptions}
                   defaultLabel="Frequency"
                   defaultValue={frequency.value}
-                ></SelectList>
-                <SelectList
+                ></Select>
+                <Select
                   size="middle"
                   options={selectOptions}
                   defaultLabel="Month"
-                ></SelectList>
-                <SelectList
+                ></Select>
+                <Select
                   size="middle"
                   options={selectOptions}
                   defaultLabel="Date"
-                ></SelectList>
+                ></Select>
               </div>
               <div className={styles.between}>
-                <SelectList
+                <Select
                   size="middle"
                   options={selectOptions}
                   defaultLabel="Date"
-                ></SelectList>
-                <SelectList
+                ></Select>
+                <Select
                   size="middle"
                   options={selectOptions}
                   defaultLabel="Full Date"
-                ></SelectList>
+                ></Select>
               </div>
             </div>
           )}

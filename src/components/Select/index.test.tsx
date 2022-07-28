@@ -1,23 +1,15 @@
-import React from 'react'
-import { screen, render, fireEvent } from '@testing-library/react'
+import { screen, render } from '@testing-library/react'
 import Select from '.'
-import { MonthEnglish } from '@/constants/base'
+import { selectOptions } from '@/constants/transaction'
 
-describe('test Select component', () => {
-  it('renders select', () => {
-    render(<Select options={[]} defaultValue={''} />)
-    expect(screen.getByTestId('header')).toBeInTheDocument()
-  })
+const mockData = {
+  selectedWithBorder: false,
+  options: selectOptions,
+}
 
-  it('shows option when click the header', () => {
-    render(
-      <Select
-        options={MonthEnglish}
-        defaultValue={new Date().getMonth() + ''}
-      />,
-    )
-    fireEvent.click(screen.getByTestId('header'))
-    expect(screen.getByText('January')).toBeInTheDocument()
-    fireEvent.click(screen.getByText('January'))
+describe('Select component', () => {
+  it('should render Select header', () => {
+    render(<Select {...mockData} />)
+    expect(screen.getByTestId('arrow')).toBeInTheDocument()
   })
 })

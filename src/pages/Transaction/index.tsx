@@ -7,7 +7,7 @@ import {
 } from '@/constants/transaction'
 import styles from './index.scss'
 import FilterIcon from '@/assets/icons/filter.png'
-import SelectList from '../../components/SelectList'
+import Select from '@/components/Select'
 import { useState } from 'react'
 import TabFooter from '@/components/TabFooter'
 
@@ -21,9 +21,7 @@ export default () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.row}>
-        <div>
-          <SelectList size="small" arrowRight={false} options={selectOptions} />
-        </div>
+        <Select size="small" arrow="left" options={selectOptions}></Select>
         <img
           src={FilterIcon}
           alt="filter icon"

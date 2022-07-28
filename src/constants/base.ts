@@ -1,18 +1,20 @@
 export const EMAIL_REGX = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/g
 
 export const MonthEnglish = [
-  { key: '0', value: 'January' },
-  { key: '1', value: 'February' },
-  { key: '2', value: 'March' },
-  { key: '3', value: 'April' },
-  { key: '4', value: 'May' },
-  { key: '5', value: 'June' },
-  { key: '6', value: 'July' },
-  { key: '7', value: 'August' },
-  { key: '8', value: 'September' },
-  { key: '9', value: 'October' },
-  { key: '10', value: 'November' },
-  { key: '11', value: 'December' },
+  { value: '0', label: 'January' },
+  { value: '1', label: 'February' },
+  { value: '2', label: 'March' },
+  { value: '3', label: 'April' },
+  { value: '4', label: 'May' },
+  { value: '5', label: 'June' },
+  { value: '6', label: 'July' },
+  { value: '7', label: 'August' },
+  { value: '8', label: 'September' },
+  { value: '9', label: 'October' },
+  { value: '10', label: 'November' },
+  { value: '11', label: 'December' },
 ]
 
 export const Tags = ['Today', 'Week', 'Month', 'Year']
+
+export const fileTypes = '.doc,.docx,.xls,.xlsx,.pdf'

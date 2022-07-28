@@ -2164,6 +2164,11 @@
   "resolved" "https://registry.npmjs.org/@types/trusted-types/-/trusted-types-2.0.2.tgz"
   "version" "2.0.2"
 
+"@types/webrtc@^0.0.32":
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/@types/webrtc/-/webrtc-0.0.32.tgz#b2d55194202879ad241640e291382419a19250d9"
+  integrity sha512-+F0Ozq+ksnKtjcMHujSgb4A1Vjt0b4wvvxP3/pTnXKsIrLo34EgHh2z3qJq3ntX4dbK6ytxpY1rzO/4Z8rVrHg==
+
 "@types/ws@^8.5.1":
   "integrity" "sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w=="
   "resolved" "https://registry.npmjs.org/@types/ws/-/ws-8.5.3.tgz"

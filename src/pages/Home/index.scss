@@ -99,64 +99,60 @@
       }
     }
 
-    .add-related {
-      position: relative;
+    .add-active {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      right: 0;
+      left: 0;
+      background: linear-gradient(
+        180deg,
+        rgb(139 80 255 / 12%) 0%,
+        rgb(139 80 255 / 24%) 100%
+      );
+    }
 
-      .add-active {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        right: 0;
-        left: 0;
-        background: linear-gradient(
-          180deg,
-          rgb(139 80 255 / 12%) 0%,
-          rgb(139 80 255 / 24%) 100%
-        );
+    .tags {
+      padding: 0 20px;
+
+      > div {
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 8px;
+      }
+    }
+
+    .content {
+      padding: 0 20px;
+
+      > div:first-child {
+        height: 56px;
+        font-weight: 600;
+        font-size: 18px;
+        color: #292b2d;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        div {
+          width: 78px;
+          height: 32px;
+          background: #eee5ff;
+          border-radius: 40px;
+          display: inline-block;
+          line-height: 32px;
+          text-align: center;
+          font-weight: 500;
+          font-size: 14px;
+          color: #7f3dff;
+        }
       }
 
-      .tags {
-        padding: 0 20px;
-
-        > div {
-          height: 34px;
-          display: flex;
-          align-items: center;
-          justify-content: space-around;
-          margin-top: 8px;
-        }
-      }
-
-      .content {
-        padding: 0 20px;
-
-        > div:first-child {
-          height: 56px;
-          font-weight: 600;
-          font-size: 18px;
-          color: #292b2d;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-
-          div {
-            width: 78px;
-            height: 32px;
-            background: #eee5ff;
-            border-radius: 40px;
-            display: inline-block;
-            line-height: 32px;
-            text-align: center;
-            font-weight: 500;
-            font-size: 14px;
-            color: #7f3dff;
-          }
-        }
-
-        > div:last-child {
-          height: 270px;
-          overflow-y: auto;
-        }
+      > div:last-child {
+        height: 270px;
+        overflow-y: auto;
       }
     }
   }

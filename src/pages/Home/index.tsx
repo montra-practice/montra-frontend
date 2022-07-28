@@ -11,6 +11,7 @@ import { transactionList } from '@/constants/transaction'
 import TransactionList from '@/components/TransactionList'
 import TabFooter from '@/components/TabFooter'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 function Home() {
   const navigate = useNavigate()
@@ -18,11 +19,17 @@ function Home() {
     navigate('/notification')
   }
 
+  useEffect(() => {
+    document.title = 'Home'
+  }, [])
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <Avatar className={styles.avatar} src={incomeImg} alt="avatar" />
         <Select
+          size="small"
+          arrow="left"
           options={MonthEnglish}
           defaultValue={new Date().getMonth() + ''}
         ></Select>
@@ -62,9 +69,7 @@ function Home() {
             Recent Transaction
             <div>See All</div>
           </div>
-          <div>
-            <TransactionList list={transactionList[0].list} />
-          </div>
+          <TransactionList list={transactionList[0].list} />
         </div>
       </div>
       <TabFooter />

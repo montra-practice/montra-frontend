@@ -11,30 +11,8 @@
     background-color: $color-red;
   }
 
-  .alert {
-    color: #fcfcfc;
-    font-size: $font-size-mid;
-    font-weight: 600;
+  .amount {
     margin-top: 83px;
-    margin-left: 26px;
-  }
-
-  .dollar {
-    font-size: 64px;
-    color: #fcfcfc;
-  }
-
-  .input {
-    --font-size: 64px;
-    --color: #fcfcfc;
-  }
-
-  .row {
-    display: flex;
-    flex-direction: row;
-    height: 77px;
-    line-height: 77px;
-    padding: 13px 25px 16px;
   }
 
   .desc-wrapper {

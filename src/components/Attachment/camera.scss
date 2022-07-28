@@ -1,0 +1,52 @@
+@use '@/style/variables.scss' as *;
+
+:local {
+  .camera {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 100vh;
+    background-color: $color-light-primary;
+    z-index: 1000;
+    overflow: scroll;
+
+    #video {
+      padding-top: 20px;
+    }
+
+    .bottom {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 26px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .camera-btn {
+      width: 64px;
+      height: 64px;
+    }
+
+    @mixin icon {
+      width: 60px;
+      height: 60px;
+    }
+
+    .back {
+      @include icon;
+
+      color: $color-gray;
+    }
+
+    .complete {
+      @include icon;
+
+      color: $color-green;
+    }
+  }
+}

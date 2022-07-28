@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router'
 import { useState } from 'react'
 import { categoryTypes, walletTypes } from '@/constants/transaction'
 import AmountInput from '@/components/AmountInput'
-import SelectList from '@/components/SelectList'
+import Select from '@/components/Select'
 import Attachment from '@/components/Attachment'
 import BottomCard from '@/components/BottomCard'
 import Repeat from './components/Repeat'
@@ -33,19 +33,20 @@ export default () => {
       <AmountInput
         amount={amount}
         handleAmount={handleAmountInput}
+        className={styles.amount}
       ></AmountInput>
       <BottomCard withIcon={false}>
-        <SelectList
+        <Select
           size="large"
           options={categoryTypes}
           selectedWithBorder={true}
-        ></SelectList>
+        ></Select>
 
         <div className={styles['desc-wrapper']}>
           <Input placeholder="Describe" />
         </div>
 
-        <SelectList options={walletTypes}></SelectList>
+        <Select options={walletTypes}></Select>
         <Attachment></Attachment>
         <Repeat />
         <Button className="btn-big">Continue</Button>
