@@ -1,0 +1,17 @@
+@use '~@/style/variables.scss' as *;
+
+:local {
+  .user-edit-popup-container {
+    :global {
+      .adm-input-element {
+        padding-left: 12px;
+        height: 56px;
+        background-color: $color-white;
+      }
+
+      .adm-input {
+        background-color: $color-white;
+      }
+    }
+  }
+}

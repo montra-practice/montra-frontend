@@ -27,6 +27,6 @@ export const userFunctionsConfigList = [
   {
     title: 'Logout',
     icon: IMGS_MAP.get('logout'),
-    path: '/user-profile/logout',
+    path: '',
   },
 ]

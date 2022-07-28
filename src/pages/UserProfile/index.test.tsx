@@ -70,10 +70,4 @@ describe('test userProfile page', () => {
     userEvent.click(screen.getByTestId('Export Data'))
     expect(history.location.pathname).toBe('/user-profile/export-data')
   })
-
-  test('navigate to user porfiles logout page', () => {
-    setup()
-    userEvent.click(screen.getByTestId('Logout'))
-    expect(history.location.pathname).toBe('/user-profile/logout')
-  })
 })

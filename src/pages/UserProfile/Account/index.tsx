@@ -21,6 +21,11 @@ const Account = () => {
     if (!payment) return
     navigate(`/user-profile/account/detail/${payment}`)
   }
+
+  const handleToAddPage = () => {
+    navigate('/user-profile/account/add')
+  }
+
   useEffect(() => {
     document.title = 'Account'
     run()
@@ -56,7 +61,9 @@ const Account = () => {
           )}
       </div>
       <div className={styles['add-btn-box']}>
-        <Button className={styles['add-btn']}>+ Add new wallet</Button>
+        <Button className={styles['add-btn']} onClick={handleToAddPage}>
+          + Add new wallet
+        </Button>
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Image } from 'antd-mobile'
 import { useRequest } from 'ahooks'
+import { useNavigate } from 'react-router-dom'
 import UserFunctions from './components/UserFunctions'
 import * as userProfileServices from '@/store/userProfile/index'
 import editImg from '@/assets/images/userProfile/edit_icon.png'
@@ -10,6 +11,7 @@ import TabFooter from '@/components/TabFooter'
 const classPrefix = 'user-profile'
 
 const UserProfile = () => {
+  const navigate = useNavigate()
   const { data, run } = useRequest(userProfileServices.getUserInfo, {
     manual: true,
   })
@@ -33,11 +35,17 @@ const UserProfile = () => {
           />
         </div>
         <div className={styles['user-info']}>
-          <span data-testid="nickname">{userInfo?.nickname}</span>
+          <span data-testid="nickname">{userInfo?.nickName}</span>
           <p data-testid="realName">{userInfo.realName}</p>
         </div>
         <div className={styles['action-box']} data-testid="edit-box">
-          <Image src={editImg} width={20} height={20} fit="cover" />
+          <Image
+            src={editImg}
+            width={20}
+            height={20}
+            fit="cover"
+            onClick={() => navigate('/user-profile/edit')}
+          />
         </div>
       </div>
       <UserFunctions />

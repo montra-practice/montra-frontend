@@ -58,7 +58,11 @@ const AccountDetail = () => {
   const resultData = data?.response?.data
   return (
     <div className={styles['account-detail-container']}>
-      <NavBar onBack={handleBack} style={{ '--height': '64px' }} right={right}>
+      <NavBar
+        onBack={handleBack}
+        style={{ '--height': '64px', paddingRight: 24 }}
+        right={right}
+      >
         Detail account
       </NavBar>
       <div className={styles['detail-card']}>
@@ -70,12 +74,12 @@ const AccountDetail = () => {
       </div>
       {resultData?.list?.length > 0 &&
         resultData.list.map((item: RecordItemProps) => (
-          <div className={styles['consumption-record-card']}>
+          <div className={styles['consumption-record-card']} key={item.date}>
             <div className={styles['consumption-date']}>{item?.date}</div>
             <div className={styles['consumption-list']}>
               {item?.list?.length > 0 &&
-                item.list.map((childItem) => (
-                  <div className={styles['consumption-item']}>
+                item.list.map((childItem, index) => (
+                  <div className={styles['consumption-item']} key={index}>
                     <img src={DETAIL_IMGS_MAP.get(childItem?.type)} alt="" />
                     <div className={styles['content']}>
                       <p className={styles['title']}>
