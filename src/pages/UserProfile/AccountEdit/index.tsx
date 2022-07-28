@@ -26,10 +26,6 @@ const EditAccount = () => {
     () => location.pathname === '/user-profile/account/edit',
     [location.pathname],
   )
-  console.log(
-    '🚀 ~ file: index.tsx ~ line 25 ~ EditAccount ~ location',
-    isEditPage,
-  )
 
   const handleBack = () => {
     window.history.back()
@@ -43,13 +39,22 @@ const EditAccount = () => {
     setSelectedBankType(type !== selectedBankType ? type : '')
   }
 
-  const right = (
+  const handleSubmit = () => {
+    console.log({
+      accountName,
+      pickerVal,
+      selectedBankType,
+    })
+  }
+
+  const right = isEditPage ? (
     <div>
       <Space style={{ '--gap': '24px' }}>
         <DeleteOutline fontSize={20} />
       </Space>
     </div>
-  )
+  ) : null
+
   return (
     <div className={styles['account-edit-container']}>
       <NavBar
@@ -120,7 +125,7 @@ const EditAccount = () => {
             </div>
           )}
           <div className={styles['btn']}>
-            <Button>Continue</Button>
+            <Button onClick={handleSubmit}>Continue</Button>
           </div>
         </div>
       </div>

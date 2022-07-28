@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Image } from 'antd-mobile'
 import { userFunctionsConfigList } from './config'
 import { useNavigate } from 'react-router-dom'
-import UserLogoutPopup from '../UserLogoutPopUp'
+import UserLogoutPopup from '../UserLogoutPopUp/index'
 import styles from './index.scss'
 
 const UserFunctions = () => {

@@ -5,6 +5,7 @@ import UserAccount from './Account'
 import EditAccount from './AccountEdit'
 import UserInfoEdit from './UserInfoEdit'
 import AccountDetail from './AccountDetail'
+import UserSetting from './UserSetting'
 
 const ROUTE_PATH = {
   USER_PROFILE: 'user-profile',
@@ -13,6 +14,8 @@ const ROUTE_PATH = {
   USER_PROFILE_EDIT_ACCOUNT: 'user-profile/account/edit',
   USER_PROFILE_ADD_ACCOUNT: 'user-profile/account/add',
   USER_PROFILE_ACCOUNT_DETAIL: 'user-profile/account/detail/:type',
+
+  USER_SETTING: 'user-profile/settings',
 }
 
 export default [
@@ -45,5 +48,8 @@ export default [
     key={ROUTE_PATH.USER_PROFILE_ACCOUNT_DETAIL}
   >
     {AuthWrapper(<AccountDetail />, ROUTE_PATH.USER_PROFILE_ACCOUNT_DETAIL)}
+  </Route>,
+  <Route path={ROUTE_PATH.USER_SETTING} key={ROUTE_PATH.USER_SETTING}>
+    {AuthWrapper(<UserSetting />, ROUTE_PATH.USER_SETTING)}
   </Route>,
 ]

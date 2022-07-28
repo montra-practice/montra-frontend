@@ -1,0 +1,40 @@
+@use '@/style/variables.scss' as *;
+
+:local {
+  .user-setting-container {
+    :global {
+      .adm-list-body {
+        border: none;
+      }
+
+      .adm-list-item-content {
+        height: 56px;
+        border-top: none;
+      }
+
+      .adm-list-item-content-main {
+        font-weight: 500;
+        font-size: $font-size-normal;
+        color: #292b2d;
+      }
+
+      .adm-list-item-content-extra {
+        font-weight: 500;
+        font-size: $font-size-sm;
+        color: #91919f;
+      }
+
+      .adm-list-item {
+        padding-left: 16px;
+      }
+
+      .adm-list-item-content-arrow {
+        color: $color-primary;
+      }
+    }
+  }
+
+  .list-help-item {
+    margin-top: 32px;
+  }
+}

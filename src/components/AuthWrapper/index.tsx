@@ -6,6 +6,7 @@ const WHITE_ROUTE_LIST = [/^\/$/, /\/landing.*/, /^\/reset-password$/]
 
 export default (Component: ReactNode, currentPathname: string) => {
   const { getToken } = Token('token')
+
   const isInWhiteList = WHITE_ROUTE_LIST.some((pathRegx) =>
     pathRegx.test(currentPathname),
   )

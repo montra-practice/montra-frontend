@@ -2,6 +2,7 @@ export const basicColumns = [
   [
     { label: 'Bank', value: 'bank' },
     { label: 'Wallet', value: 'wallet' },
+    { label: 'Paypal', value: 'paypal' },
   ],
 ]
 
