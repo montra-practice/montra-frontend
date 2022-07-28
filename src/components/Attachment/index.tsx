@@ -4,6 +4,7 @@ import AttachIcon from '@/assets/icons/attach.png'
 import CameraIcon from '@/assets/icons/camera.png'
 import GalleryIcon from '@/assets/icons/gallery.png'
 import FileIcon from '@/assets/icons/file.png'
+import CloseIcon from '@/assets/icons/close.png'
 import { fileTypes } from '@/constants/base'
 import Camera from './camera'
 import styles from './index.scss'
@@ -39,6 +40,11 @@ export default (props: IAttachProps) => {
     setImgSrc(img)
   }
 
+  const onRemove = () => {
+    setFileName('')
+    setImgSrc('')
+  }
+
   useEffect(() => {
     const input = fileUpload.current as HTMLInputElement
     const handleFile = () => {
@@ -59,17 +65,33 @@ export default (props: IAttachProps) => {
   })
 
   const Attach = (imgSrc: string, fileName: string) => {
-    if (imgSrc) {
-      return (
-        <img src={imgSrc} alt="img upload" className={styles['upload-img']} />
-      )
-    } else if (fileName) {
+    if (imgSrc || fileName) {
       return (
         <div className={styles['file-wrapper']}>
-          <img src={FileIcon} alt="doc icon" className={styles['file-icon']} />
-          <div className={styles.title}>
-            {fileName} {imgSrc}
-          </div>
+          {imgSrc && (
+            <img
+              src={imgSrc}
+              alt="img upload"
+              className={styles['upload-img']}
+            />
+          )}
+
+          {fileName && (
+            <div>
+              <img
+                src={FileIcon}
+                alt="doc icon"
+                className={styles['file-icon']}
+              />
+              <div className={styles.title}>{fileName}</div>
+            </div>
+          )}
+          <img
+            src={CloseIcon}
+            alt="close icon"
+            className={styles.close}
+            onClick={onRemove}
+          />
         </div>
       )
     } else {
