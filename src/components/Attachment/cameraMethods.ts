@@ -1,3 +1,5 @@
+let videoStream = undefined as any
+
 export const openCamera = () => {
   // overwrite getUserMedia attribute for some unsupportable browsers
   if (navigator.mediaDevices.getUserMedia === undefined) {
@@ -24,6 +26,7 @@ export const openCamera = () => {
   return navigator.mediaDevices
     .getUserMedia({ audio: false, video: true })
     .then(function (stream: MediaStream | Blob) {
+      videoStream = stream
       const video = document.querySelector('video') as HTMLVideoElement
 
       if ('srcObject' in video) {
@@ -33,14 +36,18 @@ export const openCamera = () => {
         video.src = window.URL.createObjectURL(stream as Blob)
       }
 
-      video.onloadedmetadata = function (e) {
+      video.onloadedmetadata = function () {
         video.play()
       }
-
-      localStorage.setItem('cameraAuth', 'allow')
     })
     .catch(function (err) {
-      localStorage.setItem('cameraAuth', 'refuse')
       console.log(err.name + ': ' + err.message)
     })
+}
+
+export const closeCamera = () => {
+  if (videoStream) {
+    console.log(videoStream.getTracks())
+    videoStream.getTracks()[0].stop()
+  }
 }

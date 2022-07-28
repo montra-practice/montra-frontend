@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { openCamera } from './cameraMethods'
+import { openCamera, closeCamera } from './cameraMethods'
 import styles from './camera.scss'
 import StartIcon from '@/assets/icons/start_icon.png'
 import { CheckCircleFill, RedoOutline } from 'antd-mobile-icons'
@@ -30,6 +30,7 @@ export default (props: ICameraProps) => {
 
     return () => {
       cameraBtn.removeEventListener('click', handleDramImg)
+      closeCamera()
     }
   }, [])
 
