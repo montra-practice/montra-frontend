@@ -1,6 +1,6 @@
 :local {
   .header {
-    margin-top: 20px;
+    padding-top: 20px;
     height: 64px;
     font-weight: 600;
     font-size: 18px;
@@ -32,9 +32,9 @@
 
   .chart {
     width: 375px;
-    height: 169.5px;
-    border: 1px solid #7f3dff;
+    height: 165px;
     margin-top: 16px;
+    box-sizing: border-box;
   }
 
   .tab {

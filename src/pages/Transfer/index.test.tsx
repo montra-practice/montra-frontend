@@ -27,7 +27,6 @@ describe('test Transfer page', () => {
         <Transfer />
       </Router>,
     )
-    // eslint-disable-next-line testing-library/no-node-access
     fireEvent.click(screen.getByTestId('transferNav'))
     expect(history.location.pathname).toEqual('/home')
   })

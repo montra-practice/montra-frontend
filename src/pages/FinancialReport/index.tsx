@@ -3,19 +3,28 @@ import {
   CategoryTypeIcons,
   FOOD,
   SALARY,
+  selectOptions,
   SHOPPING,
   SUBSCRIPTION,
 } from '@/constants/transaction'
 import { Button, Swiper, Tabs } from 'antd-mobile'
 import { SwiperRef } from 'antd-mobile/es/components/swiper'
-import { useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import styles from './index.scss'
 
-const FinancialReport = ({ period = 'This Month' }) => {
+const FinancialReport = () => {
   const swiperRef = useRef<SwiperRef>(null)
   const navigate = useNavigate()
   const [activeIndex, setActiveIndex] = useState(0)
+  const params = useParams()
+  const period = params.period || '1'
+  const periodLabel =
+    'This ' + selectOptions.find((option) => option.value === period)?.label
+
+  useEffect(() => {
+    document.title = 'Financial Report'
+  }, [])
 
   const tabs = [
     { key: 'expense', backgroundColor: '#fd3c4a' },
@@ -31,11 +40,11 @@ const FinancialReport = ({ period = 'This Month' }) => {
   }
 
   const openFullDetail = () => {
-    navigate('/report-detail')
+    navigate(`/report-detail/${period}`)
   }
 
   const expenseDetail = {
-    period: period,
+    period: periodLabel,
     title: 'You Spend 💸',
     total: '$332',
     subTitle: 'and your biggest\n\r spending is from',
@@ -45,7 +54,7 @@ const FinancialReport = ({ period = 'This Month' }) => {
   }
 
   const incomeDetail = {
-    period: period,
+    period: periodLabel,
     title: 'You Earned 💰',
     total: '$6000',
     subTitle: 'your biggest\n\r income is from',
@@ -88,14 +97,14 @@ const FinancialReport = ({ period = 'This Month' }) => {
         </Swiper.Item>
         <Swiper.Item>
           <div className={styles.type}>
-            <div className={styles.time}>{period}</div>
+            <div className={styles.time}>{periodLabel}</div>
             <div className={styles.title}>
               2 of 12 Budget is exceeds the limit
             </div>
             <div className={styles.box}>
               {budgets?.length > 0 &&
-                budgets.map((budget) => (
-                  <div className={styles.budgets}>
+                budgets.map((budget, i) => (
+                  <div className={styles.budgets} key={i}>
                     <img
                       src={CategoryTypeIcons[budget.id]}
                       alt="category type img"

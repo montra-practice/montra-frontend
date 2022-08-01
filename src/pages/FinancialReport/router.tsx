@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import FinancialReport from '.'
 
 const ROUTE_PATH = {
-  FINANCIAL_REPORT: '/financial-report',
+  FINANCIAL_REPORT: '/financial-report/:period',
 }
 
 export default [

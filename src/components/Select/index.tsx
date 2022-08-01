@@ -2,22 +2,6 @@ import styles from './index.scss'
 import { ArrowDown } from '@/constants/transaction'
 import { useState } from 'react'
 
-interface IOption {
-  value: string
-  label?: string
-}
-
-interface ISelect {
-  size: 'large' | 'middle' | 'small'
-  arrow: 'right' | 'left'
-  options: IOption[]
-  onSelect?: (item: IOption) => void
-  selectedWithBorder?: boolean
-  defaultValue?: string
-  defaultLabel?: string
-  className?: any
-}
-
 function getInitItem(
   value: string | undefined,
   label: string | undefined,

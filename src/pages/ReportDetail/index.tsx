@@ -7,17 +7,28 @@ import SortIcon from '@/assets/icons/sort.svg'
 import LineChartIcon from '@/assets/icons/line_chart.svg'
 import PieChartIcon from '@/assets/icons/pie_chart.svg'
 import { NavBar } from 'antd-mobile'
-import { useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import styles from './index.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import CategoryBar from '@/components/CategoryBar'
+import CommonLineChart from '@/components/CommonLineChart'
 
 const ReportDetail = () => {
+  const params = useParams()
+  const period = params.period
+
   const navigate = useNavigate()
   const [activeChart, toogleChart] = useState(0)
   const [activeTab, toogleTab] = useState(0)
+  const [, setPeriod] = useState(period)
+  const [type, setType] = useState('1')
+
+  useEffect(() => {
+    document.title = 'Financial Report Detail'
+  }, [])
 
   const goBack = () => {
-    navigate('/financial-report')
+    navigate(`/financial-report/${period}`)
   }
 
   const switchChart = () => {
@@ -30,7 +41,7 @@ const ReportDetail = () => {
 
   const sortData = () => {}
 
-  const options = [
+  const typeOptions = [
     {
       value: '1',
       label: 'Transaction',
@@ -41,13 +52,27 @@ const ReportDetail = () => {
     },
   ]
 
+  const selectionChange = (item: IOption) => {
+    setPeriod(item.value)
+  }
+
+  const typeSelectionChange = (item: IOption) => {
+    setType(item.value)
+  }
+
   return (
     <>
       <NavBar onBack={goBack} className={styles.header}>
         Financial Report
       </NavBar>
       <div className={styles.switch}>
-        <Select size="small" arrow="left" options={selectOptions}></Select>
+        <Select
+          size="small"
+          arrow="left"
+          options={selectOptions}
+          defaultValue={period}
+          onSelect={selectionChange}
+        ></Select>
         <div>
           <img
             src={activeChart ? LineChartIcon : LineChartActiveIcon}
@@ -62,7 +87,9 @@ const ReportDetail = () => {
         </div>
       </div>
       <div className={styles.money}>$ 332</div>
-      <div className={styles.chart}></div>
+      <div className={styles.chart}>
+        <CommonLineChart />
+      </div>
       <div className={styles.tab}>
         <div
           className={!activeTab ? styles['active-tab'] : ''}
@@ -78,11 +105,19 @@ const ReportDetail = () => {
         </div>
       </div>
       <div className={styles.filter}>
-        <Select size="small" arrow="left" options={options}></Select>
+        <Select
+          size="small"
+          arrow="left"
+          options={typeOptions}
+          defaultValue={type}
+          onSelect={typeSelectionChange}
+        ></Select>
         <img src={SortIcon} alt="sort icon" onClick={sortData} />
       </div>
       <div className={styles.list}>
-        <TransactionList list={transactionList[0].list} />
+        {type === '1' && <TransactionList list={transactionList[0].list} />}
+        {type === '2' &&
+          transactionList[1].list.map((item) => <CategoryBar {...item} />)}
       </div>
     </>
   )

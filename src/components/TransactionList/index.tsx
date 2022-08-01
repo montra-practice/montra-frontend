@@ -1,17 +1,8 @@
 import styles from './index.scss'
 import { CategoryTypeIcons } from '@/constants/transaction'
 
-interface IList {
-  id: number | string // type id
-  type: string
-  desc: string
-  money: number | string
-  time: string
-  date?: string
-}
-
 interface IPropsData {
-  list: IList[]
+  list: Itransaction[]
   date?: string
 }
 

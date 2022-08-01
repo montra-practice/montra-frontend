@@ -47,7 +47,7 @@ function Notification() {
   }
 
   const right = (
-    <div className={styles.action} tabIndex={0} onBlur={showActionTab(false)}>
+    <div className={styles.action} tabIndex={0}>
       <MoreOutline
         fontSize={36}
         onClick={showActionTab()}

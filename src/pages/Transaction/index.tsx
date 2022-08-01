@@ -8,26 +8,41 @@ import {
 import styles from './index.scss'
 import FilterIcon from '@/assets/icons/filter.png'
 import Select from '@/components/Select'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TabFooter from '@/components/TabFooter'
 import { useNavigate } from 'react-router-dom'
 
 export default () => {
   const navigate = useNavigate()
   const [showFilter, setShow] = useState(false)
+  const [selection, setSelection] = useState('1')
+
+  useEffect(() => {
+    document.title = 'Financial Report'
+  }, [])
 
   const handleFilterShow = (show: boolean) => {
     setShow(!show)
   }
 
   const seeReport = () => {
-    navigate('/financial-report')
+    navigate(`/financial-report/${selection}`)
+  }
+
+  const selectionChange = (item: IOption) => {
+    setSelection(item.value)
   }
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.row}>
-        <Select size="small" arrow="left" options={selectOptions}></Select>
+        <Select
+          size="small"
+          arrow="left"
+          options={selectOptions}
+          defaultValue={selection}
+          onSelect={selectionChange}
+        ></Select>
         <img
           src={FilterIcon}
           alt="filter icon"

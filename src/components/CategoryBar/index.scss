@@ -1,0 +1,41 @@
+@use '@/style/mixin.scss' as *;
+
+:local {
+  .category {
+    padding: 16px;
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      > div:first-child {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: #212325;
+        margin-bottom: 7px;
+        border: 1px solid #f1f1fa;
+        border-radius: 32px;
+        padding: 8px 12px 8px 8px;
+        @include flex-center;
+
+        > div:first-child {
+          display: inline-block;
+          margin-right: 7px;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #fcac12;
+        }
+      }
+
+      > div:last-child {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 29px;
+        color: #fd3c4a;
+      }
+    }
+  }
+}

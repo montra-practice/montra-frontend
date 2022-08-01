@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import ReportDetail from '.'
 
 const ROUTE_PATH = {
-  REPORT_DETAIL: '/report-detail',
+  REPORT_DETAIL: '/report-detail/:period',
 }
 
 export default [

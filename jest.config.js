@@ -16,7 +16,7 @@ module.exports = {
       '<rootDir>/test/fileTransform.js',
   },
   transformIgnorePatterns: [
-    '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$',
+    '[/\\\\]node_modules[/\\\\].+\\.(jsx|mjs|cjs|ts|tsx)$',
     '^.+\\.module\\.(css|sass|scss)$',
   ],
   collectCoverageFrom: [
