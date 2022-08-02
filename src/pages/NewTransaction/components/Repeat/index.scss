@@ -52,4 +52,20 @@
   .width {
     width: 96px;
   }
+
+  .date {
+    position: relative;
+    min-width: 76px;
+    height: 56px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: $font-size-sm;
+    color: $color-dark;
+    font-weight: 600;
+    text-align: center;
+    line-height: 56px;
+    border: 1px solid #f1f1fa;
+    border-radius: 40px;
+    margin-bottom: 16px;
+  }
 }

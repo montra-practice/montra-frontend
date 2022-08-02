@@ -1,7 +1,7 @@
 import { NavBar, Input, Button } from 'antd-mobile'
 import { useNavigate, useLocation } from 'react-router'
 import { useState } from 'react'
-import { categoryTypes, walletTypes } from '@/constants/transaction'
+import { categoryTypes, walletTypes, repeatObj } from '@/constants/transaction'
 import AmountInput from '@/components/AmountInput'
 import Select from '@/components/Select'
 import Attachment from '@/components/Attachment'
@@ -23,6 +23,14 @@ export default () => {
 
   const handleAmountInput = (val: string) => {
     setAmount(val)
+  }
+
+  const handleAttachData = (data: object) => {
+    console.log(data)
+  }
+
+  const handleRepeatData = (data: object) => {
+    console.log(data)
   }
 
   return (
@@ -47,8 +55,8 @@ export default () => {
         </div>
 
         <Select options={walletTypes}></Select>
-        <Attachment></Attachment>
-        <Repeat />
+        <Attachment onAttach={handleAttachData}></Attachment>
+        <Repeat {...repeatObj} onRepeat={handleRepeatData} />
         <Button className="btn-big">Continue</Button>
       </BottomCard>
     </div>

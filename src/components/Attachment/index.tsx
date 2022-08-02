@@ -10,7 +10,9 @@ import Camera from './camera'
 import styles from './index.scss'
 import { useEffect, useRef, useState } from 'react'
 
-interface IAttachProps {}
+interface IAttachProps {
+  onAttach?: (para: any) => void
+}
 
 export default (props: IAttachProps) => {
   const initFileType = 'image/*'
@@ -55,7 +57,7 @@ export default (props: IAttachProps) => {
       } else {
         setFileName(files[0].name)
         setImgSrc('')
-        console.log('file')
+        console.log('file', files[0])
       }
 
       handleMaskVisible()

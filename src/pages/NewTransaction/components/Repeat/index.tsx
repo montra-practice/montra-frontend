@@ -4,13 +4,14 @@ import BottomCard from '@/components/BottomCard'
 import Select from '@/components/Select'
 import { selectOptions, selectEndAfterTimes } from '@/constants/transaction'
 import { MonthEnglish } from '@/constants/base'
-import { getDatesByMonth } from '@/utils/common'
+import { getDatesByMonth, getEndAfterTime } from '@/utils/common'
 import styles from './index.scss'
 
 interface IRepeat {
   repeat?: boolean
   frequency?: string
   endAfter?: string
+  onRepeat?: (data: any) => void
 }
 
 export default (props: IRepeat) => {
@@ -22,15 +23,15 @@ export default (props: IRepeat) => {
   const defaultDate = String(curDate.getDate())
 
   const [repeatDesc, setRepeatDesc] = useState(initRepeatDesc)
-  const [switchCheck, setSwitchCheck] = useState(false)
+  const [switchCheck, setSwitchCheck] = useState(props.repeat)
   const [freqVisible, setFreqVisible] = useState(false)
   const [frequency, setFrequency] = useState(initSelectItem)
   const [endAfter, setEndAfter] = useState(initSelectItem)
   const [next, setNext] = useState(false)
   const [month, setMoth] = useState(defaultMoth)
   const [date, setDate] = useState(defaultDate)
-  console.log('22')
   const [dateOptions, setDateOptions] = useState(getDatesByMonth())
+  const [fullDate, setFullDate] = useState('')
 
   const handleSwitchCheck = (val: boolean) => {
     setSwitchCheck(val)
@@ -60,18 +61,19 @@ export default (props: IRepeat) => {
   }
 
   const handleMonthCheck = (item: any) => {
-    setDateOptions(getDatesByMonth(item.value))
     setMoth(item.value)
-    setDate('1')
+    setDateOptions(getDatesByMonth(item.value))
+    setFullDate(
+      getEndAfterTime(item.value, date, frequency.value, endAfter.value),
+    )
   }
 
   const handleDateCheck = (item: any) => {
     setDate(item.value)
+    setFullDate(
+      getEndAfterTime(month, item.value, frequency.value, endAfter.value),
+    )
   }
-
-  // const fullDate = () => {
-
-  // }
 
   const FreqEndAfterDom = (frequency: string, endAfter: string) => {
     return (
@@ -84,11 +86,20 @@ export default (props: IRepeat) => {
 
   const handleNext = () => {
     if (next) {
+      props.onRepeat?.({ frequency, endAfter, month, date, fullDate })
       setFreqVisible(false)
       setNext(false)
     } else {
       if (frequency.value && endAfter.value) {
         setNext(true)
+        setFullDate(
+          getEndAfterTime(
+            defaultMoth,
+            defaultDate,
+            frequency.value,
+            endAfter.value,
+          ),
+        )
       } else {
         Toast.show('Frequency and End Master must be chosen!')
       }
@@ -119,7 +130,12 @@ export default (props: IRepeat) => {
                 Edit
               </Button>
             }
-            description={FreqEndAfterDom(frequency.label, endAfter.label)}
+            description={FreqEndAfterDom(
+              `${frequency.label}-${
+                MonthEnglish[Number(month) + 1].label
+              } ${date}`,
+              fullDate,
+            )}
           >
             {FreqEndAfterDom('Frequency', 'EndAfter')}
           </List.Item>
@@ -135,11 +151,13 @@ export default (props: IRepeat) => {
             <div className={styles['select-wrapper']}>
               <Select
                 defaultLabel="Frequency"
+                defaultValue={props.frequency}
                 options={selectOptions}
                 onSelect={handleFreqSelect}
               ></Select>
               <Select
                 defaultLabel="End After"
+                defaultValue={props.endAfter}
                 options={selectEndAfterTimes}
                 onSelect={handleEndAfterSelect}
               ></Select>
@@ -173,11 +191,13 @@ export default (props: IRepeat) => {
                   defaultValue={endAfter.value}
                   disabled
                 ></Select>
-                <Select
+                {/* <Select
                   size="middle"
                   options={selectOptions}
-                  defaultLabel="Full Date"
-                ></Select>
+                  defaultLabel={fullDate}
+                  disabled
+                ></Select> */}
+                <div className={styles.date}>{fullDate}</div>
               </div>
             </div>
           )}

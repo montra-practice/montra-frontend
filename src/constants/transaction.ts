@@ -225,3 +225,9 @@ export const selectEndAfterTimes = (() => {
 
   return arr
 })()
+
+export const repeatObj = {
+  repeat: false,
+  frequency: '',
+  endAfter: '',
+}
