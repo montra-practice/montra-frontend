@@ -12,6 +12,7 @@ import styles from './index.scss'
 import { useEffect, useState } from 'react'
 import CategoryBar from '@/components/CategoryBar'
 import CommonLineChart from '@/components/CommonLineChart'
+import CommonRingChart from '@/components/CommonRingChart'
 
 const ReportDetail = () => {
   const params = useParams()
@@ -83,12 +84,17 @@ const ReportDetail = () => {
             src={activeChart ? PieChartActiveIcon : PieChartIcon}
             alt="pie chart"
             onClick={switchChart}
+            data-testid="pieChart"
           />
         </div>
       </div>
-      <div className={styles.money}>$ 332</div>
-      <div className={styles.chart}>
-        <CommonLineChart />
+      {activeChart === 0 && <div className={styles.money}>$ 332</div>}
+      <div
+        className={styles.chart}
+        style={{ height: activeChart === 0 ? '165px' : '210px' }}
+      >
+        {activeChart === 0 && <CommonLineChart />}
+        {activeChart === 1 && <CommonRingChart />}
       </div>
       <div className={styles.tab}>
         <div

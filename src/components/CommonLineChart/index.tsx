@@ -3,7 +3,7 @@ import { GridComponent, GridComponentOption } from 'echarts/components'
 import { LineChart, LineSeriesOption } from 'echarts/charts'
 import { UniversalTransition } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
-import { useEffect } from 'react'
+import { useCallback, useLayoutEffect } from 'react'
 import styles from './index.scss'
 
 const CommonLineChart = () => {
@@ -11,12 +11,8 @@ const CommonLineChart = () => {
   type EChartsOption = echarts.ComposeOption<
     GridComponentOption | LineSeriesOption
   >
-
-  const dom = document.getElementById('chart')
-
-  useEffect(() => {
-    document.title = 'Financial Report Detail'
-
+  const dom = document.getElementById('line-chart')
+  const initChart = useCallback(() => {
     const options: EChartsOption = {
       color: '#7F3DFF',
       grid: {
@@ -68,16 +64,19 @@ const CommonLineChart = () => {
         },
       ],
     }
-
     if (dom) {
       const chart = echarts.init(dom)
       chart.setOption(options)
-      return () => {
-        chart.dispose()
-      }
     }
   }, [dom])
 
-  return <div id="chart" className={styles.box} data-testid="chartBox"></div>
+  useLayoutEffect(() => {
+    document.title = 'Financial Report Detail'
+    initChart()
+  }, [initChart])
+
+  return (
+    <div id="line-chart" className={styles.box} data-testid="lineBox"></div>
+  )
 }
 export default CommonLineChart

@@ -12,6 +12,7 @@ import TransactionList from '@/components/TransactionList'
 import TabFooter from '@/components/TabFooter'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import CommonLineChart from '@/components/CommonLineChart'
 
 function Home() {
   const navigate = useNavigate()
@@ -57,7 +58,9 @@ function Home() {
       </div>
       <div className={styles['line-chart']}>
         <p>Spend Frequency</p>
-        <div></div>
+        <div>
+          <CommonLineChart />
+        </div>
       </div>
       <div className={styles['add-related']}>
         {/* <div className={styles['add-active']}></div> */}

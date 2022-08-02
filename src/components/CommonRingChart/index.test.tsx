@@ -1,10 +1,10 @@
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory, MemoryHistory } from 'history'
 import ReportDetail from '@/pages/ReportDetail'
 
-describe('test Common Line Chart', () => {
+describe('test Common Ring Chart', () => {
   let history: MemoryHistory
   beforeEach(() => {
     history = createMemoryHistory()
@@ -15,6 +15,7 @@ describe('test Common Line Chart', () => {
         <ReportDetail />
       </Router>,
     )
-    expect(screen.getByTestId('lineBox')).toBeInTheDocument()
+    fireEvent.click(screen.getByTestId('pieChart'))
+    expect(screen.getByTestId('ringBox')).toBeInTheDocument()
   })
 })
