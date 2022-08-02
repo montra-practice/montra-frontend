@@ -12,9 +12,10 @@ declare interface ISelect {
   defaultValue?: string
   defaultLabel?: string
   className?: any
+  disabled?: boolean
 }
 
-declare interface Itransaction {
+declare interface ITransaction {
   id: number | string // type id
   type: string
   desc: string

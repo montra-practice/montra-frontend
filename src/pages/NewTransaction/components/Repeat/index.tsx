@@ -1,8 +1,10 @@
-import { List, Switch, Button, Mask } from 'antd-mobile'
+import { List, Switch, Button, Mask, Toast } from 'antd-mobile'
 import { useState } from 'react'
 import BottomCard from '@/components/BottomCard'
 import Select from '@/components/Select'
-import { selectOptions } from '@/constants/transaction'
+import { selectOptions, selectEndAfterTimes } from '@/constants/transaction'
+import { MonthEnglish } from '@/constants/base'
+import { getDatesByMonth } from '@/utils/common'
 import styles from './index.scss'
 
 interface IRepeat {
@@ -15,12 +17,20 @@ export default (props: IRepeat) => {
   const initSelectItem = { value: '', label: '' }
   const initRepeatDesc = 'Repeat transaction'
 
+  const curDate = new Date()
+  const defaultMoth = String(curDate.getMonth())
+  const defaultDate = String(curDate.getDate())
+
   const [repeatDesc, setRepeatDesc] = useState(initRepeatDesc)
   const [switchCheck, setSwitchCheck] = useState(false)
   const [freqVisible, setFreqVisible] = useState(false)
   const [frequency, setFrequency] = useState(initSelectItem)
   const [endAfter, setEndAfter] = useState(initSelectItem)
   const [next, setNext] = useState(false)
+  const [month, setMoth] = useState(defaultMoth)
+  const [date, setDate] = useState(defaultDate)
+  console.log('22')
+  const [dateOptions, setDateOptions] = useState(getDatesByMonth())
 
   const handleSwitchCheck = (val: boolean) => {
     setSwitchCheck(val)
@@ -49,7 +59,21 @@ export default (props: IRepeat) => {
     setNext(false)
   }
 
-  const freqEndAfterDom = (frequency: string, endAfter: string) => {
+  const handleMonthCheck = (item: any) => {
+    setDateOptions(getDatesByMonth(item.value))
+    setMoth(item.value)
+    setDate('1')
+  }
+
+  const handleDateCheck = (item: any) => {
+    setDate(item.value)
+  }
+
+  // const fullDate = () => {
+
+  // }
+
+  const FreqEndAfterDom = (frequency: string, endAfter: string) => {
     return (
       <div className={styles.row}>
         <div className={styles['row-item']}>{frequency}</div>
@@ -63,7 +87,11 @@ export default (props: IRepeat) => {
       setFreqVisible(false)
       setNext(false)
     } else {
-      setNext(true)
+      if (frequency.value && endAfter.value) {
+        setNext(true)
+      } else {
+        Toast.show('Frequency and End Master must be chosen!')
+      }
     }
   }
 
@@ -91,9 +119,9 @@ export default (props: IRepeat) => {
                 Edit
               </Button>
             }
-            description={freqEndAfterDom(frequency.label, endAfter.label)}
+            description={FreqEndAfterDom(frequency.label, endAfter.label)}
           >
-            {freqEndAfterDom('Frequency', 'EndAfter')}
+            {FreqEndAfterDom('Frequency', 'EndAfter')}
           </List.Item>
         )}
       </List>
@@ -106,11 +134,13 @@ export default (props: IRepeat) => {
           {!next ? (
             <div className={styles['select-wrapper']}>
               <Select
+                defaultLabel="Frequency"
                 options={selectOptions}
                 onSelect={handleFreqSelect}
               ></Select>
               <Select
-                options={selectOptions}
+                defaultLabel="End After"
+                options={selectEndAfterTimes}
                 onSelect={handleEndAfterSelect}
               ></Select>
             </div>
@@ -120,25 +150,28 @@ export default (props: IRepeat) => {
                 <Select
                   size="middle"
                   options={selectOptions}
-                  defaultLabel="Frequency"
                   defaultValue={frequency.value}
+                  disabled
                 ></Select>
                 <Select
                   size="middle"
-                  options={selectOptions}
-                  defaultLabel="Month"
+                  options={MonthEnglish}
+                  defaultValue={month}
+                  onSelect={handleMonthCheck}
                 ></Select>
                 <Select
                   size="middle"
-                  options={selectOptions}
-                  defaultLabel="Date"
+                  options={dateOptions}
+                  defaultValue={date}
+                  onSelect={handleDateCheck}
                 ></Select>
               </div>
               <div className={styles.between}>
                 <Select
                   size="middle"
-                  options={selectOptions}
-                  defaultLabel="Date"
+                  options={selectEndAfterTimes}
+                  defaultValue={endAfter.value}
+                  disabled
                 ></Select>
                 <Select
                   size="middle"

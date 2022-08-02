@@ -2,7 +2,7 @@ import { CategoryTypeColor } from '@/constants/transaction'
 import { ProgressBar } from 'antd-mobile'
 import styles from './index.scss'
 
-const CategoryBar = ({ id, type, money }: Itransaction) => {
+const CategoryBar = ({ id, type, money }: ITransaction) => {
   return (
     <div className={styles.category}>
       <div className={styles.top}>

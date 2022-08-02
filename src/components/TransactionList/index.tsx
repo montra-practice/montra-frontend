@@ -2,7 +2,7 @@ import styles from './index.scss'
 import { CategoryTypeIcons } from '@/constants/transaction'
 
 interface IPropsData {
-  list: Itransaction[]
+  list: ITransaction[]
   date?: string
 }
 

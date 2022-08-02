@@ -215,3 +215,13 @@ export const walletTypes = [
     label: 'Paypal',
   },
 ]
+
+export const selectEndAfterTimes = (() => {
+  let arr = []
+  for (let i = 1; i < 10; i++) {
+    const iStr = String(i)
+    arr.push({ value: iStr, label: iStr })
+  }
+
+  return arr
+})()

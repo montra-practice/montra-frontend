@@ -30,6 +30,7 @@ const Select = (props: ISelect) => {
   const [checkedItem, setCheckedItem] = useState(initItem)
 
   const handleSelect = () => {
+    if (props.disabled) return
     setShow(!show)
   }
 
@@ -42,7 +43,7 @@ const Select = (props: ISelect) => {
   return (
     <div
       tabIndex={0}
-      className={`${styles[props.size]} ${props.className}`}
+      className={`${styles[props.size]} ${props.className}}`}
       onBlur={() => setShow(false)}
     >
       <div
@@ -55,7 +56,9 @@ const Select = (props: ISelect) => {
             <div className={styles['cat-type-title']}>{checkedItem.label}</div>
           </div>
         ) : (
-          <div className={styles.title}>{checkedItem.label}</div>
+          <div className={props.disabled ? styles.disabled : styles.title}>
+            {checkedItem.label}
+          </div>
         )}
 
         <img
@@ -88,6 +91,7 @@ Select.defaultProps = {
   size: 'large',
   arrow: 'right',
   selectedWithBorder: false,
+  disabled: false,
 }
 
 export default Select
