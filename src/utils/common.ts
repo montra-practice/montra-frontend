@@ -30,11 +30,15 @@ export const getEndAfterTime = (
   const endAfterDays = curDate + numTimes * 7
   const endAfterYear = curYear + numTimes
   const tempDate = new Date(curYear, curMonth, curDate)
+
   if (type === '1') {
+    // month
     tempDate.setMonth(endAfterMoth)
   } else if (type === '2') {
+    // week
     tempDate.setDate(endAfterDays)
   } else if (type === '3') {
+    // year
     tempDate.setFullYear(endAfterYear)
   }
 
@@ -50,4 +54,9 @@ export const getEndAfterTime = (
   console.log('endAfterTime', endAfterTime)
 
   return endAfterTime
+}
+
+export const checkMountInput = (value: string) => {
+  const reg = /^([1-9][0-9]*)+(.[0-9]{1,2})?$/
+  return reg.test(value)
 }

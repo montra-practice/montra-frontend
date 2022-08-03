@@ -1,0 +1,16 @@
+@use '@/style/variables.scss' as *;
+
+:local {
+  .header {
+    color: $color-primary;
+    width: 48px;
+    height: 48px;
+  }
+
+  .content {
+    text-align: center;
+    color: $color-dark-pure;
+    font-size: $font-size-sm;
+    margin-top: 16px;
+  }
+}

@@ -7,6 +7,7 @@ import Select from '@/components/Select'
 import Attachment from '@/components/Attachment'
 import BottomCard from '@/components/BottomCard'
 import Repeat from './components/Repeat'
+import DialogShow from '@/components/DialogShow'
 import styles from './index.scss'
 
 export default () => {
@@ -48,7 +49,11 @@ export default () => {
     console.log('repeat:', data)
   }
 
-  const handleSubmit = () => {}
+  const handleSubmit = () => {
+    DialogShow('Transaction has been successfully removed', () => {
+      navigate('/transaction')
+    })
+  }
 
   return (
     <div className={styles[curType]}>
