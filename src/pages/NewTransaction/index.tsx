@@ -20,18 +20,35 @@ export default () => {
   const title = curType[0].toUpperCase() + curType.substr(1)
 
   const [amount, setAmount] = useState('0')
+  const [cateType, setCateType] = useState('')
+  const [desc, setDesc] = useState('')
+  const [walletType, setWalletType] = useState('')
 
   const handleAmountInput = (val: string) => {
     setAmount(val)
   }
 
+  const handleCateType = (item: any) => {
+    setCateType(item.value)
+  }
+
+  const handleDesc = (e: any) => {
+    setDesc(e.target.value)
+  }
+
+  const handleWalletType = (item: any) => {
+    setWalletType(item.value)
+  }
+
   const handleAttachData = (data: object) => {
-    console.log(data)
+    console.log('attach:', data)
   }
 
   const handleRepeatData = (data: object) => {
-    console.log(data)
+    console.log('repeat:', data)
   }
+
+  const handleSubmit = () => {}
 
   return (
     <div className={styles[curType]}>
@@ -45,19 +62,30 @@ export default () => {
       ></AmountInput>
       <BottomCard withIcon={false}>
         <Select
-          size="large"
           options={categoryTypes}
           selectedWithBorder={true}
+          defaultValue={cateType}
+          onSelect={handleCateType}
         ></Select>
 
         <div className={styles['desc-wrapper']}>
-          <Input placeholder="Describe" />
+          <Input
+            placeholder="Describe"
+            onChange={handleDesc}
+            defaultValue={desc}
+          />
         </div>
 
-        <Select options={walletTypes}></Select>
+        <Select
+          options={walletTypes}
+          defaultValue={walletType}
+          onSelect={handleWalletType}
+        ></Select>
         <Attachment onAttach={handleAttachData}></Attachment>
         <Repeat {...repeatObj} onRepeat={handleRepeatData} />
-        <Button className="btn-big">Continue</Button>
+        <Button className="btn-big" onClick={handleSubmit}>
+          Continue
+        </Button>
       </BottomCard>
     </div>
   )

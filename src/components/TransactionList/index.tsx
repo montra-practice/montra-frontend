@@ -1,5 +1,6 @@
 import styles from './index.scss'
 import { CategoryTypeIcons } from '@/constants/transaction'
+import { useNavigate } from 'react-router-dom'
 
 interface IPropsData {
   list: ITransaction[]
@@ -7,12 +8,20 @@ interface IPropsData {
 }
 
 export default (props: IPropsData) => {
+  const navigate = useNavigate()
+  const jumpToDetail = () => {
+    navigate('/transaction_detail')
+  }
   return (
     <div className={styles['list-wrapper']}>
       {props.date && <div className={styles['create-date']}>{props.date}</div>}
       {props.list &&
         props.list.map((item, index) => (
-          <div className={styles['item-wrapper']} key={index}>
+          <div
+            className={styles['item-wrapper']}
+            key={index}
+            onClick={jumpToDetail}
+          >
             <img
               src={CategoryTypeIcons[item.id]}
               alt="category type img"

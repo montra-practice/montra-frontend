@@ -21,6 +21,7 @@ export default (props: IAttachProps) => {
   const [fileType, setFileType] = useState(initFileType)
   const [imgSrc, setImgSrc] = useState('')
   const [fileName, setFileName] = useState('')
+  const [fileSrc, setFileSrc] = useState('')
   const fileUpload = useRef<HTMLInputElement>(null)
 
   const handleMaskVisible = () => {
@@ -40,6 +41,7 @@ export default (props: IAttachProps) => {
     handleCamera()
     handleMaskVisible()
     setImgSrc(img)
+    props.onAttach?.({ type: 'img', data: img })
   }
 
   const onRemove = () => {
@@ -49,21 +51,27 @@ export default (props: IAttachProps) => {
 
   useEffect(() => {
     const input = fileUpload.current as HTMLInputElement
+
     const handleFile = () => {
       const files = input?.files || []
+      const src = URL.createObjectURL(files[0])
       if (fileType === initFileType) {
-        setImgSrc(URL.createObjectURL(files[0]))
+        setImgSrc(src)
         setFileName('')
       } else {
         setFileName(files[0].name)
+        setFileSrc(src)
         setImgSrc('')
-        console.log('file', files[0])
       }
 
       handleMaskVisible()
+      props.onAttach?.({ type: 'file', data: files[0] })
     }
     input.addEventListener('change', handleFile)
-    console.log(fileUpload.current, fileUpload.current?.files)
+
+    return () => {
+      input.removeEventListener('change', handleFile)
+    }
   })
 
   const Attach = (imgSrc: string, fileName: string) => {
@@ -85,13 +93,16 @@ export default (props: IAttachProps) => {
                 alt="doc icon"
                 className={styles['file-icon']}
               />
+              <a target="self" href={fileSrc} className={styles.preview}>
+                Preview
+              </a>
               <div className={styles.title}>{fileName}</div>
             </div>
           )}
           <img
             src={CloseIcon}
             alt="close icon"
-            className={styles.close}
+            className={`${styles.close} ${imgSrc ? '' : styles['file-close']} `}
             onClick={onRemove}
           />
         </div>
