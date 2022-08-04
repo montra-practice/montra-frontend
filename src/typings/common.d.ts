@@ -29,3 +29,9 @@ declare interface INotification {
   description: string
   time: string
 }
+
+declare interface IFilterItems {
+  filter: Array
+  sorter: Array
+  cateType: Array
+}

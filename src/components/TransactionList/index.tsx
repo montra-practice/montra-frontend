@@ -20,6 +20,7 @@ export default (props: IPropsData) => {
           <div
             className={styles['item-wrapper']}
             key={index}
+            data-testid="listDiv"
             onClick={jumpToDetail}
           >
             <img

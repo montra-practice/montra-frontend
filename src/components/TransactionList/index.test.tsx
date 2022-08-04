@@ -1,6 +1,8 @@
-import { screen, render } from '@testing-library/react'
+import { screen, render, fireEvent } from '@testing-library/react'
 import TransactionList from '.'
 import { SUBSCRIPTION } from '@/constants/transaction'
+import { createMemoryHistory } from 'history'
+import { BrowserRouter, Router } from 'react-router-dom'
 
 const mockData = {
   date: 'today',
@@ -17,7 +19,23 @@ const mockData = {
 
 describe('TransactionList component', () => {
   it('should render one transaction item', () => {
-    render(<TransactionList {...mockData} />)
+    render(
+      <BrowserRouter>
+        <TransactionList {...mockData} />
+      </BrowserRouter>,
+    )
     expect(screen.getByText(SUBSCRIPTION)).toBeInTheDocument()
+  })
+
+  it('should navigate to Transaction Page', async () => {
+    const history = createMemoryHistory()
+    render(
+      <Router navigator={history} location={history.location}>
+        <TransactionList {...mockData} />
+      </Router>,
+    )
+
+    await fireEvent.click(screen.getByTestId('listDiv'))
+    expect(history.location.pathname).toEqual('/transaction_detail')
   })
 })

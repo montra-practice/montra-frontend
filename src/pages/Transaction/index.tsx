@@ -9,20 +9,24 @@ import styles from './index.scss'
 import FilterIcon from '@/assets/icons/filter.png'
 import Select from '@/components/Select'
 import { useEffect, useState } from 'react'
+import { Badge } from 'antd-mobile'
 import TabFooter from '@/components/TabFooter'
 import { useNavigate } from 'react-router-dom'
 
 export default () => {
   const navigate = useNavigate()
-  const [showFilter, setShow] = useState(false)
   const [selection, setSelection] = useState('1')
+  const initFilterData = { filter: [], sorter: [], cateType: [] }
+  const [showFilter, setShowFilter] = useState(false)
+  const [badgeNum, setBadgeNum] = useState('')
+  const [filterData, setFilterData] = useState(initFilterData)
 
   useEffect(() => {
-    document.title = 'Financial Report'
+    document.title = 'Transaction'
   }, [])
 
   const handleFilterShow = (show: boolean) => {
-    setShow(!show)
+    setShowFilter(!show)
   }
 
   const seeReport = () => {
@@ -31,6 +35,15 @@ export default () => {
 
   const selectionChange = (item: IOption) => {
     setSelection(item.value)
+  }
+
+  const handleApply = (filterData: IFilterItems) => {
+    const num =
+      filterData.filter.length +
+      filterData.sorter.length +
+      filterData.cateType.length
+    setBadgeNum(num || '')
+    setFilterData(filterData)
   }
 
   return (
@@ -43,14 +56,21 @@ export default () => {
           defaultValue={selection}
           onSelect={selectionChange}
         ></Select>
-        <img
-          src={FilterIcon}
-          alt="filter icon"
-          className={styles['filter-icon']}
-          onClick={() => handleFilterShow(showFilter)}
-        />
+        <Badge content={badgeNum} wrapperStyle={{ position: 'initial' }}>
+          <img
+            src={FilterIcon}
+            alt="filter icon"
+            className={styles['filter-icon']}
+            onClick={() => handleFilterShow(showFilter)}
+          />
+        </Badge>
         {showFilter && (
-          <Filter hideFilter={handleFilterShow} visible={showFilter}></Filter>
+          <Filter
+            hideFilter={handleFilterShow}
+            visible={showFilter}
+            onApply={handleApply}
+            defaultValue={filterData}
+          ></Filter>
         )}
       </div>
 

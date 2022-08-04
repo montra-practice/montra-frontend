@@ -1,10 +1,13 @@
 import { screen, render, fireEvent } from '@testing-library/react'
 import Filter from '.'
+const initFilterItems = { filter: [], sorter: [], cateType: [] }
 
 describe('Filter component', () => {
   const mockProps = {
     visible: true,
     hideFilter: jest.fn(),
+    onApply: jest.fn(),
+    defaultValue: initFilterItems,
   }
 
   it('should filter UI', () => {

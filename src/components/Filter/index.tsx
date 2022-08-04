@@ -1,6 +1,6 @@
 import { Card, Button, Mask } from 'antd-mobile'
 import { Selector } from 'antd-mobile'
-import DropdownList from '../DropdownList'
+import DropdownList from '@/components/DropdownList'
 import {
   filterOptions,
   sortOptions,
@@ -11,17 +11,23 @@ import { useState } from 'react'
 interface IFilterProps {
   visible: boolean
   hideFilter: (show: boolean) => void
+  onApply?: (data: any) => void
+  defaultValue?: IFilterItems
 }
 
 export default (props: IFilterProps) => {
-  const [filter, setFilter] = useState([])
-  const [sorter, setSorter] = useState([])
-  const [cateType, setCateType] = useState([])
+  const [filter, setFilter] = useState(props.defaultValue?.filter)
+  const [sorter, setSorter] = useState(props.defaultValue?.sorter)
+  const [cateType, setCateType] = useState(props.defaultValue?.cateType)
 
   const handleReset = () => {
     setFilter([])
     setSorter([])
     setCateType([])
+  }
+
+  const handleHideFilter = () => {
+    props.hideFilter(props.visible)
   }
 
   const handleFilter = (val: any) => {
@@ -36,14 +42,17 @@ export default (props: IFilterProps) => {
     setCateType(val)
   }
 
-  const handleApply = () => {}
+  const handleApply = () => {
+    props.onApply?.({ filter, sorter, cateType })
+    handleHideFilter()
+  }
 
   return (
     <Mask
       opacity="thin"
       visible={props.visible}
       data-testid="filterMask"
-      onMaskClick={() => props.hideFilter(props.visible)}
+      onMaskClick={handleHideFilter}
     >
       <Card className={styles.wrapper}>
         <div className={styles.icon}></div>
