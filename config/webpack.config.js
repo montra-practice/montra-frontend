@@ -142,7 +142,7 @@ module.exports = function (webpackEnv) {
                     },
                   ],
                   [
-                    'postcss-px-to-viewport',
+                    'postcss-px-to-viewport-8-plugin',
                     {
                       viewportWidth: 375, // (Number) The width of the viewport.
                       viewportHeight: 812, // (Number) The height of the viewport.
@@ -151,7 +151,7 @@ module.exports = function (webpackEnv) {
                       selectorBlackList: [], // (Array) The selectors to ignore and leave as px.
                       minPixelValue: 1, // (Number) Set the minimum pixel value to replace.
                       mediaQuery: false, // (Boolean) Allow px to be converted in media queries.
-                      propList: ['*', '!border'], // 指定转换的css属性的单位，*代表全部css属性的单位都进行转换
+                      propList: ['*', '!border', '!background-image'], // 指定转换的css属性的单位，*代表全部css属性的单位都进行转换
                     },
                   ],
                   // Adds PostCSS Normalize as the reset css with default options,
@@ -490,7 +490,7 @@ module.exports = function (webpackEnv) {
                   ? shouldUseSourceMap
                   : isEnvDevelopment,
                 modules: {
-                  mode: 'icss',
+                  mode: 'icss', // 仅开启 :import 和 :export
                 },
               }),
               // Don't consider CSS imports dead code even if the
@@ -510,7 +510,7 @@ module.exports = function (webpackEnv) {
                   : isEnvDevelopment,
                 modules: {
                   mode: 'local',
-                  getLocalIdent: getCSSModuleLocalIdent,
+                  getLocalIdent: getCSSModuleLocalIdent, //为了创建格式为 [filename]_[classname]__[hash] 唯一类名
                 },
               }),
             },

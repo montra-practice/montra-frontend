@@ -91,7 +91,6 @@ const TabFooter = () => {
               key={item.key}
               icon={item.icon}
               data-testid={item.key}
-              className={item.key === activeKey ? styles['tab-selected'] : ''}
             />
           ))}
         </TabBar>
