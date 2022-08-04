@@ -57,6 +57,6 @@ export const getEndAfterTime = (
 }
 
 export const checkMountInput = (value: string) => {
-  const reg = /^([1-9][0-9]*)+(.[0-9]{1,2})?$/
+  const reg = /^(''|0|[1-9][0-9]*)+(\.\d{1,2})?$/
   return reg.test(value)
 }

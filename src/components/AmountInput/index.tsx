@@ -1,18 +1,25 @@
 import { Input } from 'antd-mobile'
 import styles from './index.scss'
 import { checkMountInput } from '@/utils/common'
+import { useState } from 'react'
 
 interface IInputProps {
-  amount: string
+  amount?: string
   handleAmount: (v: string) => void
   placeholder?: string
   className?: string
 }
 
-export default (props: IInputProps) => {
-  const onAmountChange = (e: any) => {
-    const isCheck = checkMountInput(e.target.value)
-    console.log('isCheck', isCheck)
+const AmountInput = (props: IInputProps) => {
+  const initAmount = props.amount
+  const [amountNum, setAmountNum] = useState(initAmount)
+  const onAmountChange = (val: string) => {
+    const isAvailable = checkMountInput(val)
+    isAvailable ? setAmountNum(val) : setAmountNum('')
+  }
+
+  const handleClear = () => {
+    setAmountNum('')
   }
   return (
     <div className={props.className}>
@@ -22,11 +29,18 @@ export default (props: IInputProps) => {
         <Input
           placeholder={props.placeholder}
           className={styles.input}
-          value={props.amount}
-          onChange={onAmountChange}
+          value={amountNum}
+          onChange={(val) => onAmountChange(val)}
           clearable
+          onClear={handleClear}
         />
       </div>
     </div>
   )
 }
+
+AmountInput.defaultProps = {
+  amount: '0',
+}
+
+export default AmountInput
