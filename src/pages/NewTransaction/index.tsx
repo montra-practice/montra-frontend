@@ -1,7 +1,12 @@
 import { NavBar, Input, Button } from 'antd-mobile'
 import { useNavigate, useLocation } from 'react-router'
 import { useState } from 'react'
-import { categoryTypes, walletTypes, repeatObj } from '@/constants/transaction'
+import {
+  categoryExpense,
+  categoryIncome,
+  walletTypes,
+  repeatObj,
+} from '@/constants/transaction'
 import AmountInput from '@/components/AmountInput'
 import Select from '@/components/Select'
 import Attachment from '@/components/Attachment'
@@ -14,8 +19,8 @@ import styles from './index.scss'
 export default () => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
-  const curType = pathname.split('/')[1]
-  const title = curType[0].toUpperCase() + curType.substr(1)
+  const transType = pathname.split('/')[1]
+  const title = transType[0].toUpperCase() + transType.substr(1)
 
   const [amount, setAmount] = useState('0')
   const [cateType, setCateType] = useState('')
@@ -53,7 +58,7 @@ export default () => {
   }
 
   return (
-    <div className={styles[curType]}>
+    <div className={styles[transType]}>
       <NavBar onBack={goBack} className="nav-bar-white">
         {title}
       </NavBar>
@@ -64,7 +69,7 @@ export default () => {
       ></AmountInput>
       <BottomCard withIcon={false}>
         <Select
-          options={categoryTypes}
+          options={transType === 'income' ? categoryIncome : categoryExpense}
           selectedWithBorder={true}
           defaultValue={cateType}
           onSelect={handleCateType}

@@ -9,49 +9,14 @@ import { transDetail } from '@/constants/transaction'
 import styles from './index.scss'
 import { useEffect, useState } from 'react'
 import { goBack } from '@/utils/common'
-
-interface IDetail {
-  amount: number
-  desc: string
-  createTime: string
-  type: string
-  typeName: string
-  categoryId?: string
-  categoryName?: string
-  walletId?: string
-  walletName?: string
-  describe: string
-  attachType: string
-  attachName: string
-  attachSrc: string
-  fromName?: string
-  toName?: string
-}
+import { initTransDetail } from '@/constants/initData'
 
 export default () => {
   const navigate = useNavigate()
   const { transId } = useParams()
 
-  const initData: IDetail = {
-    amount: 0,
-    desc: '',
-    createTime: '',
-    type: '',
-    typeName: '',
-    categoryId: '',
-    categoryName: '',
-    walletId: '',
-    walletName: '',
-    describe: '',
-    attachType: '',
-    attachName: '',
-    attachSrc: '',
-    fromName: '',
-    toName: '',
-  }
-
   const [removeVisible, setRemoveVisible] = useState(false)
-  const [data, setData] = useState(initData)
+  const [data, setData] = useState(initTransDetail)
 
   const handleRemoveVisible = () => {
     setRemoveVisible(!removeVisible)

@@ -16,6 +16,7 @@ export const FOOD = 'Food'
 export const SUBSCRIPTION = 'Subscription'
 export const TRANSPORTATION = 'Transportation'
 export const SALARY = 'Salary'
+export const PASSIVE_INCOME = 'Passive Income'
 
 export const TRANSACTION_TYPES = {
   INCOME: 'INCOME',
@@ -72,7 +73,7 @@ export const sortOptions = [
   },
 ]
 
-export const categoryTypes = [
+export const categoryExpense = [
   {
     value: '1',
     label: SHOPPING,
@@ -89,11 +90,18 @@ export const categoryTypes = [
     value: '4',
     label: TRANSPORTATION,
   },
+]
+export const categoryIncome = [
   {
     value: '5',
     label: SALARY,
   },
+  {
+    value: '6',
+    label: PASSIVE_INCOME,
+  },
 ]
+export const categoryTypes = [...categoryExpense, ...categoryIncome]
 
 export const transactionList = [
   {
@@ -101,7 +109,7 @@ export const transactionList = [
     list: [
       {
         transId: '121213133',
-        transType: TRANSACTION_TYPES.INCOME,
+        transType: TRANSACTION_TYPES.EXPENSE,
         id: 1,
         type: SHOPPING,
         desc: 'test',
@@ -111,19 +119,19 @@ export const transactionList = [
       {
         transId: '1wqe113wqe',
         transType: TRANSACTION_TYPES.EXPENSE,
-        id: 1,
-        type: SHOPPING,
+        id: 2,
+        type: FOOD,
         desc: 'test',
-        money: '123',
+        money: '89',
         time: '3:00 PM',
       },
       {
         transId: '1213fer4erd',
-        transType: TRANSACTION_TYPES.TRANSFER,
-        id: 1,
-        type: SHOPPING,
+        transType: TRANSACTION_TYPES.EXPENSE,
+        id: 3,
+        type: SUBSCRIPTION,
         desc: 'test',
-        money: '123',
+        money: '813',
         time: '3:00 PM',
       },
     ],
@@ -134,8 +142,8 @@ export const transactionList = [
       {
         transId: '231fadaf',
         transType: TRANSACTION_TYPES.INCOME,
-        id: 1,
-        type: SHOPPING,
+        id: 5,
+        type: SALARY,
         desc: 'test',
         money: '123',
         time: '3:00 PM',
@@ -143,8 +151,8 @@ export const transactionList = [
       {
         transId: '1fa414',
         transType: TRANSACTION_TYPES.INCOME,
-        id: 2,
-        type: FOOD,
+        id: 6,
+        type: PASSIVE_INCOME,
         desc: 'test',
         money: '32',
         time: '3:00 PM',

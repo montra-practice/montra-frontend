@@ -35,3 +35,22 @@ declare interface IFilterItems {
   sorter: Array
   cateType: Array
 }
+
+// transaction detail
+declare interface ITransDetail {
+  amount: number
+  desc: string
+  createTime: string
+  type: string
+  typeName: string
+  categoryId?: string
+  categoryName?: string
+  walletId?: string
+  walletName?: string
+  describe: string
+  attachType: string
+  attachName: string
+  attachSrc: string
+  fromName?: string
+  toName?: string
+}
