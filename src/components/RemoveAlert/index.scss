@@ -1,0 +1,52 @@
+@use '@/style/variables.scss' as *;
+
+:local {
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .title {
+    line-height: 48px;
+    font-size: $font-size-mid;
+    color: $color-dark-pure;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .detail {
+    font-size: $font-size-normal;
+    color: $color-gray;
+    text-align: center;
+    line-height: 19px;
+  }
+
+  .box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  %btn {
+    width: 164px;
+    height: 56px;
+    border-radius: 16px;
+    font-size: $font-size-mid;
+    margin-top: 16px;
+  }
+
+  .no {
+    @extend %btn;
+
+    color: $color-primary;
+    background-color: $color-light-primary;
+  }
+
+  .yes {
+    @extend %btn;
+
+    color: #fff;
+    background-color: $color-primary;
+  }
+}
