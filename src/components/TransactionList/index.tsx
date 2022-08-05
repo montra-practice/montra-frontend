@@ -1,9 +1,10 @@
 import styles from './index.scss'
-import { CategoryTypeIcons } from '@/constants/transaction'
+import { CategoryTypeIcons, TRANSACTION_TYPES } from '@/constants/transaction'
 import { useNavigate } from 'react-router-dom'
 
 interface IListItem extends ITransaction {
   transId: string
+  transType: string
 }
 interface IPropsData {
   list: IListItem[]
@@ -15,6 +16,18 @@ export default (props: IPropsData) => {
   const jumpToDetail = (transId: string) => {
     navigate(`/transaction_detail/${transId}`)
   }
+
+  const RenderMoney = (type: string, amount: string | number) => {
+    switch (type) {
+      case TRANSACTION_TYPES.INCOME:
+        return `+${amount}`
+      case TRANSACTION_TYPES.EXPENSE:
+        return `-${amount}`
+      default:
+        return amount
+    }
+  }
+
   return (
     <div className={styles['list-wrapper']}>
       {props.date && <div className={styles['create-date']}>{props.date}</div>}
@@ -37,8 +50,8 @@ export default (props: IPropsData) => {
                 <div className={styles['cate-desc']}>{item.desc}</div>
               </div>
               <div>
-                <div className={`${styles['money']} ${styles['expense']}`}>
-                  {item.money}
+                <div className={styles[item.transType.toLocaleLowerCase()]}>
+                  {RenderMoney(item.transType, item.money)}
                 </div>
                 <div className={styles['cate-desc']}>{item.time}</div>
               </div>

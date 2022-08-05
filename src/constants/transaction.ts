@@ -101,6 +101,7 @@ export const transactionList = [
     list: [
       {
         transId: '121213133',
+        transType: TRANSACTION_TYPES.INCOME,
         id: 1,
         type: SHOPPING,
         desc: 'test',
@@ -109,6 +110,7 @@ export const transactionList = [
       },
       {
         transId: '1wqe113wqe',
+        transType: TRANSACTION_TYPES.EXPENSE,
         id: 1,
         type: SHOPPING,
         desc: 'test',
@@ -117,6 +119,7 @@ export const transactionList = [
       },
       {
         transId: '1213fer4erd',
+        transType: TRANSACTION_TYPES.TRANSFER,
         id: 1,
         type: SHOPPING,
         desc: 'test',
@@ -130,6 +133,7 @@ export const transactionList = [
     list: [
       {
         transId: '231fadaf',
+        transType: TRANSACTION_TYPES.INCOME,
         id: 1,
         type: SHOPPING,
         desc: 'test',
@@ -138,6 +142,7 @@ export const transactionList = [
       },
       {
         transId: '1fa414',
+        transType: TRANSACTION_TYPES.INCOME,
         id: 2,
         type: FOOD,
         desc: 'test',
@@ -146,6 +151,7 @@ export const transactionList = [
       },
       {
         transId: '9trw113452',
+        transType: TRANSACTION_TYPES.EXPENSE,
         id: 3,
         type: SUBSCRIPTION,
         desc: 'test',
@@ -159,6 +165,7 @@ export const transactionList = [
     list: [
       {
         transId: '952424t52',
+        transType: TRANSACTION_TYPES.EXPENSE,
         id: 3,
         type: SUBSCRIPTION,
         desc: 'test',
@@ -172,6 +179,7 @@ export const transactionList = [
     list: [
       {
         transId: '523151rf1',
+        transType: TRANSACTION_TYPES.EXPENSE,
         id: 4,
         type: TRANSPORTATION,
         desc: 'test',
@@ -185,6 +193,7 @@ export const transactionList = [
     list: [
       {
         transId: '62762341551',
+        transType: TRANSACTION_TYPES.TRANSFER,
         id: 5,
         type: TRANSPORTATION,
         desc: 'test',

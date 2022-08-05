@@ -9,6 +9,7 @@ const mockData = {
   list: [
     {
       transId: '121213',
+      transType: 'INCOME',
       id: 3,
       type: SUBSCRIPTION,
       desc: 'test',

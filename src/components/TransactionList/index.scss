@@ -38,17 +38,27 @@
           font-weight: 500;
         }
 
-        .money {
+        %money {
           font-weight: 600;
           text-align: right;
+        }
 
-          &.income {
-            color: $color-green;
-          }
+        .income {
+          @extend %money;
 
-          &.expense {
-            color: $color-red;
-          }
+          color: $color-green;
+        }
+
+        .expense {
+          @extend %money;
+
+          color: $color-red;
+        }
+
+        .transfer {
+          @extend %money;
+
+          color: $color-blue;
         }
 
         .cate-desc {
