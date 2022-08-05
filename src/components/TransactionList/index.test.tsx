@@ -8,6 +8,7 @@ const mockData = {
   date: 'today',
   list: [
     {
+      transId: '121213',
       id: 3,
       type: SUBSCRIPTION,
       desc: 'test',
@@ -36,6 +37,6 @@ describe('TransactionList component', () => {
     )
 
     await fireEvent.click(screen.getByTestId('listDiv'))
-    expect(history.location.pathname).toEqual('/transaction_detail')
+    expect(history.location.pathname).toEqual('/transaction_detail/121213')
   })
 })

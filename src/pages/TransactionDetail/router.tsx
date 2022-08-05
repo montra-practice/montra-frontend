@@ -3,7 +3,7 @@ import { Route } from 'react-router'
 import TransactionDetail from '.'
 
 const ROUTE_PATH = {
-  TRANSACTION_DETAIL: '/transaction_detail',
+  TRANSACTION_DETAIL: '/transaction_detail/:transId',
 }
 
 export default [

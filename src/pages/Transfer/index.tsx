@@ -7,12 +7,10 @@ import TransferIcon from '@/assets/icons/transfer.png'
 import styles from './index.scss'
 import { useState } from 'react'
 import DialogShow from '@/components/DialogShow'
+import { goBack } from '@/utils/common'
 
 export default () => {
   const navigate = useNavigate()
-  const goBack = () => {
-    navigate('/home')
-  }
 
   const [from, setFrom] = useState('')
   const [to, setTo] = useState('')

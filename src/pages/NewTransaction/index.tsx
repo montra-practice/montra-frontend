@@ -8,14 +8,11 @@ import Attachment from '@/components/Attachment'
 import BottomCard from '@/components/BottomCard'
 import Repeat from './components/Repeat'
 import DialogShow from '@/components/DialogShow'
+import { goBack } from '@/utils/common'
 import styles from './index.scss'
 
 export default () => {
   const navigate = useNavigate()
-  const goBack = () => {
-    navigate('/home')
-  }
-
   const { pathname } = useLocation()
   const curType = pathname.split('/')[1]
   const title = curType[0].toUpperCase() + curType.substr(1)

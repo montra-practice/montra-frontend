@@ -2,26 +2,29 @@ import styles from './index.scss'
 import { CategoryTypeIcons } from '@/constants/transaction'
 import { useNavigate } from 'react-router-dom'
 
+interface IListItem extends ITransaction {
+  transId: string
+}
 interface IPropsData {
-  list: ITransaction[]
+  list: IListItem[]
   date?: string
 }
 
 export default (props: IPropsData) => {
   const navigate = useNavigate()
-  const jumpToDetail = () => {
-    navigate('/transaction_detail')
+  const jumpToDetail = (transId: string) => {
+    navigate(`/transaction_detail/${transId}`)
   }
   return (
     <div className={styles['list-wrapper']}>
       {props.date && <div className={styles['create-date']}>{props.date}</div>}
       {props.list &&
-        props.list.map((item, index) => (
+        props.list.map((item) => (
           <div
             className={styles['item-wrapper']}
-            key={index}
+            key={item.transId}
             data-testid="listDiv"
-            onClick={jumpToDetail}
+            onClick={() => jumpToDetail(item.transId)}
           >
             <img
               src={CategoryTypeIcons[item.id]}

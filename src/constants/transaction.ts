@@ -100,6 +100,7 @@ export const transactionList = [
     date: 'Today',
     list: [
       {
+        transId: '121213133',
         id: 1,
         type: SHOPPING,
         desc: 'test',
@@ -107,6 +108,7 @@ export const transactionList = [
         time: '3:00 PM',
       },
       {
+        transId: '1wqe113wqe',
         id: 1,
         type: SHOPPING,
         desc: 'test',
@@ -114,6 +116,7 @@ export const transactionList = [
         time: '3:00 PM',
       },
       {
+        transId: '1213fer4erd',
         id: 1,
         type: SHOPPING,
         desc: 'test',
@@ -126,6 +129,7 @@ export const transactionList = [
     date: 'Yesterday',
     list: [
       {
+        transId: '231fadaf',
         id: 1,
         type: SHOPPING,
         desc: 'test',
@@ -133,6 +137,7 @@ export const transactionList = [
         time: '3:00 PM',
       },
       {
+        transId: '1fa414',
         id: 2,
         type: FOOD,
         desc: 'test',
@@ -140,6 +145,7 @@ export const transactionList = [
         time: '3:00 PM',
       },
       {
+        transId: '9trw113452',
         id: 3,
         type: SUBSCRIPTION,
         desc: 'test',
@@ -152,6 +158,7 @@ export const transactionList = [
     date: '9/11',
     list: [
       {
+        transId: '952424t52',
         id: 3,
         type: SUBSCRIPTION,
         desc: 'test',
@@ -164,6 +171,7 @@ export const transactionList = [
     date: '7/11',
     list: [
       {
+        transId: '523151rf1',
         id: 4,
         type: TRANSPORTATION,
         desc: 'test',
@@ -176,6 +184,7 @@ export const transactionList = [
     date: '5/11',
     list: [
       {
+        transId: '62762341551',
         id: 5,
         type: TRANSPORTATION,
         desc: 'test',
@@ -231,3 +240,55 @@ export const repeatObj = {
   frequency: '',
   endAfter: '',
 }
+
+export const transDetail = [
+  {
+    amount: 120,
+    desc: 'Buy some grocery',
+    createTime: 'Saturday 4 June 2021 16:20',
+    type: TRANSACTION_TYPES.INCOME,
+    typeName: TRANSACTION_TYPES_LABEL[TRANSACTION_TYPES.INCOME],
+    categoryId: '1',
+    categoryName: 'Shopping',
+    walletId: '1',
+    walletName: 'Wallet',
+    describe:
+      // eslint-disable-next-line max-len
+      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    attachType: 'img',
+    attachName: '',
+    attachSrc:
+      '	data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…W8J/3zlTRKvBVx/vwf+fJj7H/ADv/AOKv/ryYcmb4L5P/2Q==',
+  },
+  {
+    amount: 320,
+    desc: 'Buy some grocery',
+    createTime: 'Saturday 4 June 2021 16:20',
+    type: TRANSACTION_TYPES.EXPENSE,
+    typeName: TRANSACTION_TYPES_LABEL[TRANSACTION_TYPES.EXPENSE],
+    categoryId: '1',
+    categoryName: 'Shopping',
+    walletId: '1',
+    walletName: 'Wallet',
+    describe:
+      // eslint-disable-next-line max-len
+      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    attachType: 'file',
+    attachName: 'test.docx',
+    attachSrc: 'https://www.baidu.com',
+  },
+  {
+    amount: 3000,
+    desc: 'Buy some grocery',
+    createTime: 'Saturday 4 June 2021 16:20',
+    type: TRANSACTION_TYPES.TRANSFER,
+    typeName: TRANSACTION_TYPES_LABEL[TRANSACTION_TYPES.TRANSFER],
+    fromName: 'Jack',
+    toName: 'Rose',
+    describe: 'Jack transfer Rose $3000, Rose will return all in July',
+    attachType: '',
+    attachName: '',
+    attachSrc:
+      '	data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…W8J/3zlTRKvBVx/vwf+fJj7H/ADv/AOKv/ryYcmb4L5P/2Q==',
+  },
+]
