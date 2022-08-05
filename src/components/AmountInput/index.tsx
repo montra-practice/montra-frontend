@@ -13,9 +13,17 @@ interface IInputProps {
 const AmountInput = (props: IInputProps) => {
   const initAmount = props.amount
   const [amountNum, setAmountNum] = useState(initAmount)
+
   const onAmountChange = (val: string) => {
-    const isAvailable = checkMountInput(val)
-    isAvailable ? setAmountNum(val) : setAmountNum('')
+    console.log('input', val)
+    if (val === '') {
+      setAmountNum('')
+    } else if (checkMountInput(val)) {
+      console.log('val:', checkMountInput(val))
+      setAmountNum(val)
+    } else {
+      return
+    }
   }
 
   const handleClear = () => {
@@ -30,9 +38,10 @@ const AmountInput = (props: IInputProps) => {
           placeholder={props.placeholder}
           className={styles.input}
           value={amountNum}
-          onChange={(val) => onAmountChange(val)}
+          onChange={onAmountChange}
           clearable
           onClear={handleClear}
+          type="number"
         />
       </div>
     </div>

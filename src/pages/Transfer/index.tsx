@@ -5,6 +5,8 @@ import BottomCard from '@/components/BottomCard'
 import Attachment from '@/components/Attachment'
 import TransferIcon from '@/assets/icons/transfer.png'
 import styles from './index.scss'
+import { useState } from 'react'
+import DialogShow from '@/components/DialogShow'
 
 export default () => {
   const navigate = useNavigate()
@@ -12,7 +14,28 @@ export default () => {
     navigate('/home')
   }
 
+  const [from, setFrom] = useState('')
+  const [to, setTo] = useState('')
+
   const handleAmountInput = () => {}
+
+  const handleFrom = (val: string) => {
+    setFrom(val)
+  }
+  const handleTo = (val: string) => {
+    setTo(val)
+  }
+  const handleRotate = () => {
+    setFrom(to)
+    setTo(from)
+  }
+
+  const handleSubmit = () => {
+    DialogShow('Create Success', () => {
+      navigate('/transaction')
+    })
+  }
+
   return (
     <div className={styles.wrapper}>
       <NavBar
@@ -30,20 +53,33 @@ export default () => {
       <BottomCard withIcon={false}>
         <div className={styles.content}>
           <div className={styles.row}>
-            <Input className={styles.from} placeholder="from" />
+            <Input
+              className={styles.from}
+              placeholder="from"
+              value={from}
+              onChange={handleFrom}
+            />
             <img
               src={TransferIcon}
               alt="transfer icon"
               className={styles['transfer-icon']}
+              onClick={handleRotate}
             />
-            <Input className={styles.to} placeholder="to" />
+            <Input
+              className={styles.to}
+              placeholder="to"
+              value={to}
+              onChange={handleTo}
+            />
           </div>
           <div className={styles['desc-wrapper']}>
             <Input placeholder="Describe" />
           </div>
           <Attachment></Attachment>
         </div>
-        <Button className="btn-big">Continue</Button>
+        <Button className="btn-big" onClick={handleSubmit}>
+          Continue
+        </Button>
       </BottomCard>
     </div>
   )
