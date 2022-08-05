@@ -20,11 +20,11 @@ export default (props: IPropsData) => {
   const RenderMoney = (type: string, amount: string | number) => {
     switch (type) {
       case TRANSACTION_TYPES.INCOME:
-        return `+${amount}`
+        return `+$${amount}`
       case TRANSACTION_TYPES.EXPENSE:
-        return `-${amount}`
+        return `-$${amount}`
       default:
-        return amount
+        return `$${amount}`
     }
   }
 
