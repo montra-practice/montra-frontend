@@ -15,6 +15,8 @@ describe('test Financial Report Detail page', () => {
         <ReportDetail />
       </Router>,
     )
+    const lineBox = screen.getByTestId('lineBox')
     expect(screen.getByText('Financial Report')).toBeInTheDocument()
+    expect(lineBox).toBeInTheDocument()
   })
 })

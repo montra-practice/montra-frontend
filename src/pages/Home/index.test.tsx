@@ -16,12 +16,14 @@ describe('test Home page', () => {
         <Home />
       </Router>,
     )
+    const lineBox = screen.getByTestId('lineBox')
     const textAccount = screen.getByText(/Account Balance/i)
     const textSpend = screen.getByText(/Spend Frequency/i)
     const textRecent = screen.getByText(/Recent Transaction/i)
     expect(textAccount).toBeInTheDocument()
     expect(textSpend).toBeInTheDocument()
     expect(textRecent).toBeInTheDocument()
+    expect(lineBox).toBeInTheDocument()
   })
 
   it('goes to notification page when click the NotificationIcon', () => {

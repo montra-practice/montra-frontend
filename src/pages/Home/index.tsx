@@ -63,7 +63,6 @@ function Home() {
         </div>
       </div>
       <div className={styles['add-related']}>
-        {/* <div className={styles['add-active']}></div> */}
         <div className={styles.tags}>
           <Tag defaultValue="Today" tags={Tags}></Tag>
         </div>

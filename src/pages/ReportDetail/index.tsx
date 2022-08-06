@@ -29,7 +29,7 @@ const ReportDetail = () => {
   }, [])
 
   const goBack = () => {
-    navigate(`/financial-report/${period}`)
+    navigate('/transaction')
   }
 
   const switchChart = () => {
@@ -91,7 +91,9 @@ const ReportDetail = () => {
       {activeChart === 0 && <div className={styles.money}>$ 332</div>}
       <div
         className={styles.chart}
-        style={{ height: activeChart === 0 ? '165px' : '210px' }}
+        style={{
+          height: activeChart === 0 ? '165px' : '210px',
+        }}
       >
         {activeChart === 0 && <CommonLineChart />}
         {activeChart === 1 && <CommonRingChart />}

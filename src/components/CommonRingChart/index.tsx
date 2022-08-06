@@ -22,7 +22,7 @@ const CommonRingChart = () => {
   type EChartsOption = echarts.ComposeOption<
     GridComponentOption | PieSeriesOption
   >
-  const dom = document.getElementById('ring-chart')
+
   const initChart = useCallback(() => {
     const data = [
       { id: '1', value: 1048, name: 'Search Engine' },
@@ -63,15 +63,14 @@ const CommonRingChart = () => {
         },
       ],
     }
-
-    if (dom) {
-      const chart = echarts.init(dom)
+    setTimeout(() => {
+      const dom = document.getElementById('ring-chart')
+      const chart = echarts.init(dom!)
       chart.setOption(options)
-    }
-  }, [dom])
+    })
+  }, [])
 
   useLayoutEffect(() => {
-    document.title = 'Financial Report Detail'
     initChart()
   }, [initChart])
 

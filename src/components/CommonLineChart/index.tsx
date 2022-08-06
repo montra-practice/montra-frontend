@@ -3,7 +3,7 @@ import { GridComponent, GridComponentOption } from 'echarts/components'
 import { LineChart, LineSeriesOption } from 'echarts/charts'
 import { UniversalTransition } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
-import { useCallback, useLayoutEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import styles from './index.scss'
 
 const CommonLineChart = () => {
@@ -11,7 +11,7 @@ const CommonLineChart = () => {
   type EChartsOption = echarts.ComposeOption<
     GridComponentOption | LineSeriesOption
   >
-  const dom = document.getElementById('line-chart')
+
   const initChart = useCallback(() => {
     const options: EChartsOption = {
       color: '#7F3DFF',
@@ -64,14 +64,17 @@ const CommonLineChart = () => {
         },
       ],
     }
-    if (dom) {
-      const chart = echarts.init(dom)
+    setTimeout(() => {
+      const dom = document.getElementById('line-chart')
+      console.log('clientHeight', dom?.clientHeight)
+      console.log('height', dom?.style.height)
+      console.log('document.body.clientHeight', document.body.style.width)
+      const chart = echarts.init(dom!)
       chart.setOption(options)
-    }
-  }, [dom])
+    })
+  }, [])
 
-  useLayoutEffect(() => {
-    document.title = 'Financial Report Detail'
+  useEffect(() => {
     initChart()
   }, [initChart])
 
