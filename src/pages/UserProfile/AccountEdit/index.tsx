@@ -15,7 +15,7 @@ import classnames from 'classnames'
 import { basicColumns, bankTypeList } from './constant'
 import styles from './index.scss'
 
-const EditAccount = () => {
+const AccountEdit = () => {
   const [pickerVisible, setPickerVisible] = useState<boolean>(false)
   const [selectedBankType, setSelectedBankType] = useState('')
   const [pickerVal, setPickerVal] = useState<string | undefined>(undefined)
@@ -67,7 +67,7 @@ const EditAccount = () => {
       <div className={styles['edit-content-wrapper']}>
         <div className={styles['balance-card']}>
           <span>Balance</span>
-          <p>${isEditPage ? 2400 : '0.00'}</p>
+          <p data-testid="balance value">${isEditPage ? 2400 : '0.00'}</p>
         </div>
         <div className={styles['content']}>
           <Input
@@ -80,6 +80,7 @@ const EditAccount = () => {
           <div
             className={styles['account-type-picker-box']}
             onClick={handleShowPick}
+            data-testid="show-picker"
           >
             <Input placeholder="Account Type" value={pickerVal} readOnly />
             <DownOutline
@@ -88,6 +89,7 @@ const EditAccount = () => {
               color="#91919F"
             />
             <Picker
+              data-testid="picker-element"
               columns={basicColumns}
               visible={pickerVisible}
               onClose={() => {
@@ -104,7 +106,7 @@ const EditAccount = () => {
             />
           </div>
           {pickerVal === 'bank' && (
-            <div className={styles['bank-grid']}>
+            <div className={styles['bank-grid']} data-testid="bank-box">
               <h3>Bank</h3>
               <div className={styles['bank-grid-content']}>
                 <Grid columns={4} gap={8}>
@@ -136,4 +138,4 @@ const EditAccount = () => {
   )
 }
 
-export default EditAccount
+export default AccountEdit

@@ -13,7 +13,6 @@ const Account = () => {
   })
 
   const handleBack = () => {
-    console.log('onback')
     window.history.back()
   }
 
@@ -40,7 +39,9 @@ const Account = () => {
       </NavBar>
       <div className={styles['account-balance-warpper']}>
         <span className={styles['text']}>Account Balance</span>
-        <p className={styles['sum']}>${accountInfo?.account ?? '--'}</p>
+        <p className={styles['sum']} data-testid="account-balance">
+          ${accountInfo?.account ?? '--'}
+        </p>
       </div>
       <div className={styles['payment-list-wrapper']}>
         {accountInfo?.payList?.length > 0 &&
@@ -48,6 +49,7 @@ const Account = () => {
             ({ payment, sum }: { payment: string; sum: number }) => (
               <div
                 key={payment}
+                data-testid={payment}
                 className={styles['item-box']}
                 onClick={() => handleToPageDetail(payment)}
               >

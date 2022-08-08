@@ -38,14 +38,12 @@ const UserProfile = () => {
           <span data-testid="nickname">{userInfo?.nickName}</span>
           <p data-testid="realName">{userInfo.realName}</p>
         </div>
-        <div className={styles['action-box']} data-testid="edit-box">
-          <Image
-            src={editImg}
-            width={20}
-            height={20}
-            fit="cover"
-            onClick={() => navigate('/user-profile/edit')}
-          />
+        <div
+          className={styles['action-box']}
+          data-testid="edit-box"
+          onClick={() => navigate('/user-profile/edit')}
+        >
+          <Image src={editImg} width={20} height={20} fit="cover" />
         </div>
       </div>
       <UserFunctions />

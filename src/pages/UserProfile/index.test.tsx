@@ -53,6 +53,12 @@ describe('test userProfile page', () => {
   //     setup()
   //     userEvent.click(screen.getByText('edit-box'))
   //   })
+  test('navigate to user edit info page when user click the edit icon', () => {
+    setup()
+    userEvent.click(screen.getByTestId('edit-box'))
+    expect(history.location.pathname).toBe('/user-profile/edit')
+  })
+
   test('navigate to user porfiles account page', () => {
     setup()
     userEvent.click(screen.getByText('Account'))
