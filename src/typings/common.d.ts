@@ -39,7 +39,6 @@ declare interface IFilterItems {
 // transaction detail
 declare interface ITransDetail {
   amount: number
-  desc: string
   createTime: string
   type: string
   typeName: string

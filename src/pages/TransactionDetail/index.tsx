@@ -69,7 +69,6 @@ export default () => {
 
       <div className={`${styles.top} ${styles[bgClassName]}`}>
         <div className={styles.amount}>${data.amount}</div>
-        <div className={styles['type-desc']}>{data.desc}</div>
         <div className={styles.create}>{data.createTime}</div>
       </div>
 

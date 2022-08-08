@@ -19,6 +19,7 @@ export const SUBSCRIPTION = 'Subscription'
 export const TRANSPORTATION = 'Transportation'
 export const SALARY = 'Salary'
 export const PASSIVE_INCOME = 'Passive Income'
+export const OTHERS = 'Others'
 
 export const TRANSACTION_TYPES = {
   INCOME: 'INCOME',
@@ -94,6 +95,10 @@ export const categoryExpense = [
     value: '4',
     label: TRANSPORTATION,
   },
+  {
+    value: '7',
+    label: OTHERS,
+  },
 ]
 export const categoryIncome = [
   {
@@ -103,6 +108,10 @@ export const categoryIncome = [
   {
     value: '6',
     label: PASSIVE_INCOME,
+  },
+  {
+    value: '7',
+    label: OTHERS,
   },
 ]
 export const categoryTypes = [...categoryExpense, ...categoryIncome]
@@ -248,7 +257,7 @@ export const walletTypes = [
 
 export const selectEndAfterTimes = (() => {
   let arr = []
-  for (let i = 1; i < 10; i++) {
+  for (let i = 1; i < 12; i++) {
     const iStr = String(i)
     arr.push({ value: iStr, label: iStr })
   }
@@ -265,7 +274,6 @@ export const repeatObj = {
 export const transDetail = [
   {
     amount: 120,
-    desc: 'Buy some grocery',
     createTime: 'Saturday 4 June 2021 16:20',
     type: TRANSACTION_TYPES.INCOME,
     typeName: TRANSACTION_TYPES_LABEL[TRANSACTION_TYPES.INCOME],
@@ -283,7 +291,6 @@ export const transDetail = [
   },
   {
     amount: 320,
-    desc: 'Buy some grocery',
     createTime: 'Saturday 4 June 2021 16:20',
     type: TRANSACTION_TYPES.EXPENSE,
     typeName: TRANSACTION_TYPES_LABEL[TRANSACTION_TYPES.EXPENSE],
@@ -300,7 +307,6 @@ export const transDetail = [
   },
   {
     amount: 3000,
-    desc: 'Buy some grocery',
     createTime: 'Saturday 4 June 2021 16:20',
     type: TRANSACTION_TYPES.TRANSFER,
     typeName: TRANSACTION_TYPES_LABEL[TRANSACTION_TYPES.TRANSFER],
