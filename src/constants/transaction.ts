@@ -4,6 +4,8 @@ import Subscription from '@/assets/icons/subscription.png'
 import Transportation from '@/assets/icons/transportation.png'
 import Salary from '@/assets/icons/salary.png'
 import PassiveIncome from '@/assets/icons/passive_income.png'
+import Others from '@/assets/icons/others.svg'
+import Transfer from '@/assets/icons/transfer.svg'
 
 import arrowRight from '@/assets/icons/arrow_right.svg'
 import arrowDown from '@/assets/icons/arrow_down.svg'
@@ -38,6 +40,8 @@ export const CategoryTypeIcons: { [key: number | string]: string } = {
   4: Transportation,
   5: Salary,
   6: PassiveIncome,
+  7: Others,
+  8: Transfer,
 }
 
 export const CategoryTypeColor: { [key: number | string]: string } = {
@@ -160,8 +164,8 @@ export const transactionList = [
       {
         transId: '9trw113452',
         transType: TRANSACTION_TYPES.EXPENSE,
-        id: 3,
-        type: SUBSCRIPTION,
+        id: 7,
+        type: 'Others',
         desc: 'test',
         money: '80',
         time: '3:00 PM',
@@ -202,8 +206,8 @@ export const transactionList = [
       {
         transId: '62762341551',
         transType: TRANSACTION_TYPES.TRANSFER,
-        id: 5,
-        type: TRANSPORTATION,
+        id: 8,
+        type: 'Transfer',
         desc: 'test',
         money: '123',
         time: '3:00 PM',
