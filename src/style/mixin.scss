@@ -1,5 +1,39 @@
+@use '@/style/variables.scss' as *;
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@mixin flex-between {
+  @include flex-center;
+
+  justify-content: space-between;
+}
+@mixin flex-row {
+  @include flex-center;
+
+  flex-direction: row;
+}
+
+@mixin cate-type-box {
+  @include flex-row;
+
+  padding: 8px 10px;
+  background: #fcfcfc;
+  border: 1px solid #f1f1fa;
+  border-radius: 32px;
+
+  .cate-type-icon {
+    width: 14px;
+    height: 14px;
+    border-radius: 7px;
+    background-color: $color-green;
+    margin-right: 7px;
+  }
+
+  .cat-type-title {
+    font-size: $font-size-sm;
+    color: $color-dark-shallow;
+  }
 }

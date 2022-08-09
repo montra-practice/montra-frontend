@@ -1,4 +1,5 @@
 @use '@/style/variables.scss' as *;
+@use '@/style/mixin.scss' as *;
 
 :local {
   .budget {
@@ -20,6 +21,48 @@
       color: $color-gray;
       padding: 60px;
       margin: 100px auto;
+    }
+
+    .budget-item {
+      padding: 16px;
+
+      .cate-content {
+        @include flex-between;
+
+        .cate-type-box {
+          @include cate-type-box;
+        }
+
+        .warn-icon {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      .progress {
+        .progress-remain {
+          margin: 10px auto;
+          color: $color-dark-deep;
+          font-size: 24px;
+          font-weight: 600;
+          line-height: 30px;
+        }
+
+        .progress-note {
+          margin-top: 10px;
+          color: $color-gray;
+          font-size: $font-size-normal;
+          font-weight: 500;
+        }
+      }
+
+      .warn-tip {
+        color: $color-red;
+        font-size: $font-size-sm;
+        font-weight: 400;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
     }
   }
 
