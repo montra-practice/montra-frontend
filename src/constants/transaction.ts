@@ -228,15 +228,15 @@ export const transactionList = [
 export const selectOptions = [
   {
     value: '1',
-    label: 'Month',
+    label: 'Monthly',
   },
   {
     value: '2',
-    label: 'Week',
+    label: 'Weekly',
   },
   {
     value: '3',
-    label: 'Year',
+    label: 'Yearly',
   },
 ]
 
@@ -257,7 +257,7 @@ export const walletTypes = [
 
 export const selectEndAfterTimes = (() => {
   let arr = []
-  for (let i = 1; i < 12; i++) {
+  for (let i = 1; i <= 12; i++) {
     const iStr = String(i)
     arr.push({ value: iStr, label: iStr })
   }

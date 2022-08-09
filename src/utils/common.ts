@@ -24,7 +24,7 @@ export const getEndAfterTime = (
   let curMonth = Number(month)
   let curDate = Number(date)
   let numTimes = Number(times)
-  console.log(curYear, curMonth, curDate, numTimes)
+  console.log(curYear, curMonth, curDate, type, numTimes)
 
   const endAfterMoth = curMonth + numTimes
   const endAfterDays = curDate + numTimes * 7
@@ -47,9 +47,7 @@ export const getEndAfterTime = (
   console.log('curMonth', curMonth)
   curDate = tempDate.getDate()
 
-  const endAfterTime = `${curDate} ${
-    MonthEnglish[curMonth + 1].label
-  } ${curYear}`
+  const endAfterTime = `${curDate} ${MonthEnglish[curMonth].label} ${curYear}`
 
   console.log('endAfterTime', endAfterTime)
 

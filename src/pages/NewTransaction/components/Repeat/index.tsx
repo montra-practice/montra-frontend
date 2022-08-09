@@ -1,5 +1,5 @@
-import { List, Switch, Button, Mask, Toast } from 'antd-mobile'
-import { useState } from 'react'
+import { List, Switch, Button, Mask, Toast, Grid } from 'antd-mobile'
+import { useEffect, useState } from 'react'
 import BottomCard from '@/components/BottomCard'
 import Select from '@/components/Select'
 import { selectOptions, selectEndAfterTimes } from '@/constants/transaction'
@@ -15,7 +15,8 @@ interface IRepeat {
 }
 
 export default (props: IRepeat) => {
-  const initSelectItem = { value: '', label: '' }
+  const initFrequency = { value: '1', label: 'Monthly' }
+  const initEndAfter = { value: '1', label: '1' }
   const initRepeatDesc = 'Repeat transaction'
 
   const curDate = new Date()
@@ -25,9 +26,8 @@ export default (props: IRepeat) => {
   const [repeatDesc, setRepeatDesc] = useState(initRepeatDesc)
   const [switchCheck, setSwitchCheck] = useState(props.repeat)
   const [freqVisible, setFreqVisible] = useState(false)
-  const [frequency, setFrequency] = useState(initSelectItem)
-  const [endAfter, setEndAfter] = useState(initSelectItem)
-  const [next, setNext] = useState(false)
+  const [frequency, setFrequency] = useState(initFrequency)
+  const [endAfter, setEndAfter] = useState(initEndAfter)
   const [month, setMoth] = useState(defaultMoth)
   const [date, setDate] = useState(defaultDate)
   const [dateOptions, setDateOptions] = useState(getDatesByMonth())
@@ -39,40 +39,37 @@ export default (props: IRepeat) => {
       setRepeatDesc('Repeat transaction, set your own time')
     } else {
       setRepeatDesc(initRepeatDesc)
-      setFrequency(initSelectItem)
-      setEndAfter(initSelectItem)
-      setNext(false)
+      setFrequency(initFrequency)
+      setEndAfter(initEndAfter)
     }
 
     setFreqVisible(val)
   }
 
   const handleFreqSelect = (item: any) => {
+    console.log('freq', item)
     setFrequency(item)
+    handleEndAfterDate(month, date, item.value, endAfter.value)
   }
 
   const handleEndAfterSelect = (item: any) => {
     setEndAfter(item)
+    handleEndAfterDate(month, date, frequency.value, item.value)
   }
 
   const handleMaskClick = () => {
     setFreqVisible(false)
-    setNext(false)
   }
 
   const handleMonthCheck = (item: any) => {
     setMoth(item.value)
     setDateOptions(getDatesByMonth(item.value))
-    setFullDate(
-      getEndAfterTime(item.value, date, frequency.value, endAfter.value),
-    )
+    handleEndAfterDate(item.value, date, frequency.value, endAfter.value)
   }
 
   const handleDateCheck = (item: any) => {
     setDate(item.value)
-    setFullDate(
-      getEndAfterTime(month, item.value, frequency.value, endAfter.value),
-    )
+    handleEndAfterDate(month, item.value, frequency.value, endAfter.value)
   }
 
   const FreqEndAfterDom = (frequency: string, endAfter: string) => {
@@ -84,27 +81,27 @@ export default (props: IRepeat) => {
     )
   }
 
+  const handleEndAfterDate = (
+    curMonth: string,
+    curDate: string,
+    curFreq: string,
+    curEndAfter: string,
+  ) => {
+    setFullDate(getEndAfterTime(curMonth, curDate, curFreq, curEndAfter))
+  }
+
   const handleNext = () => {
-    if (next) {
+    if (frequency.value && endAfter.value) {
       props.onRepeat?.({ frequency, endAfter, month, date, fullDate })
       setFreqVisible(false)
-      setNext(false)
     } else {
-      if (frequency.value && endAfter.value) {
-        setNext(true)
-        setFullDate(
-          getEndAfterTime(
-            defaultMoth,
-            defaultDate,
-            frequency.value,
-            endAfter.value,
-          ),
-        )
-      } else {
-        Toast.show('Frequency and End Master must be chosen!')
-      }
+      Toast.show('Frequency and End Master must be selected!')
     }
   }
+
+  useEffect(() => {
+    handleEndAfterDate(month, date, frequency.value, endAfter.value)
+  }, [])
 
   return (
     <>
@@ -131,9 +128,7 @@ export default (props: IRepeat) => {
               </Button>
             }
             description={FreqEndAfterDom(
-              `${frequency.label}-${
-                MonthEnglish[Number(month) + 1].label
-              } ${date}`,
+              `${frequency.label}-${MonthEnglish[Number(month)].label} ${date}`,
               fullDate,
             )}
           >
@@ -141,67 +136,57 @@ export default (props: IRepeat) => {
           </List.Item>
         )}
       </List>
-      <Mask
-        opacity="thin"
-        visible={freqVisible}
-        onMaskClick={() => handleMaskClick()}
-      >
+      <Mask opacity="thin" visible={freqVisible} onMaskClick={handleMaskClick}>
         <BottomCard>
-          {!next ? (
-            <div className={styles['select-wrapper']}>
+          <div className={styles['select-wrapper']}>
+            <div className={styles.item}>
+              <div className={styles.title}>Start:</div>
+              <div className={styles.between}>
+                <div className={styles['between-item']}>
+                  <div className={styles['item-name']}>Month:</div>
+                  <Select
+                    size="middle"
+                    options={MonthEnglish}
+                    defaultValue={month}
+                    onSelect={handleMonthCheck}
+                  ></Select>
+                </div>
+                <div className={styles['between-item']}>
+                  <div className={styles['item-name']}>Date:</div>
+                  <Select
+                    size="middle"
+                    options={dateOptions}
+                    defaultValue={date}
+                    onSelect={handleDateCheck}
+                  ></Select>
+                </div>
+              </div>
+            </div>
+            <div className={styles.item}>
+              <div className={styles.title}>Frequency:</div>
               <Select
-                defaultLabel="Frequency"
-                defaultValue={props.frequency}
+                defaultValue={frequency.value}
                 options={selectOptions}
                 onSelect={handleFreqSelect}
               ></Select>
+            </div>
+            <div className={styles.item}>
+              <div className={styles.title}>End After Times:</div>
               <Select
-                defaultLabel="End After"
-                defaultValue={props.endAfter}
+                defaultValue={endAfter.value}
                 options={selectEndAfterTimes}
                 onSelect={handleEndAfterSelect}
               ></Select>
             </div>
-          ) : (
-            <div className={styles['select-wrapper']}>
+            <div className={styles.item}>
+              <div className={styles.title}>End by:</div>
               <div className={styles.between}>
-                <Select
-                  size="middle"
-                  options={selectOptions}
-                  defaultValue={frequency.value}
-                  disabled
-                ></Select>
-                <Select
-                  size="middle"
-                  options={MonthEnglish}
-                  defaultValue={month}
-                  onSelect={handleMonthCheck}
-                ></Select>
-                <Select
-                  size="middle"
-                  options={dateOptions}
-                  defaultValue={date}
-                  onSelect={handleDateCheck}
-                ></Select>
-              </div>
-              <div className={styles.between}>
-                <Select
-                  size="middle"
-                  options={selectEndAfterTimes}
-                  defaultValue={endAfter.value}
-                  disabled
-                ></Select>
-                {/* <Select
-                  size="middle"
-                  options={selectOptions}
-                  defaultLabel={fullDate}
-                  disabled
-                ></Select> */}
                 <div className={styles.date}>{fullDate}</div>
               </div>
             </div>
-          )}
-          <Button className="btn-big" onClick={() => handleNext()}>
+          </div>
+
+          <Button className="btn-big" onClick={handleNext}>
             Next
           </Button>
         </BottomCard>
