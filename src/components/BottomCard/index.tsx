@@ -10,7 +10,9 @@ interface ICardProps {
 const BottomCard = (props: ICardProps) => {
   return (
     <Card className={styles.wrapper}>
-      {props.withIcon && <div className={styles.icon}></div>}
+      {props.withIcon && (
+        <div className={styles.icon} data-testid="topIcon"></div>
+      )}
       {props.children}
     </Card>
   )
