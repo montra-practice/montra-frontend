@@ -4,7 +4,7 @@ import { checkMountInput } from '@/utils/common'
 import { useState } from 'react'
 
 interface IInputProps {
-  amount?: string
+  amount: string
   handleAmount: (v: string) => void
   placeholder?: string
   className?: string
@@ -15,11 +15,9 @@ const AmountInput = (props: IInputProps) => {
   const [amountNum, setAmountNum] = useState(initAmount)
 
   const onAmountChange = (val: string) => {
-    console.log('input', val)
     if (val === '') {
       setAmountNum('')
     } else if (checkMountInput(val)) {
-      console.log('val:', checkMountInput(val))
       setAmountNum(val)
     } else {
       return
@@ -29,6 +27,11 @@ const AmountInput = (props: IInputProps) => {
   const handleClear = () => {
     setAmountNum('')
   }
+
+  const handleOnBlur = () => {
+    props.handleAmount?.(amountNum)
+  }
+
   return (
     <div className={props.className}>
       <div className={styles.alert}>How much?</div>
@@ -37,8 +40,8 @@ const AmountInput = (props: IInputProps) => {
         <Input
           placeholder={props.placeholder}
           className={styles.input}
-          value={amountNum}
           onChange={onAmountChange}
+          onBlur={handleOnBlur}
           clearable
           onClear={handleClear}
           type="number"
@@ -49,7 +52,8 @@ const AmountInput = (props: IInputProps) => {
 }
 
 AmountInput.defaultProps = {
-  amount: '0',
+  placeholder: '0',
+  amount: '',
 }
 
 export default AmountInput

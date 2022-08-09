@@ -228,15 +228,15 @@ export const transactionList = [
 export const selectOptions = [
   {
     value: '1',
-    label: 'Monthly',
+    label: 'Month',
   },
   {
     value: '2',
-    label: 'Weekly',
+    label: 'Week',
   },
   {
     value: '3',
-    label: 'Yearly',
+    label: 'Year',
   },
 ]
 

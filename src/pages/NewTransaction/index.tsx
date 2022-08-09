@@ -22,12 +22,13 @@ export default () => {
   const transType = pathname.split('/')[1]
   const title = transType[0].toUpperCase() + transType.substr(1)
 
-  const [amount, setAmount] = useState('0')
+  const [amount, setAmount] = useState('')
   const [cateType, setCateType] = useState('')
   const [desc, setDesc] = useState('')
   const [walletType, setWalletType] = useState('')
 
   const handleAmountInput = (val: string) => {
+    console.log('amount', val)
     setAmount(val)
   }
 
