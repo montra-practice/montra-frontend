@@ -1,15 +1,17 @@
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router'
 import TabFooter from '@/components/TabFooter'
 import TimeBar, { IMonth } from './components/TimeBar'
 import { Button, ProgressBar } from 'antd-mobile'
-import { useState } from 'react'
-import { useNavigate } from 'react-router'
 import styles from './index.scss'
 import { CategoryTypeColor } from '@/constants/transaction'
 import { ExclamationCircleFill } from 'antd-mobile-icons'
+import { getBudgetList } from '@/store/budget/api'
 
 function Budget() {
   const navigate = useNavigate()
-  const budgetList = [
+  const [budgetList, setBudgetList] = useState<IBudget[]>([])
+  /* const budgetList = [
     {
       budgetId: 1,
       categoryId: '1',
@@ -24,9 +26,12 @@ function Budget() {
       budgetTarget: 700,
       realCost: 350,
     },
-  ]
+  ] */
   const handleCreate = () => {
-    navigate('/createBudget')
+    navigate('/budget/new')
+  }
+  const displayDetial = (val: IBudget) => {
+    navigate('/budget/detail', { state: { detial: val } })
   }
   const [selectedMonth, setSelectedMonth] = useState<IMonth>()
   const onSelected = (val: IMonth) => {
@@ -48,7 +53,12 @@ function Budget() {
         const costPercent = (item.realCost / item.budgetTarget) * 100
         console.log(costPercent)
         return (
-          <div className={styles['budget-item']} key={item.budgetId}>
+          <div
+            className={styles['budget-item']}
+            key={item.budgetId}
+            data-testid="budget-item"
+            onClick={() => displayDetial(item)}
+          >
             <div className={styles['cate-content']}>
               <div className={styles['cate-type-box']}>
                 <div
@@ -89,6 +99,14 @@ function Budget() {
       })
     }
   }
+  const getBudgets = async () => {
+    const budgetResult = await getBudgetList()
+    // console.log('rrr', budgetResult)
+    setBudgetList(budgetResult?.response)
+  }
+  useEffect(() => {
+    getBudgets()
+  }, [])
   return (
     <div className={styles.budget}>
       <TimeBar onSelected={onSelected} selectedMonth={selectedMonth}></TimeBar>

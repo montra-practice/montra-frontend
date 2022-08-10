@@ -53,3 +53,11 @@ declare interface ITransDetail {
   fromName?: string
   toName?: string
 }
+
+declare interface IBudget {
+  budgetId: number
+  categoryId: string
+  categoryName: string
+  budgetTarget: number
+  realCost: number
+}
