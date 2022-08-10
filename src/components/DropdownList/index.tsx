@@ -54,8 +54,14 @@ export default (props: IDropDownList) => {
         title={title}
         arrow={arrow}
         className={styles['list-item']}
+        data-testid="checkPanel"
       >
-        <CheckList multiple onChange={handleChange} value={props.value}>
+        <CheckList
+          multiple
+          onChange={handleChange}
+          value={props.value}
+          data-testid="checkList"
+        >
           {props.options &&
             props.options.map((item) => (
               <CheckList.Item key={item.value} value={item.value}>

@@ -1,5 +1,4 @@
 import { screen, fireEvent, render } from '@testing-library/react'
-import { sync } from 'resolve'
 import DialogShow from '.'
 
 const mockData = {
@@ -19,6 +18,7 @@ describe('Test DialogShow Component', () => {
     fireEvent.click(button)
     const dialog = screen.getByRole('dialog')
     expect(dialog).toBeInTheDocument()
-    expect(screen.getByText('msg')).toBeInTheDocument()
+    expect(screen.getByText(mockData.msg)).toBeInTheDocument()
+    expect(screen.getByText(mockData.title)).toBeInTheDocument()
   })
 })

@@ -19,7 +19,8 @@ export const SUBSCRIPTION = 'Subscription'
 export const TRANSPORTATION = 'Transportation'
 export const SALARY = 'Salary'
 export const PASSIVE_INCOME = 'Passive Income'
-export const OTHERS = 'Others'
+export const OTHERS_EXPENSE = 'Others Expense'
+export const OTHERS_INCOME = 'Others Income'
 
 export const TRANSACTION_TYPES = {
   INCOME: 'INCOME',
@@ -97,7 +98,7 @@ export const categoryExpense = [
   },
   {
     value: '7',
-    label: OTHERS,
+    label: OTHERS_EXPENSE,
   },
 ]
 export const categoryIncome = [
@@ -110,8 +111,8 @@ export const categoryIncome = [
     label: PASSIVE_INCOME,
   },
   {
-    value: '7',
-    label: OTHERS,
+    value: '8',
+    label: OTHERS_INCOME,
   },
 ]
 export const categoryTypes = [...categoryExpense, ...categoryIncome]
