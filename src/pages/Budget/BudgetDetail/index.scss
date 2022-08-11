@@ -1,0 +1,67 @@
+@use '@/style/variables.scss' as *;
+@use '@/style/mixin.scss' as *;
+
+:local {
+  .detail {
+    padding: 20px;
+
+    .cate-box {
+      @include flex-center;
+
+      margin: 30px;
+
+      .cate-type-box {
+        @include cate-type-box;
+
+        border-radius: 24px;
+        padding: 16px;
+
+        .cate-type-icon {
+          width: 32px;
+          height: 32px;
+          background-color: transparent;
+        }
+
+        .cate-type-title {
+          font-size: $font-size-mid;
+          color: $color-dark-deep;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .detail-remain {
+      padding: 15px;
+      text-align: center;
+      color: $color-dark-deep;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 30px;
+
+      span {
+        display: block;
+      }
+
+      .money {
+        font-size: 64px;
+        line-height: 77px;
+      }
+    }
+
+    .warn-box {
+      @include flex-center;
+
+      margin: 10px auto;
+      width: 218px;
+      height: 40px;
+      background: #fd3c4a;
+      border-radius: 24px;
+      color: #fff;
+      font-size: $font-size-sm;
+
+      .warn-tip {
+        margin-left: 12px;
+      }
+    }
+  }
+}

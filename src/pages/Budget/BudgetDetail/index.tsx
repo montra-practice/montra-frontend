@@ -1,5 +1,72 @@
-import React from 'react'
-
+import { useState } from 'react'
+import { useNavigate } from 'react-router'
+import { useLocation } from 'react-router-dom'
+import { NavBar, Button, ProgressBar } from 'antd-mobile'
+import { ExclamationCircleFill } from 'antd-mobile-icons'
+import { DeleteOutline } from 'antd-mobile-icons'
+import styles from './index.scss'
+import { goBack } from '@/utils/common'
+import { CategoryTypeIcons } from '@/constants/transaction'
+import { IBudgetDetail } from '..'
+import RemoveAlert from '@/components/RemoveAlert'
 export default function BudgetDetail() {
-  return <div>BudgetDetail</div>
+  const { state } = useLocation()
+  const navigate = useNavigate()
+  const budgetDetail = state as IBudgetDetail
+  const [alert, setAlert] = useState(false)
+  console.log(budgetDetail)
+  const cateIcon = CategoryTypeIcons[budgetDetail.categoryId]
+  const handleEdit = () => {
+    navigate('/budget/handle', { state: { type: 'edit', data: budgetDetail } })
+  }
+  const handelRemove = () => {
+    setAlert(false)
+  }
+  return (
+    <div className={styles.detail}>
+      <NavBar
+        onBack={goBack}
+        right={<DeleteOutline fontSize={28} onClick={() => setAlert(true)} />}
+      >
+        Detail Budget
+      </NavBar>
+      <div className={styles['cate-box']}>
+        <div className={styles['cate-type-box']}>
+          <img
+            src={cateIcon}
+            alt="cate-icon"
+            className={styles['cate-type-icon']}
+          />
+          <div className={styles['cate-type-title']}>
+            {budgetDetail.categoryName}
+          </div>
+        </div>
+      </div>
+      <div className={styles['detail-remain']}>
+        <span>Remaining</span>
+        <span className={styles.money}>${budgetDetail.remain}</span>
+        <ProgressBar
+          percent={budgetDetail.costPercent}
+          style={{
+            '--track-width': '12px',
+            '--fill-color': `${budgetDetail.bgColor}`,
+          }}
+        />
+      </div>
+      <div className={styles['warn-box']}>
+        <ExclamationCircleFill fontSize={24} color="#fff" />
+        <span className={styles['warn-tip']}>You’ve exceed the limit</span>
+      </div>
+      <Button className="btn-big budget-btn" onClick={handleEdit}>
+        Edit
+      </Button>
+      <RemoveAlert
+        visible={alert}
+        onCancel={() => setAlert(false)}
+        onConfirm={handelRemove}
+        title="Remove this budget?"
+        description="Are you sure do you wanna remove this budget?"
+      />
+    </div>
+  )
 }

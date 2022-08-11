@@ -4,6 +4,8 @@ import styles from './index.scss'
 
 interface IRemoveAlertProps {
   visible: boolean
+  title?: string
+  description?: string
   onConfirm: () => void
   onCancel: () => void
 }
@@ -13,9 +15,12 @@ export default (props: IRemoveAlertProps) => {
     <Mask opacity="thin" visible={props.visible} onMaskClick={props.onCancel}>
       <BottomCard>
         <div className={styles.content}>
-          <span className={styles.title}>Remove this Transaction</span>
+          <span className={styles.title}>
+            {props.title || 'Remove this Transaction'}
+          </span>
           <div className={styles.detail}>
-            Are you sure do you wanna remove this transaction?
+            {props.description ||
+              'Are you sure do you wanna remove this transaction?'}
           </div>
           <div className={styles.box}>
             <Button className={styles.no} onClick={props.onCancel}>

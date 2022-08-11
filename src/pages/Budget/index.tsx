@@ -8,6 +8,12 @@ import { CategoryTypeColor } from '@/constants/transaction'
 import { ExclamationCircleFill } from 'antd-mobile-icons'
 import { getBudgetList } from '@/store/budget/api'
 
+export interface IBudgetDetail extends IBudget {
+  bgColor: string
+  warning: boolean
+  remain: number
+  costPercent: number
+}
 function Budget() {
   const navigate = useNavigate()
   const [budgetList, setBudgetList] = useState<IBudget[]>([])
@@ -30,8 +36,8 @@ function Budget() {
   const handleCreate = () => {
     navigate('/budget/new')
   }
-  const displayDetial = (val: IBudget) => {
-    navigate('/budget/detail', { state: { detial: val } })
+  const displayDetial = (val: IBudgetDetail) => {
+    navigate('/budget/detail', { state: val })
   }
   const [selectedMonth, setSelectedMonth] = useState<IMonth>()
   const onSelected = (val: IMonth) => {
@@ -49,7 +55,7 @@ function Budget() {
       return budgetList.map((item) => {
         const bgColor = CategoryTypeColor[item.categoryId]
         const warning = item.budgetTarget < item.realCost ? true : false
-        const remain = item.budgetTarget - item.realCost
+        const remain = Math.max(item.budgetTarget - item.realCost, 0)
         const costPercent = (item.realCost / item.budgetTarget) * 100
         console.log(costPercent)
         return (
@@ -57,7 +63,9 @@ function Budget() {
             className={styles['budget-item']}
             key={item.budgetId}
             data-testid="budget-item"
-            onClick={() => displayDetial(item)}
+            onClick={() =>
+              displayDetial({ bgColor, warning, remain, costPercent, ...item })
+            }
           >
             <div className={styles['cate-content']}>
               <div className={styles['cate-type-box']}>
@@ -78,7 +86,7 @@ function Budget() {
             </div>
             <div className={styles.progress}>
               <div className={styles['progress-remain']}>
-                Remaining ${Math.max(remain, 0)}
+                Remaining ${remain}
               </div>
               <ProgressBar
                 percent={costPercent}
@@ -111,10 +119,7 @@ function Budget() {
     <div className={styles.budget}>
       <TimeBar onSelected={onSelected} selectedMonth={selectedMonth}></TimeBar>
       <div className={styles['budget-list']}>{renderBudgetList()}</div>
-      <Button
-        className={`btn-big ${styles['budget-btn']}`}
-        onClick={handleCreate}
-      >
+      <Button className="btn-big budget-btn" onClick={handleCreate}>
         Create a Budget
       </Button>
       <TabFooter />
