@@ -46,7 +46,7 @@ export default (props: ICameraProps) => {
   return (
     <>
       <div className={styles.camera}>
-        <video id="video" width={VIDEO_WIDTH} height="300"></video>
+        <video id="video" width={VIDEO_WIDTH} height="300" role="video"></video>
         <canvas
           id="canvas"
           width={VIDEO_WIDTH}
@@ -54,7 +54,7 @@ export default (props: ICameraProps) => {
           className={styles.canvas}
         ></canvas>
         <div className={styles.bottom}>
-          <RedoOutline className={styles.back} onClick={goBack} />
+          <RedoOutline className={styles.back} onClick={goBack} role="back" />
           <img
             id="cameraBtn"
             src={StartIcon}
@@ -62,7 +62,11 @@ export default (props: ICameraProps) => {
             className={styles['camera-btn']}
           />
           {iconShow && (
-            <CheckCircleFill className={styles.complete} onClick={complete} />
+            <CheckCircleFill
+              className={styles.complete}
+              onClick={complete}
+              role="complete"
+            />
           )}
         </div>
       </div>
