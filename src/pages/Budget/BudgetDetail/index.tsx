@@ -9,6 +9,8 @@ import { goBack } from '@/utils/common'
 import { CategoryTypeIcons } from '@/constants/transaction'
 import { IBudgetDetail } from '..'
 import RemoveAlert from '@/components/RemoveAlert'
+import { deleteBudget } from '@/store/budget/api'
+import DialogShow from '@/components/DialogShow'
 export default function BudgetDetail() {
   const { state } = useLocation()
   const navigate = useNavigate()
@@ -19,8 +21,10 @@ export default function BudgetDetail() {
   const handleEdit = () => {
     navigate('/budget/handle', { state: { type: 'edit', data: budgetDetail } })
   }
-  const handelRemove = () => {
+  const handelRemove = async () => {
+    await deleteBudget(budgetDetail.budgetId)
     setAlert(false)
+    DialogShow('delete success!', () => goBack())
   }
   return (
     <div className={styles.detail}>
