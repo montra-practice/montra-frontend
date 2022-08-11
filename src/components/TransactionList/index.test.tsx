@@ -29,7 +29,7 @@ describe('TransactionList component', () => {
     expect(screen.getByText(SUBSCRIPTION)).toBeInTheDocument()
   })
 
-  it('should navigate to Transaction Page', async () => {
+  it('should navigate to TransactionDetail Page', async () => {
     const history = createMemoryHistory()
     render(
       <Router navigator={history} location={history.location}>

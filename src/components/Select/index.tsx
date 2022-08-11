@@ -43,12 +43,13 @@ const Select = (props: ISelect) => {
   return (
     <div
       tabIndex={0}
-      className={`${styles[props.size]} ${props.className}}`}
+      className={`${styles[props.size]} ${props.className}`}
       onBlur={() => setShow(false)}
     >
       <div
         className={`${styles.header} ${styles[props.arrow]}`}
         onClick={handleSelect}
+        role="header"
       >
         {props.selectedWithBorder ? (
           <div className={styles['cate-type-box']}>
@@ -77,6 +78,7 @@ const Select = (props: ISelect) => {
               }
               onClick={selectItem(item)}
               key={item.value}
+              role="option"
             >
               {item.label}
             </div>
