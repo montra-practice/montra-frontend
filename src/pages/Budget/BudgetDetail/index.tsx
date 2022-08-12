@@ -30,7 +30,13 @@ export default function BudgetDetail() {
     <div className={styles.detail}>
       <NavBar
         onBack={goBack}
-        right={<DeleteOutline fontSize={28} onClick={() => setAlert(true)} />}
+        right={
+          <DeleteOutline
+            fontSize={28}
+            onClick={() => setAlert(true)}
+            data-testid="delete"
+          />
+        }
       >
         Detail Budget
       </NavBar>
