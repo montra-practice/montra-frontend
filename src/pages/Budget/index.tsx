@@ -7,6 +7,7 @@ import styles from './index.scss'
 import { CategoryTypeColor } from '@/constants/transaction'
 import { ExclamationCircleFill } from 'antd-mobile-icons'
 import { getBudgetList } from '@/store/budget/api'
+import { ROUTE_PATH } from './router'
 
 export interface IBudgetDetail extends IBudget {
   bgColor: string
@@ -34,10 +35,10 @@ function Budget() {
     },
   ] */
   const handleCreate = () => {
-    navigate('/budget/new')
+    navigate(ROUTE_PATH.BUDGET_HANDLE, { state: { type: 'add' } })
   }
   const displayDetial = (val: IBudgetDetail) => {
-    navigate('/budget/detail', { state: val })
+    navigate(ROUTE_PATH.BUDGET_DETAIL, { state: val })
   }
   const [selectedMonth, setSelectedMonth] = useState<IMonth>()
   const onSelected = (val: IMonth) => {
@@ -116,7 +117,7 @@ function Budget() {
     getBudgets()
   }, [])
   return (
-    <div className={styles.budget}>
+    <div className="budget">
       <TimeBar onSelected={onSelected} selectedMonth={selectedMonth}></TimeBar>
       <div className={styles['budget-list']}>{renderBudgetList()}</div>
       <Button className="btn-big budget-btn" onClick={handleCreate}>

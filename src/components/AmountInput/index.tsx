@@ -8,6 +8,7 @@ interface IInputProps {
   handleAmount: (v: string) => void
   placeholder?: string
   className?: string
+  title?: string
 }
 
 const AmountInput = (props: IInputProps) => {
@@ -34,7 +35,7 @@ const AmountInput = (props: IInputProps) => {
 
   return (
     <div className={props.className}>
-      <div className={styles.alert}>How much?</div>
+      <div className={styles.alert}>{props.title || 'How much?'}</div>
       <div className={styles.row}>
         <span className={styles.dollar}>$</span>
         <Input
@@ -42,6 +43,7 @@ const AmountInput = (props: IInputProps) => {
           className={styles.input}
           onChange={onAmountChange}
           onBlur={handleOnBlur}
+          value={amountNum}
           clearable
           onClear={handleClear}
           type="number"

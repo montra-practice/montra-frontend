@@ -7,9 +7,9 @@ export const getBudgetList = () => {
 export const deleteBudget = (budgetId: number) => {
   return onPost('/budget/delete', { budgetId })
 }
-export const editBudget = (budget: IBudget) => {
+export const editBudget = (budget: Partial<IBudget>) => {
   return onPost('/budget/update', budget)
 }
-export const addBudget = (budget: IBudget) => {
+export const addBudget = (budget: Partial<IBudget>) => {
   return onPost('/budget/add', budget)
 }

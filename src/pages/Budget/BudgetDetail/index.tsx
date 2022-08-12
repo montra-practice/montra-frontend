@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { NavBar, Button, ProgressBar } from 'antd-mobile'
 import { ExclamationCircleFill } from 'antd-mobile-icons'
 import { DeleteOutline } from 'antd-mobile-icons'
@@ -11,6 +10,8 @@ import { IBudgetDetail } from '..'
 import RemoveAlert from '@/components/RemoveAlert'
 import { deleteBudget } from '@/store/budget/api'
 import DialogShow from '@/components/DialogShow'
+import { ROUTE_PATH } from '../router'
+
 export default function BudgetDetail() {
   const { state } = useLocation()
   const navigate = useNavigate()
@@ -19,7 +20,9 @@ export default function BudgetDetail() {
   console.log(budgetDetail)
   const cateIcon = CategoryTypeIcons[budgetDetail.categoryId]
   const handleEdit = () => {
-    navigate('/budget/handle', { state: { type: 'edit', data: budgetDetail } })
+    navigate(ROUTE_PATH.BUDGET_HANDLE, {
+      state: { type: 'edit', data: budgetDetail },
+    })
   }
   const handelRemove = async () => {
     await deleteBudget(budgetDetail.budgetId)
