@@ -6,7 +6,6 @@ import { setupServer } from 'msw/node'
 import { BASE_URL } from '@/store/request'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory, MemoryHistory } from 'history'
-import { use } from 'echarts/core'
 
 const mockDetail = {
   budgetId: 1,

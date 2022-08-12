@@ -96,6 +96,7 @@ export default function BudgetHandle({ type, data }: IBudgetHandle) {
                 '--height': '24px',
                 '--width': '42px',
               }}
+              data-testid="switch"
             />
           </div>
           {ifAlert && (
@@ -103,6 +104,7 @@ export default function BudgetHandle({ type, data }: IBudgetHandle) {
               className={styles['budget-slider']}
               onAfterChange={toastValue}
               icon={<MarkIcon index={alertValue} />}
+              data-testid="slider"
             />
           )}
           <Button className="btn-big" onClick={handleBudget}>
