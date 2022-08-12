@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { openCamera, closeCamera } from './cameraMethods'
 import styles from './camera.scss'
 import StartIcon from '@/assets/icons/start_icon.png'
@@ -13,23 +13,22 @@ interface ICameraProps {
 export default (props: ICameraProps) => {
   const [iconShow, setIconShow] = useState(false)
   const [imgSrc, setImgSrc] = useState('')
+  const videoRef = useRef(null)
+  const canvasRef = useRef(null)
+
+  const handleDramImg = () => {
+    const canvas = canvasRef.current as unknown as HTMLCanvasElement
+    const video = videoRef.current as unknown as HTMLVideoElement
+    const context = canvas.getContext('2d') as CanvasRenderingContext2D
+    console.log(canvas, video, context)
+    context.drawImage(video, 0, 0, video.width, video.height)
+    setImgSrc(canvas.toDataURL('image/png'))
+    setIconShow(true)
+  }
 
   useEffect(() => {
     openCamera()
-    const canvas = document.getElementById('canvas') as HTMLCanvasElement
-    const cameraBtn = document.getElementById('cameraBtn') as HTMLDivElement
-    const context = canvas.getContext('2d') as CanvasRenderingContext2D
-    const video = document.getElementById('video') as HTMLVideoElement
-
-    const handleDramImg = () => {
-      context.drawImage(video, 0, 0, video.width, video.height)
-      setImgSrc(canvas.toDataURL('image/png'))
-      setIconShow(true)
-    }
-    cameraBtn.addEventListener('click', handleDramImg)
-
     return () => {
-      cameraBtn.removeEventListener('click', handleDramImg)
       closeCamera()
     }
   }, [])
@@ -44,32 +43,36 @@ export default (props: ICameraProps) => {
   }
 
   return (
-    <>
-      <div className={styles.camera}>
-        <video id="video" width={VIDEO_WIDTH} height="300" role="video"></video>
-        <canvas
-          id="canvas"
-          width={VIDEO_WIDTH}
-          height="300"
-          className={styles.canvas}
-        ></canvas>
-        <div className={styles.bottom}>
-          <RedoOutline className={styles.back} onClick={goBack} role="back" />
-          <img
-            id="cameraBtn"
-            src={StartIcon}
-            alt="start icon"
-            className={styles['camera-btn']}
+    <div className={styles.camera}>
+      <video
+        ref={videoRef}
+        width={VIDEO_WIDTH}
+        height="300"
+        role="video"
+      ></video>
+      <canvas
+        ref={canvasRef}
+        width={VIDEO_WIDTH}
+        height="300"
+        className={styles.canvas}
+      ></canvas>
+      <div className={styles.bottom}>
+        <RedoOutline className={styles.back} onClick={goBack} role="back" />
+        <img
+          id="cameraBtn"
+          src={StartIcon}
+          alt="start icon"
+          className={styles['camera-btn']}
+          onClick={handleDramImg}
+        />
+        {iconShow && (
+          <CheckCircleFill
+            className={styles.complete}
+            onClick={complete}
+            role="complete"
           />
-          {iconShow && (
-            <CheckCircleFill
-              className={styles.complete}
-              onClick={complete}
-              role="complete"
-            />
-          )}
-        </div>
+        )}
       </div>
-    </>
+    </div>
   )
 }
