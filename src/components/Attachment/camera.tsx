@@ -55,6 +55,7 @@ export default (props: ICameraProps) => {
         width={VIDEO_WIDTH}
         height="300"
         className={styles.canvas}
+        role="canvas"
       ></canvas>
       <div className={styles.bottom}>
         <RedoOutline className={styles.back} onClick={goBack} role="back" />

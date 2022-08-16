@@ -7,6 +7,14 @@ const mockData = {
   onComplete: jest.fn(),
 }
 
+const mockDrawImage = () => {
+  const canvas = screen.getByRole('canvas') as HTMLCanvasElement
+  const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
+  ctx.drawImage = jest.fn()
+
+  return ctx
+}
+
 describe('Test Camera Page', () => {
   it('Render Camera', () => {
     deviceMock()
@@ -15,11 +23,13 @@ describe('Test Camera Page', () => {
     expect(screen.getByAltText('start icon')).toBeInTheDocument()
   })
 
-  // it('Take a photo', () => {
-  //   deviceMock()
-  //   render(<Camera {...mockData} />)
-  //   fireEvent.click(screen.getByAltText('start icon'))
-  // })
+  it('Take a photo', () => {
+    deviceMock()
+    render(<Camera {...mockData} />)
+    const ctx = mockDrawImage()
+    fireEvent.click(screen.getByAltText('start icon'))
+    expect(ctx.drawImage).toBeCalled()
+  })
 
   it('On Back', () => {
     deviceMock()
@@ -28,10 +38,12 @@ describe('Test Camera Page', () => {
     expect(mockData.onBack).toBeCalled()
   })
 
-  // it('On Complete', () => {
-  //   deviceMock()
-  //   render(<Camera {...mockData} />)
-  //   fireEvent.click(screen.getByRole('complete'))
-  //   expect(mockData.onComplete).toBeCalled()
-  // })
+  it('On Complete', () => {
+    deviceMock()
+    render(<Camera {...mockData} />)
+    mockDrawImage()
+    fireEvent.click(screen.getByAltText('start icon'))
+    fireEvent.click(screen.getByRole('complete'))
+    expect(mockData.onComplete).toBeCalled()
+  })
 })
