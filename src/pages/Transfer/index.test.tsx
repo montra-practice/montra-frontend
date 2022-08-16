@@ -11,23 +11,45 @@ describe('test Transfer page', () => {
     history.push('/home')
   })
 
-  it('renders static text', () => {
-    render(
+  const renderTransfer = () => {
+    return render(
       <Router navigator={history} location={history.location}>
         <Transfer />
       </Router>,
     )
+  }
+
+  it('renders static text', () => {
+    renderTransfer()
     expect(screen.getByText('Transfer')).toBeInTheDocument()
     expect(screen.getByTestId('transferNav')).toBeInTheDocument()
   })
 
   it('goes back to home page when click the back button', () => {
-    render(
-      <Router navigator={history} location={history.location}>
-        <Transfer />
-      </Router>,
-    )
+    renderTransfer()
     fireEvent.click(screen.getByTestId('transferNav'))
     expect(history.location.pathname).toEqual('/home')
+  })
+
+  it('Switch From to To', () => {
+    renderTransfer()
+    const from = screen.getByPlaceholderText('from')
+    const to = screen.getByPlaceholderText('to')
+    fireEvent.input(from, { target: { value: 'From' } })
+    expect(from).toHaveValue('From')
+
+    fireEvent.input(to, { target: { value: 'To' } })
+    expect(to).toHaveValue('To')
+
+    fireEvent.click(screen.getByAltText('transfer icon'))
+    expect(from).toHaveValue('To')
+    expect(to).toHaveValue('From')
+  })
+
+  it('Input desc', () => {
+    renderTransfer()
+    const desc = screen.getByPlaceholderText('Describe')
+    fireEvent.input(desc, { target: { value: 'This is a describe input' } })
+    expect(desc).toHaveValue('This is a describe input')
   })
 })
