@@ -20,7 +20,6 @@ export default (props: ICameraProps) => {
     const canvas = canvasRef.current as unknown as HTMLCanvasElement
     const video = videoRef.current as unknown as HTMLVideoElement
     const context = canvas.getContext('2d') as CanvasRenderingContext2D
-    console.log(canvas, video, context)
     context.drawImage(video, 0, 0, video.width, video.height)
     setImgSrc(canvas.toDataURL('image/png'))
     setIconShow(true)
@@ -48,14 +47,14 @@ export default (props: ICameraProps) => {
         ref={videoRef}
         width={VIDEO_WIDTH}
         height="300"
-        role="video"
+        role="application"
       ></video>
       <canvas
         ref={canvasRef}
         width={VIDEO_WIDTH}
         height="300"
         className={styles.canvas}
-        role="canvas"
+        data-testid="canvas"
       ></canvas>
       <div className={styles.bottom}>
         <RedoOutline className={styles.back} onClick={goBack} role="back" />

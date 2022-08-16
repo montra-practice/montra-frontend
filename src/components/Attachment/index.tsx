@@ -109,7 +109,11 @@ export default (props: IAttachProps) => {
       )
     } else {
       return (
-        <div onClick={handleMaskVisible} className={styles['attach-wrapper']}>
+        <div
+          onClick={handleMaskVisible}
+          className={styles['attach-wrapper']}
+          role="menubar"
+        >
           <img
             src={AttachIcon}
             alt="attach icon"
@@ -178,6 +182,7 @@ export default (props: IAttachProps) => {
         accept={fileType}
         ref={fileUpload}
         className={styles.hide}
+        data-testid="uploader"
       />
     </>
   )

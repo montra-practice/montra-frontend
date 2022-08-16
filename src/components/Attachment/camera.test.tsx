@@ -8,7 +8,7 @@ const mockData = {
 }
 
 const mockDrawImage = () => {
-  const canvas = screen.getByRole('canvas') as HTMLCanvasElement
+  const canvas = screen.getByTestId('canvas') as HTMLCanvasElement
   const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
   ctx.drawImage = jest.fn()
 
@@ -19,7 +19,7 @@ describe('Test Camera Page', () => {
   it('Render Camera', () => {
     deviceMock()
     render(<Camera {...mockData} />)
-    expect(screen.getByRole('video')).toBeInTheDocument()
+    expect(screen.getByRole('application')).toBeInTheDocument()
     expect(screen.getByAltText('start icon')).toBeInTheDocument()
   })
 

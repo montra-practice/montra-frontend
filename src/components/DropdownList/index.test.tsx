@@ -1,7 +1,7 @@
-import { screen, render, within, fireEvent } from '@testing-library/react'
+import { screen, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import DropdownList from '.'
-import { categoryTypes, SHOPPING, FOOD } from '@/constants/transaction'
+import { categoryTypes, SHOPPING } from '@/constants/transaction'
 
 const mockProps = {
   title: 'TEST TITLE',
@@ -23,7 +23,7 @@ describe('Test DropdownList component', () => {
 
     /*eslint-disable-next-line*/
     const option = container.getElementsByClassName('adm-check-list-item')[0]
-    fireEvent.click(option)
+    userEvent.click(option)
     expect(mockProps.onChange).toBeCalled()
   })
 })
