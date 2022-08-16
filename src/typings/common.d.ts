@@ -60,4 +60,6 @@ declare interface IBudget {
   categoryName: string
   budgetTarget: number
   realCost: number
+  receiveAlert?: boolean
+  alertPercent?: number | [number, number]
 }

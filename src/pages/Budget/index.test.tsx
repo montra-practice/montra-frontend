@@ -12,15 +12,18 @@ describe('test Budget page', () => {
   let history: MemoryHistory
   const server = setupServer(
     rest.get(`${BASE_URL}/budget/list`, (req, res, ctx) => {
-      return res(ctx.json([{
-        budgetId: 1,
-        categoryId: '1',
-        categoryName: 'Shopping',
-        budgetTarget: 1000,
-        realCost: 1200,
-      }]
-      ))
-    })
+      return res(
+        ctx.json([
+          {
+            budgetId: 1,
+            categoryId: '1',
+            categoryName: 'Shopping',
+            budgetTarget: 1000,
+            realCost: 1200,
+          },
+        ]),
+      )
+    }),
   )
   const setUp = () => {
     render(
@@ -44,7 +47,7 @@ describe('test Budget page', () => {
     server.use(
       rest.get(`${BASE_URL}/budget/list`, (req, res, ctx) => {
         return res(ctx.json([]))
-      })
+      }),
     )
     setUp()
     await waitFor(() => {
@@ -57,7 +60,7 @@ describe('test Budget page', () => {
     expect(button).toBeInTheDocument()
     await userEvent.click(button)
     await waitFor(() => {
-      expect(history.location.pathname).toBe('/budget/new')
+      expect(history.location.pathname).toBe('/budget/handle')
     })
   })
   test('should jump to detail page when click budget item', async () => {
