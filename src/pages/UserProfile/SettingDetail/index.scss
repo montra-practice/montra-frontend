@@ -1,0 +1,20 @@
+:local {
+  .setting-detail-container {
+    .list-item {
+      padding: 0 16px;
+
+      :global {
+        .adm-list-item-content-main {
+          font-weight: 500;
+          font-size: 14px;
+          color: #0d0e0f;
+        }
+      }
+    }
+
+    .select-img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
