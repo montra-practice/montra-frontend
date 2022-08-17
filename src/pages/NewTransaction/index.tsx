@@ -36,8 +36,8 @@ export default () => {
     setCateType(item.value)
   }
 
-  const handleDesc = (e: any) => {
-    setDesc(e.target.value)
+  const handleDesc = (val: string) => {
+    setDesc(val)
   }
 
   const handleWalletType = (item: any) => {

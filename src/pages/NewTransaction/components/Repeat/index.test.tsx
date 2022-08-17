@@ -1,4 +1,4 @@
-import { screen, render } from '@testing-library/react'
+import { screen, render, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Repeat from '.'
 
@@ -24,7 +24,9 @@ const mockSelect = async (
 ) => {
   await renderEditCard()
   userEvent.click(screen.getAllByRole('header')[selectIndex])
-  await screen.findByRole('option')
+  await waitFor(() => {
+    screen.getByRole('option')
+  })
   userEvent.click(screen.getAllByRole('option')[optionIndex])
   expect(screen.getByText(optionLabel)).toBeInTheDocument()
 }

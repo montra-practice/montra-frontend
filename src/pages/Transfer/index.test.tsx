@@ -52,4 +52,10 @@ describe('test Transfer page', () => {
     fireEvent.input(desc, { target: { value: 'This is a describe input' } })
     expect(desc).toHaveValue('This is a describe input')
   })
+
+  it('Click continue', () => {
+    renderTransfer()
+    fireEvent.click(screen.getByText('Continue'))
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
+  })
 })

@@ -27,4 +27,15 @@ describe('test transaction page', () => {
     fireEvent.click(screen.getByText(/see you financial report/i))
     expect(history.location.pathname).toEqual('/financial-report/1')
   })
+  it('jump to transaction detail on clicking item', () => {
+    renderTransaction()
+    fireEvent.click(screen.getAllByAltText('category type img')[0])
+    expect(history.location.pathname).toEqual('/transaction_detail/121213133')
+  })
+
+  it('Click filter btn', () => {
+    renderTransaction()
+    fireEvent.click(screen.getByAltText('filter icon'))
+    expect(screen.getByTestId('filterMask')).toBeInTheDocument()
+  })
 })
