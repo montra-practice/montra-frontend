@@ -1,9 +1,9 @@
 import { Avatar } from 'antd-mobile'
 import styles from './index.scss'
-import { ReactComponent as IncomeWhiteIcon } from '@/assets/icons/home/income_white_background.svg'
-import { ReactComponent as EspenseWhiteIcon } from '@/assets/icons/home/espense_white_background.svg'
+import IncomeWhiteIcon from '@/assets/icons/home/income_white_background.svg'
+import EspenseWhiteIcon from '@/assets/icons/home/espense_white_background.svg'
 import incomeImg from '@/assets/icons/home/income.svg'
-import { ReactComponent as NotificationIcon } from '@/assets/icons/home/notification.svg'
+import NotificationIcon from '@/assets/icons/home/notification.svg'
 import Select from '@/components/Select'
 import Tag from '@/components/Tag'
 import { MonthEnglish, Tags } from '@/constants/base'
@@ -34,7 +34,13 @@ function Home() {
           options={MonthEnglish}
           defaultValue={new Date().getMonth() + ''}
         ></Select>
-        <NotificationIcon data-testid="notification" onClick={goNotification} />
+        <img
+          src={NotificationIcon}
+          alt="notification-icon"
+          data-testid="notification"
+          onClick={goNotification}
+          className={styles.icons}
+        />
       </div>
       <div className={styles.title}>
         <p>Account Balance</p>
@@ -42,14 +48,14 @@ function Home() {
       </div>
       <div className={styles['sub-title']}>
         <div>
-          <IncomeWhiteIcon />
+          <img src={IncomeWhiteIcon} alt="income-white-icon" />
           <div>
             <div>Income</div>
             <div>$5000</div>
           </div>
         </div>
         <div>
-          <EspenseWhiteIcon />
+          <img src={EspenseWhiteIcon} alt="espense-white-icon" />
           <div>
             <div>Expenses</div>
             <div>$1200</div>
