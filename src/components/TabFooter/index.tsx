@@ -37,11 +37,11 @@ const TabFooter = () => {
   const tabs = [
     {
       key: '/home',
-      icon: <HomeIcon />,
+      icon: <HomeIcon className={styles.icon} />,
     },
     {
       key: '/transaction',
-      icon: <TransactionIcon />,
+      icon: <TransactionIcon className={styles.icon} />,
     },
     {
       key: 'add',
@@ -53,11 +53,11 @@ const TabFooter = () => {
     },
     {
       key: '/budget',
-      icon: <BudgetIcon />,
+      icon: <BudgetIcon className={styles.icon} />,
     },
     {
       key: '/user-profile',
-      icon: <ProfileIcon />,
+      icon: <ProfileIcon className={styles.icon} />,
     },
   ]
 
@@ -71,10 +71,20 @@ const TabFooter = () => {
         data-testid="addActive"
       >
         <div>
-          <TransferImg onClick={goToAdd('/transfer')} data-testid="transfer" />
+          <TransferImg
+            onClick={goToAdd('/transfer')}
+            data-testid="transfer"
+            className={styles['big-icon']}
+          />
           <div>
-            <IncomeImg onClick={goToAdd('/income')} />
-            <ExpenseImg onClick={goToAdd('/expense')} />
+            <IncomeImg
+              onClick={goToAdd('/income')}
+              className={styles['big-icon']}
+            />
+            <ExpenseImg
+              onClick={goToAdd('/expense')}
+              className={styles['big-icon']}
+            />
           </div>
         </div>
       </div>

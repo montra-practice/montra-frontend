@@ -151,7 +151,7 @@ module.exports = function (webpackEnv) {
                       selectorBlackList: [], // (Array) The selectors to ignore and leave as px.
                       minPixelValue: 1, // (Number) Set the minimum pixel value to replace.
                       mediaQuery: false, // (Boolean) Allow px to be converted in media queries.
-                      propList: ['*', '!border', '!background-image'], // 指定转换的css属性的单位，*代表全部css属性的单位都进行转换
+                      propList: ['*', '!border'], // 指定转换的css属性的单位，*代表全部css属性的单位都进行转换
                     },
                   ],
                   // Adds PostCSS Normalize as the reset css with default options,

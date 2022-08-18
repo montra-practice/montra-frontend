@@ -5,30 +5,23 @@
     padding-top: 20px;
     height: calc(100% - 20px);
 
-    :global {
-      .adm-tabs-header {
-        border: none;
+    .custom-indicator {
+      display: flex;
+      position: absolute;
+      width: calc(100% - 30px);
+      left: 15px;
+      top: 20px;
+      justify-content: space-between;
 
-        .adm-tabs-tab-line {
-          background: transparent;
-        }
-
-        .adm-tabs-tab-wrapper {
-          text-align: center;
-          padding: 0 4px;
-
-          .adm-tabs-tab {
-            width: 100%;
-            padding: 0;
-            border-radius: 4px;
-            border: 2px solid rgb(255 255 255 / 24%);
-          }
-
-          .adm-tabs-tab-active {
-            border-color: #fff;
-          }
-        }
+      > div {
+        width: calc(25% - 6px);
+        border-radius: 4px;
+        border: 2px solid rgb(255 255 255 / 24%);
       }
+    }
+
+    .active-indicator {
+      background: #fff;
     }
 
     .type {

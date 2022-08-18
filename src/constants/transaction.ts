@@ -229,11 +229,11 @@ export const transactionList = [
 export const selectOptions = [
   {
     value: '1',
-    label: 'Month',
+    label: 'Week',
   },
   {
     value: '2',
-    label: 'Week',
+    label: 'Month',
   },
   {
     value: '3',

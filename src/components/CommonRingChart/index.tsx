@@ -7,7 +7,7 @@ import {
 import { PieChart, PieSeriesOption } from 'echarts/charts'
 import { UniversalTransition } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
-import { useCallback, useLayoutEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import styles from './index.scss'
 import { CategoryTypeColor } from '@/constants/transaction'
 
@@ -23,12 +23,7 @@ const CommonRingChart = () => {
     GridComponentOption | PieSeriesOption
   >
 
-  const initChart = useCallback(() => {
-    const data = [
-      { id: '1', value: 1048, name: 'Search Engine' },
-      { id: '2', value: 735, name: 'Direct' },
-      { id: '3', value: 484, name: 'Union Ads' },
-    ]
+  const initChart = useCallback((data: any[]) => {
     const colors = data.map((item) => CategoryTypeColor[item.id])
 
     const options: EChartsOption = {
@@ -38,7 +33,7 @@ const CommonRingChart = () => {
       },
       series: [
         {
-          name: 'Access From',
+          name: 'Income From',
           type: 'pie',
           bottom: 25,
           radius: ['75%', '100%'],
@@ -48,7 +43,7 @@ const CommonRingChart = () => {
             fontWeight: 700,
             fontSize: 32,
             lineHeight: 39,
-            formatter: () => '$332',
+            formatter: () => data.reduce((a, b) => a + b.value, 0),
           },
           emphasis: {
             label: {
@@ -63,15 +58,24 @@ const CommonRingChart = () => {
         },
       ],
     }
-    setTimeout(() => {
-      const dom = document.getElementById('ring-chart')
-      const chart = echarts.init(dom!)
-      chart.setOption(options)
-    })
+    const dom = document.getElementById('ring-chart')
+    const chart = echarts.init(dom!)
+    chart.setOption(options)
+    window.onresize = () => {
+      chart.resize()
+    }
   }, [])
 
-  useLayoutEffect(() => {
-    initChart()
+  useEffect(() => {
+    const data = [
+      { id: '1', value: 1048, name: 'Search Engine' },
+      { id: '2', value: 735, name: 'Direct' },
+      { id: '3', value: 484, name: 'Union Ads' },
+    ]
+    initChart(data)
+    return () => {
+      window.onresize = null
+    }
   }, [initChart])
 
   return (

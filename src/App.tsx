@@ -13,7 +13,6 @@ import ResetPassword from '@/pages/ResetPassword/router'
 import NotificationRouter from '@/pages/Notification/router'
 import BudgetRouter from '@/pages/Budget/router'
 import FinancialReportRouter from '@/pages/FinancialReport/router'
-import ReportDetailRouter from '@/pages/ReportDetail/router'
 import TransactionDetailRouter from '@/pages/TransactionDetail/router'
 
 function App() {
@@ -33,7 +32,6 @@ function App() {
         {NotificationRouter}
         {BudgetRouter}
         {FinancialReportRouter}
-        {ReportDetailRouter}
         {TransactionDetailRouter}
         {NotFound}
         <Route path="*" element={<Navigate replace to="/404" />}></Route>

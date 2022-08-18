@@ -1,4 +1,9 @@
 :local {
+  @mixin size {
+    width: 57px;
+    height: 57px;
+  }
+
   .add-active {
     width: 100%;
     position: fixed;
@@ -23,17 +28,28 @@
         padding-top: 11px;
       }
     }
+
+    .big-icon {
+      width: 57px;
+      height: 57px;
+    }
   }
 
   .footer {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
+
+    .icon {
+      width: 57px;
+      height: 48px;
+    }
 
     .add-icon {
       margin-bottom: 31px;
       padding: 7px;
+      @include size;
     }
 
     .add-icon-active {
@@ -41,37 +57,14 @@
       padding: 7px;
       transform-origin: center;
       transform: rotate(45deg);
+      @include size;
     }
 
     :global {
-      .adm-tab-bar-item:first-child {
-        border-radius: 13px 0 0;
-      }
-
-      .adm-tab-bar-item:last-child {
-        border-radius: 0 13px 0 0;
-      }
-
-      .adm-tab-bar-item:nth-child(3) {
-        background-color: transparent;
-
-        &::after {
-          position: absolute;
-          bottom: 0;
-          content: '';
-          width: 100%;
-          height: 100%;
-          background-image: radial-gradient(
-            circle 37px at 51% 25%,
-            transparent 37px,
-            #fcfcfc 100%
-          );
-        }
-      }
-
       .adm-tab-bar-item {
-        padding-top: 0;
         background-color: #fcfcfc;
+        padding: 0;
+        border: 1px solid white;
       }
 
       .adm-tab-bar-item-active {
@@ -87,6 +80,42 @@
           height: 65px;
           display: flex;
           align-items: center;
+        }
+      }
+
+      .adm-tab-bar-item:first-child {
+        border-radius: 13px 0 0;
+      }
+
+      .adm-tab-bar-item:last-child {
+        border-radius: 0 13px 0 0;
+      }
+
+      .adm-tab-bar-item:nth-child(2) {
+        border-radius: 0 17% 0 0;
+      }
+
+      .adm-tab-bar-item:nth-child(4) {
+        border-radius: 17% 0 0;
+      }
+
+      .adm-tab-bar-item:nth-child(3) {
+        background-color: transparent;
+        border: none;
+        margin: 0 -1px;
+
+        &::after {
+          position: absolute;
+          bottom: 0;
+          content: '';
+          border-radius: 40% 40% 0 0;
+          width: 100%;
+          height: 100%;
+          background-image: radial-gradient(
+            circle 37px at 50% 25%,
+            transparent 37px,
+            #fcfcfc 100%
+          );
         }
       }
     }

@@ -54,7 +54,7 @@ export default () => {
     console.log('transId', transId)
     // request detail info
     setData(transDetail[1])
-  }, [])
+  }, [transId])
 
   const isTransfer = data.type === 'TRANSFER'
   const bgClassName = data.type.toLocaleLowerCase()

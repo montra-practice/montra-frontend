@@ -13,26 +13,26 @@ describe('Test Select component', () => {
   it('should render Select header with defaultValue', () => {
     render(<Select {...mockData} />)
     expect(screen.getByTestId('arrow')).toBeInTheDocument()
-    expect(screen.getByText('Week')).toBeInTheDocument()
+    expect(screen.getByText('Month')).toBeInTheDocument()
   })
 
   it('should show options on clicking header', () => {
     render(<Select {...mockData} />)
     fireEvent.click(screen.getByRole('header'))
-    expect(screen.getByText('Month')).toBeInTheDocument()
+    expect(screen.getByText('Week')).toBeInTheDocument()
   })
 
   it('should call mockData.onSelect on clicking option', () => {
     render(<Select {...mockData} />)
     fireEvent.click(screen.getByRole('header'))
     fireEvent.click(screen.getAllByRole('option')[0])
-    expect(mockData.onSelect).toBeCalledWith({ value: '1', label: 'Month' })
+    expect(mockData.onSelect).toBeCalledWith({ value: '1', label: 'Week' })
   })
 
   it('should not show options while Select is disabled', () => {
     render(<Select {...mockData} disabled={true} />)
     const header = screen.getByRole('header')
     fireEvent.click(header)
-    expect(screen.queryByText('Month')).not.toBeInTheDocument()
+    expect(screen.queryByText('Week')).not.toBeInTheDocument()
   })
 })

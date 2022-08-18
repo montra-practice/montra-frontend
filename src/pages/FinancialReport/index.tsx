@@ -7,7 +7,7 @@ import {
   SHOPPING,
   SUBSCRIPTION,
 } from '@/constants/transaction'
-import { Button, Swiper, Tabs } from 'antd-mobile'
+import { Button, Swiper } from 'antd-mobile'
 import { SwiperRef } from 'antd-mobile/es/components/swiper'
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -33,9 +33,7 @@ const FinancialReport = () => {
     { key: 'quote', backgroundColor: '#7F3DFF' },
   ]
 
-  const tabChange = () => (key: string) => {
-    const index = tabs.findIndex((item) => item.key === key)
-    setActiveIndex(index)
+  const swipeTo = (index: number) => () => {
     swiperRef.current?.swipeTo(index)
   }
 
@@ -75,19 +73,26 @@ const FinancialReport = () => {
       className={styles.wrapper}
       style={{ backgroundColor: tabs[activeIndex].backgroundColor }}
     >
-      <Tabs activeKey={tabs[activeIndex].key} onChange={tabChange()}>
-        {tabs.map((tab) => (
-          <Tabs.Tab title="" key={tab.key} />
-        ))}
-      </Tabs>
       <Swiper
+        loop
         direction="horizontal"
-        indicator={() => null}
         ref={swiperRef}
         defaultIndex={activeIndex}
         onIndexChange={(index) => {
           setActiveIndex(index)
         }}
+        indicator={(total, current) => (
+          <div className={styles['custom-indicator']}>
+            {tabs.map((tab, index) => (
+              <div
+                className={index === current ? styles['active-indicator'] : ''}
+                key={index}
+                onClick={swipeTo(index)}
+                data-testid={tab.key}
+              ></div>
+            ))}
+          </div>
+        )}
       >
         <Swiper.Item>
           <ReportSummary {...expenseDetail} />
@@ -99,10 +104,10 @@ const FinancialReport = () => {
           <div className={styles.type}>
             <div className={styles.time}>{periodLabel}</div>
             <div className={styles.title}>
-              2 of 12 Budget is exceeds the limit
+              4 of 12 Budget is exceeds the limit
             </div>
             <div className={styles.box}>
-              {budgets?.length > 0 &&
+              {!!budgets.length &&
                 budgets.map((budget, i) => (
                   <div className={styles.budgets} key={i}>
                     <img

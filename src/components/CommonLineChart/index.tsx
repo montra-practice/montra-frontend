@@ -12,7 +12,7 @@ const CommonLineChart = () => {
     GridComponentOption | LineSeriesOption
   >
 
-  const initChart = useCallback(() => {
+  const initChart = useCallback((xData: string[], data: number[]) => {
     const options: EChartsOption = {
       color: '#7F3DFF',
       grid: {
@@ -23,7 +23,7 @@ const CommonLineChart = () => {
       },
       xAxis: {
         type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        data: xData,
         show: false,
         boundaryGap: false,
       },
@@ -35,7 +35,7 @@ const CommonLineChart = () => {
       },
       series: [
         {
-          data: [220, 932, 901, 534, 1290, 390, 1320],
+          data: data,
           type: 'line',
           smooth: true,
           symbol: 'none',
@@ -64,18 +64,21 @@ const CommonLineChart = () => {
         },
       ],
     }
-    setTimeout(() => {
-      const dom = document.getElementById('line-chart')
-      console.log('clientHeight', dom?.clientHeight)
-      console.log('height', dom?.style.height)
-      console.log('document.body.clientHeight', document.body.style.width)
-      const chart = echarts.init(dom!)
-      chart.setOption(options)
-    })
+    const dom = document.getElementById('line-chart')
+    const chart = echarts.init(dom!)
+    chart.setOption(options)
+    window.onresize = () => {
+      chart.resize()
+    }
   }, [])
 
   useEffect(() => {
-    initChart()
+    const xData = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    const data = [220, 932, 901, 534, 1290, 390, 1320]
+    initChart(xData, data)
+    return () => {
+      window.onresize = null
+    }
   }, [initChart])
 
   return (

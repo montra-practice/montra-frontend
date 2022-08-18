@@ -97,19 +97,6 @@
       }
     }
 
-    .add-active {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      right: 0;
-      left: 0;
-      background: linear-gradient(
-        180deg,
-        rgb(139 80 255 / 12%) 0%,
-        rgb(139 80 255 / 24%) 100%
-      );
-    }
-
     .tags {
       padding: 0 20px;
 

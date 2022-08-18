@@ -40,7 +40,9 @@ const ReportDetail = () => {
     toogleTab(activeTab === 0 ? 1 : 0)
   }
 
-  const sortData = () => {}
+  const sortData = () => {
+    console.log('sort data')
+  }
 
   const typeOptions = [
     {
@@ -63,7 +65,7 @@ const ReportDetail = () => {
 
   return (
     <>
-      <NavBar onBack={goBack} className={styles.header}>
+      <NavBar onBack={goBack} className={styles.header} data-testid="naviBar">
         Financial Report
       </NavBar>
       <div className={styles.switch}>
@@ -94,6 +96,7 @@ const ReportDetail = () => {
         style={{
           height: activeChart === 0 ? '165px' : '210px',
         }}
+        data-testid="chartDiv"
       >
         {activeChart === 0 && <CommonLineChart />}
         {activeChart === 1 && <CommonRingChart />}
@@ -102,6 +105,7 @@ const ReportDetail = () => {
         <div
           className={!activeTab ? styles['active-tab'] : ''}
           onClick={switchTab}
+          data-testid="tabDiv"
         >
           Expense
         </div>
@@ -119,6 +123,7 @@ const ReportDetail = () => {
           options={typeOptions}
           defaultValue={type}
           onSelect={typeSelectionChange}
+          data-testid="typeSelect"
         ></Select>
         <img src={SortIcon} alt="sort icon" onClick={sortData} />
       </div>
