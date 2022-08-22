@@ -4,6 +4,7 @@
   .wrapper {
     padding-top: 20px;
     height: calc(100% - 20px);
+    overflow: auto;
 
     .custom-indicator {
       display: flex;

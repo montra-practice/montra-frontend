@@ -1,3 +1,4 @@
+import { PeriodSelectionContext } from '@/App'
 import ReportSummary from '@/components/ReportSummary'
 import {
   CategoryTypeIcons,
@@ -9,18 +10,18 @@ import {
 } from '@/constants/transaction'
 import { Button, Swiper } from 'antd-mobile'
 import { SwiperRef } from 'antd-mobile/es/components/swiper'
-import { useEffect, useRef, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './index.scss'
+import { ROUTE_PATH } from './router'
 
 const FinancialReport = () => {
   const swiperRef = useRef<SwiperRef>(null)
   const navigate = useNavigate()
   const [activeIndex, setActiveIndex] = useState(0)
-  const params = useParams()
-  const period = params.period || '1'
+  const { selection } = useContext(PeriodSelectionContext)
   const periodLabel =
-    'This ' + selectOptions.find((option) => option.value === period)?.label
+    'This ' + selectOptions.find((option) => option.value === selection)?.label
 
   useEffect(() => {
     document.title = 'Financial Report'
@@ -38,11 +39,10 @@ const FinancialReport = () => {
   }
 
   const openFullDetail = () => {
-    navigate(`/report-detail/${period}`)
+    navigate(ROUTE_PATH.REPORT_DETAIL)
   }
 
   const expenseDetail = {
-    period: periodLabel,
     title: 'You Spend 💸',
     total: '$332',
     subTitle: 'and your biggest\n\r spending is from',
@@ -52,7 +52,6 @@ const FinancialReport = () => {
   }
 
   const incomeDetail = {
-    period: periodLabel,
     title: 'You Earned 💰',
     total: '$6000',
     subTitle: 'your biggest\n\r income is from',
@@ -95,10 +94,10 @@ const FinancialReport = () => {
         )}
       >
         <Swiper.Item>
-          <ReportSummary {...expenseDetail} />
+          <ReportSummary {...{ ...expenseDetail, period: periodLabel }} />
         </Swiper.Item>
         <Swiper.Item>
-          <ReportSummary {...incomeDetail} />
+          <ReportSummary {...{ ...incomeDetail, period: periodLabel }} />
         </Swiper.Item>
         <Swiper.Item>
           <div className={styles.type}>

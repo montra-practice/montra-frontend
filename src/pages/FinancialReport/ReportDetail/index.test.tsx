@@ -3,6 +3,7 @@ import { Router } from 'react-router-dom'
 import ReportDetail from '.'
 import { createMemoryHistory, MemoryHistory } from 'history'
 import React from 'react'
+import { PeriodSelectionContext, renderSelect } from '@/App'
 
 describe('test Financial Report Detail page', () => {
   let history: MemoryHistory
@@ -46,15 +47,24 @@ describe('test Financial Report Detail page', () => {
   })
 
   it('should call selectionChange function', () => {
+    const mockFn = jest.fn()
+    const testContext = {
+      selection: '0',
+      renderSelect: renderSelect,
+      setSelection: mockFn,
+    }
     render(
-      <Router location={history.location} navigator={history}>
-        <ReportDetail />
-      </Router>,
+      <PeriodSelectionContext.Provider value={testContext}>
+        <Router location={history.location} navigator={history}>
+          <ReportDetail />
+        </Router>
+      </PeriodSelectionContext.Provider>,
     )
     const select = screen.getAllByRole('header')[0]
     fireEvent.click(select)
     fireEvent.click(screen.getAllByRole('option')[1])
     expect(screen.getByText('Month')).toBeInTheDocument()
+    expect(mockFn).toBeCalledTimes(1)
   })
 
   it('should call typeSelectionChange function', () => {

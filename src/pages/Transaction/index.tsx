@@ -1,25 +1,25 @@
 import Filter from '@/components/Filter'
 import TransactionList from '@/components/TransactionList'
-import {
-  transactionList,
-  ArrowRight,
-  selectOptions,
-} from '@/constants/transaction'
+import { transactionList, ArrowRight } from '@/constants/transaction'
 import styles from './index.scss'
 import FilterIcon from '@/assets/icons/filter.png'
-import Select from '@/components/Select'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Badge } from 'antd-mobile'
 import TabFooter from '@/components/TabFooter'
 import { useNavigate } from 'react-router-dom'
+import { PeriodSelectionContext } from '@/App'
+import { ROUTE_PATH } from '../FinancialReport/router'
 
 export default () => {
   const navigate = useNavigate()
-  const [selection, setSelection] = useState('1')
   const initFilterData = { filter: [], sorter: [], cateType: [] }
   const [showFilter, setShowFilter] = useState(false)
   const [badgeNum, setBadgeNum] = useState('')
   const [filterData, setFilterData] = useState(initFilterData)
+
+  const { selection, renderSelect, setSelection } = useContext(
+    PeriodSelectionContext,
+  )
 
   useEffect(() => {
     document.title = 'Transaction'
@@ -30,7 +30,7 @@ export default () => {
   }
 
   const seeReport = () => {
-    navigate(`/financial-report/${selection}`)
+    navigate(ROUTE_PATH.FINANCIAL_REPORT)
   }
 
   const selectionChange = (item: IOption) => {
@@ -49,13 +49,7 @@ export default () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.row}>
-        <Select
-          size="small"
-          arrow="left"
-          options={selectOptions}
-          defaultValue={selection}
-          onSelect={selectionChange}
-        ></Select>
+        {renderSelect(selection, selectionChange)}
         <Badge content={badgeNum} wrapperStyle={{ position: 'initial' }}>
           <img
             src={FilterIcon}

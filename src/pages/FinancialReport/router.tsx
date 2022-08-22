@@ -3,9 +3,9 @@ import { Route } from 'react-router-dom'
 import FinancialReport from '.'
 import ReportDetail from './ReportDetail'
 
-const ROUTE_PATH = {
-  FINANCIAL_REPORT: '/financial-report/:period',
-  REPORT_DETAIL: '/report-detail/:period',
+export const ROUTE_PATH = {
+  FINANCIAL_REPORT: '/financial-report',
+  REPORT_DETAIL: '/report-detail',
 }
 
 export default [

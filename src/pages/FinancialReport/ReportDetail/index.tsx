@@ -1,27 +1,29 @@
 import Select from '@/components/Select'
 import TransactionList from '@/components/TransactionList'
-import { selectOptions, transactionList } from '@/constants/transaction'
+import { transactionList } from '@/constants/transaction'
 import LineChartActiveIcon from '@/assets/icons/line_chart_active.svg'
 import PieChartActiveIcon from '@/assets/icons/pie_chart_active.svg'
 import SortIcon from '@/assets/icons/sort.svg'
 import LineChartIcon from '@/assets/icons/line_chart.svg'
 import PieChartIcon from '@/assets/icons/pie_chart.svg'
 import { NavBar } from 'antd-mobile'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styles from './index.scss'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import CategoryBar from '@/components/CategoryBar'
 import CommonLineChart from '@/components/CommonLineChart'
 import CommonRingChart from '@/components/CommonRingChart'
+import { PeriodSelectionContext } from '@/App'
 
 const ReportDetail = () => {
-  const params = useParams()
-  const period = params.period
+  const { selection, renderSelect, setSelection } = useContext(
+    PeriodSelectionContext,
+  )
 
   const navigate = useNavigate()
   const [activeChart, toogleChart] = useState(0)
   const [activeTab, toogleTab] = useState(0)
-  const [, setPeriod] = useState(period)
+  const [, setPeriod] = useState(selection)
   const [type, setType] = useState('1')
 
   useEffect(() => {
@@ -57,6 +59,7 @@ const ReportDetail = () => {
 
   const selectionChange = (item: IOption) => {
     setPeriod(item.value)
+    setSelection(item.value)
   }
 
   const typeSelectionChange = (item: IOption) => {
@@ -69,13 +72,7 @@ const ReportDetail = () => {
         Financial Report
       </NavBar>
       <div className={styles.switch}>
-        <Select
-          size="small"
-          arrow="left"
-          options={selectOptions}
-          defaultValue={period}
-          onSelect={selectionChange}
-        ></Select>
+        {renderSelect(selection, selectionChange)}
         <div>
           <img
             src={activeChart ? LineChartIcon : LineChartActiveIcon}

@@ -63,3 +63,12 @@ declare interface IBudget {
   receiveAlert?: boolean
   alertPercent?: number | [number, number]
 }
+
+declare interface IContextType {
+  selection: string
+  renderSelect: (
+    defaultValue: string,
+    selectionChange: (item: IOption) => void,
+  ) => JSX.Element
+  setSelection: Dispatch<SetStateAction<string>>
+}

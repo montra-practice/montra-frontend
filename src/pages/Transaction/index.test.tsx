@@ -25,7 +25,7 @@ describe('test transaction page', () => {
   it('jump to financial report page', () => {
     renderTransaction()
     fireEvent.click(screen.getByText(/see you financial report/i))
-    expect(history.location.pathname).toEqual('/financial-report/1')
+    expect(history.location.pathname).toEqual('/financial-report')
   })
   it('jump to transaction detail on clicking item', () => {
     renderTransaction()
